@@ -1,6 +1,8 @@
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import bannerImg from "@/assets/images/banner.jpg";
+import CommonButton from "@/utils/Common/CommonButton";
+import Link from "next/link";
 const BannerSection = () => {
   return (
     <Container
@@ -34,14 +36,18 @@ const BannerSection = () => {
           fontWeight={300}
           lineHeight="20px"
           color="gray"
+          mb="10px"
         >
           make a friend for life! Change a life forever adopt a pet and discover
           the joy of unconditional love! Your new best friend is waiting for you
           adopt a pet and bring happiness home. Open your heart and home adopt a
           pet and experience the magic of a loyal companion.
         </Typography>
+        <Typography component={Link} href="/about-us">
+          <CommonButton buttonName="About Us"></CommonButton>
+        </Typography>
       </Box>
-      <Box>
+      <Box width="50%">
         <Image src={bannerImg} alt="Image" />
       </Box>
     </Container>
