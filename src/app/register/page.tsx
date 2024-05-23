@@ -64,9 +64,27 @@ const RegisterPage = () => {
             <Box>
               <Image src={logo} alt="logo" width={50} height={50}></Image>
             </Box>
-            <Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "10px",
+              }}
+            >
               <Typography variant="h5" mt={1} fontWeight={600}>
-                Patient Register
+                SignUp
+              </Typography>
+              <Typography
+                variant="h5"
+                mt={1}
+                color="primary.main"
+                fontWeight={600}
+              >
+                Pet
+              </Typography>
+              <Typography variant="h5" mt={1} fontWeight={600}>
+                Adaption
               </Typography>
             </Box>
           </Stack>

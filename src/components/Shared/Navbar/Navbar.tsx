@@ -1,7 +1,9 @@
+"use client";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo/logo.webp";
+import AuthButton from "@/components/UI/AuthButton/AuthButton";
 
 const NavbarPage = () => {
   return (
@@ -44,7 +46,7 @@ const NavbarPage = () => {
             About Us
           </Typography>
         </Stack>
-        {/* <AuthButton /> */}
+        <AuthButton />
       </Stack>
     </Container>
   );

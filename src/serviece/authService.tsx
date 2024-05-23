@@ -18,7 +18,7 @@ export const getUserInfo = () => {
     // console.log(deocdedData);
     return {
       ...deocdedData,
-      role: deocdedData?.role.toLowerCase(),
+      role: deocdedData?.role?.toLowerCase(),
     };
   }
 };

@@ -1,5 +1,7 @@
+import DashboardDrawer from "@/components/Dashboard/DashboardDrawer/DashboardDrawer";
+
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  return <div>{children}</div>;
+  return <DashboardDrawer>{children}</DashboardDrawer>;
 };
 
 export default DashboardLayout;

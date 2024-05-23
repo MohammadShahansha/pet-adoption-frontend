@@ -57,7 +57,6 @@ const LoginPage = () => {
           }}
         >
           <Stack
-            direction="row"
             sx={{
               justifyContent: "center",
               alignItems: "center",
@@ -66,9 +65,27 @@ const LoginPage = () => {
             <Box>
               <Image src={logo} alt="logo" width={50} height={50}></Image>
             </Box>
-            <Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "10px",
+              }}
+            >
               <Typography variant="h5" mt={1} fontWeight={600}>
-                Login Pet Adaption
+                Login
+              </Typography>
+              <Typography
+                variant="h5"
+                mt={1}
+                color="primary.main"
+                fontWeight={600}
+              >
+                Pet
+              </Typography>
+              <Typography variant="h5" mt={1} fontWeight={600}>
+                Adaption
               </Typography>
             </Box>
           </Stack>
@@ -127,7 +144,9 @@ const LoginPage = () => {
                 Forget password?
               </Typography>
               <Button
+                fullWidth={true}
                 sx={{
+                  marginTop: "20px",
                   ":hover": {
                     backgroundColor: "#111e42",
                   },
