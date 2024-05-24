@@ -35,3 +35,5 @@ export type TGenericErrorRespnse = {
 };
 
 export const Gender = ["MALE", "FEMALE"];
+
+export const Size = ["SMALL", "MEDIUM", "LARGE"];
