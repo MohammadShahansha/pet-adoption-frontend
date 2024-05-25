@@ -37,3 +37,7 @@ export type TGenericErrorRespnse = {
 export const Gender = ["MALE", "FEMALE"];
 
 export const Size = ["SMALL", "MEDIUM", "LARGE"];
+
+export const roleUser = ["ADMIN", "USER"];
+
+export const userStatus = ["ACTIVE", "BLOCKED", "DELETED"];

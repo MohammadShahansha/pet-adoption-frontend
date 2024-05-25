@@ -14,7 +14,7 @@ const usersApi = baseApi.injectEndpoints({
 
     getAllUsers: build.query({
       query: () => ({
-        url: "/profile",
+        url: "/get-users",
         method: "GET",
       }),
       providesTags: ["users"],
@@ -22,14 +22,14 @@ const usersApi = baseApi.injectEndpoints({
 
     deleteUser: build.mutation({
       query: (id) => ({
-        url: `/profile/${id}`,
+        url: `/delete-user/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: ["users"],
     }),
     updateUsers: build.mutation({
       query: (arg) => ({
-        url: `/pets/${arg?.id}`,
+        url: `/update-user/${arg?.id}`,
         method: "PUT",
         data: arg,
       }),

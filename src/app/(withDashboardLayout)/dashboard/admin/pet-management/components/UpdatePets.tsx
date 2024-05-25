@@ -9,7 +9,6 @@ import {
 } from "@/redux/api/allApi/petsApi";
 import { Gender, Size } from "@/types/common";
 import { Box, Button, Grid } from "@mui/material";
-import { useEffect } from "react";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 
