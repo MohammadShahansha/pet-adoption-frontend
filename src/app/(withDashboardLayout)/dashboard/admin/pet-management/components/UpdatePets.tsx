@@ -2,34 +2,62 @@ import PAForm from "@/components/Formas/PAForm";
 import PAInput from "@/components/Formas/PAInput";
 import PASelectField from "@/components/Formas/PASelectField";
 import PAModal from "@/components/Shared/PAModal/PAModal";
-import { useCreatePetsMutation } from "@/redux/api/allApi/petsApi";
+import {
+  useCreatePetsMutation,
+  useGetSinglePetsQuery,
+  useUpdatePetMutation,
+} from "@/redux/api/allApi/petsApi";
 import { Gender, Size } from "@/types/common";
-import { Box, Button, Grid, TextField } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
+import { useEffect } from "react";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
+
+type defaultValue = {
+  id: string;
+  name: string;
+  species: string;
+  breed: string;
+  age: number;
+  size: string;
+  gender: string;
+  location: string;
+  specialNeeds: string;
+  image: string;
+  helthStatus: string;
+  description: string;
+  temperament: string;
+  medicalHistory: string;
+  adoptionRequirements: string;
+};
+
 type TProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  id: string;
+  defaultValue: defaultValue;
 };
-const CreatePetModal = ({ open, setOpen }: TProps) => {
-  const [createPets] = useCreatePetsMutation();
-  const handleCreatePets = async (values: FieldValues) => {
-    // console.log(values);
-    values.age = Number(values.age);
+const UpdatePets = ({ open, setOpen, id, defaultValue }: TProps) => {
+  const [updatePet] = useUpdatePetMutation();
+  // const { data, isLoading, isSuccess } = useGetSinglePetsQuery(id);
+  // console.log(id);
+  // console.log(data);
+  const handleUpdatePets = async (formData: FieldValues) => {
     try {
-      const res = await createPets(values).unwrap();
+      const res = await updatePet({ id, ...formData }).unwrap();
       console.log(res);
       if (res?.id) {
-        toast.success("pets created successfully");
+        toast.success("pets updated successfully");
         setOpen(false);
       }
     } catch (err) {
+      console.log(err);
       toast.error("Somthing went wrong");
     }
   };
   return (
-    <PAModal open={open} setOpen={setOpen} title="Create New Pet">
-      <PAForm onSubmit={handleCreatePets}>
+    <PAModal open={open} setOpen={setOpen} title="Update Pet">
+      <PAForm onSubmit={handleUpdatePets} defaultValues={defaultValue}>
         <Grid container spacing={2}>
           <Grid item sm={12} md={4}>
             <PAInput name="name" label="Name" fullWidth={true} />
@@ -81,12 +109,7 @@ const CreatePetModal = ({ open, setOpen }: TProps) => {
             <PAInput name="helthStatus" label="Helth Status" fullWidth={true} />
           </Grid>
           <Grid item sm={12} md={4}>
-            <PAInput
-              name="description"
-              type="message"
-              label="Description"
-              fullWidth={true}
-            />
+            <PAInput name="description" label="Description" fullWidth={true} />
           </Grid>
           <Grid item sm={12} md={4}>
             <PAInput name="temperament" label="Temperament" fullWidth={true} />
@@ -128,5 +151,4 @@ const CreatePetModal = ({ open, setOpen }: TProps) => {
     </PAModal>
   );
 };
-
-export default CreatePetModal;
+export default UpdatePets;

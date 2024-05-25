@@ -10,13 +10,22 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { toast } from "sonner";
+import UpdatePets from "./components/UpdatePets";
+import DetailsPet from "./components/DetailsPet";
 
 const PetManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [updateModalOpen, setUpdateModalOpen] = useState<boolean>(false);
+  const [detailModalOpen, setDetailModalOpen] = useState<boolean>(false);
+
+  const [selectedPet, setSelectedPet] = useState<any>(null);
+  const [selectRowToSee, setSelectRowToSee] = useState<any>(null);
+
   const { data, isLoading } = useGetAllpetsQuery({});
   const [deletePet] = useDeletePetMutation();
   const rowData = data?.data;
-
+  const time = new Date().getSeconds();
+  ///delete operation---------------------------------
   const handleDeletRow = async (id: string) => {
     console.log(id);
     try {
@@ -29,8 +38,15 @@ const PetManagement = () => {
       toast.error("Somthing went wrong");
     }
   };
-  const handleUpdateRow = async (id: string) => {
-    // console.log(id);
+
+  const handleEditRow = (row: any) => {
+    setSelectedPet(row);
+    setUpdateModalOpen(true);
+  };
+
+  const handleDetailsRow = async (row: any) => {
+    setSelectRowToSee(row);
+    setDetailModalOpen(true);
   };
   const columns: GridColDef[] = [
     { field: "name", headerName: "Name", width: 150 },
@@ -62,12 +78,12 @@ const PetManagement = () => {
       headerAlign: "center",
       align: "center",
       renderCell: ({ row }) => {
+        // console.log(row.id);
         return (
           <>
             <IconButton
-              onClick={() => handleUpdateRow(row.id)}
+              onClick={() => handleEditRow(row)}
               aria-label="update"
-              defaultValue={row}
               sx={{
                 backgroundColor: "primary.main",
                 ":hover": {
@@ -80,6 +96,12 @@ const PetManagement = () => {
                   color: "white",
                 }}
               />
+              {/* <UpdatePets
+                open={updateModalOpen}
+                setOpen={setUpdateModalOpen}
+                id={row.id}
+                defaultValue={row}
+              /> */}
             </IconButton>
             <IconButton
               onClick={() => handleDeletRow(row.id)}
@@ -100,6 +122,7 @@ const PetManagement = () => {
             </IconButton>
 
             <Button
+              onClick={() => handleDetailsRow(row)}
               sx={{
                 ":hover": {
                   backgroundColor: "secondary.main",
@@ -123,22 +146,26 @@ const PetManagement = () => {
       </Stack>
       <Box mt={4}>
         {!isLoading ? (
-          <DataGrid
-            rows={rowData}
-            columns={columns}
-            // initialState={{
-            //   pagination: {
-            //     paginationModel: { page: 0, pageSize: 5 },
-            //   },
-            // }}
-            // pageSizeOptions={[5, 10]}
-            // checkboxSelection
-            hideFooter
-          />
+          <DataGrid rows={rowData} columns={columns} hideFooter />
         ) : (
           <h1>Loading....</h1>
         )}
       </Box>
+      {selectedPet && (
+        <UpdatePets
+          open={updateModalOpen}
+          setOpen={setUpdateModalOpen}
+          id={selectedPet.id}
+          defaultValue={selectedPet}
+        />
+      )}
+      {selectRowToSee && (
+        <DetailsPet
+          open={detailModalOpen}
+          setOpen={setDetailModalOpen}
+          row={selectRowToSee}
+        />
+      )}
     </Box>
   );
 };
