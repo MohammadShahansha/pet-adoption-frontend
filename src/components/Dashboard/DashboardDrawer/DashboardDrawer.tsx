@@ -62,7 +62,7 @@ export default function DashboardDrawer({
           </IconButton>
           <Box>
             <Typography variant="body2" noWrap component="div" color="gray">
-              Hi, Tonny Parvej
+              Hi, mr. .....
             </Typography>
             <Typography
               variant="body2"

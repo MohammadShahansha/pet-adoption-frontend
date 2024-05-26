@@ -24,7 +24,7 @@ const PetManagement = () => {
   const { data, isLoading } = useGetAllpetsQuery({});
   const [deletePet] = useDeletePetMutation();
   const rowData = data?.data;
-  const time = new Date().getSeconds();
+
   ///delete operation---------------------------------
   const handleDeletRow = async (id: string) => {
     console.log(id);

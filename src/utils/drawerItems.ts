@@ -32,6 +32,11 @@ const drawerItems = (role: userRole): sidebarItem[] => {
           title: "Change-Password",
           path: `${role}/change-password`,
           icon: DashboardIcon,
+        },
+        {
+          title: "Profile",
+          path: `${role}/profile`,
+          icon: DashboardIcon,
         }
       );
       break;
@@ -48,8 +53,18 @@ const drawerItems = (role: userRole): sidebarItem[] => {
           icon: DashboardIcon,
         },
         {
+          title: "Requested-Pets",
+          path: `${role}/requested-pets`,
+          icon: DashboardIcon,
+        },
+        {
           title: "Change-password",
           path: `${role}/change-password`,
+          icon: DashboardIcon,
+        },
+        {
+          title: "Profile",
+          path: `${role}/profile`,
           icon: DashboardIcon,
         }
       );
