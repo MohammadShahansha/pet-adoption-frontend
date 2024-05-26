@@ -1,6 +1,13 @@
 import { USER_ROLE } from "@/constant/role";
 import { sidebarItem, userRole } from "@/types/common";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import GroupIcon from "@mui/icons-material/Group";
+import PetsIcon from "@mui/icons-material/Pets";
+import SendIcon from "@mui/icons-material/Send";
+import RequestPageIcon from "@mui/icons-material/RequestPage";
+import KeyIcon from "@mui/icons-material/Key";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const drawerItems = (role: userRole): sidebarItem[] => {
   const roleMenus: sidebarItem[] = [];
@@ -16,27 +23,27 @@ const drawerItems = (role: userRole): sidebarItem[] => {
         {
           title: "User-Management",
           path: `${role}/user-management`,
-          icon: DashboardIcon,
+          icon: GroupIcon,
         },
         {
           title: "Pet-Management",
           path: `${role}/pet-management`,
-          icon: DashboardIcon,
+          icon: PetsIcon,
         },
         {
           title: "All-Request",
           path: `${role}/all-request`,
-          icon: DashboardIcon,
+          icon: RequestPageIcon,
         },
         {
           title: "Change-Password",
           path: `${role}/change-password`,
-          icon: DashboardIcon,
+          icon: KeyIcon,
         },
         {
           title: "Profile",
           path: `${role}/profile`,
-          icon: DashboardIcon,
+          icon: AccountBoxIcon,
         }
       );
       break;
@@ -50,22 +57,22 @@ const drawerItems = (role: userRole): sidebarItem[] => {
         {
           title: "Pet-Information",
           path: `${role}/pet-information`,
-          icon: DashboardIcon,
+          icon: SendIcon,
         },
         {
-          title: "Requested-Pets",
+          title: "See-Update-Req",
           path: `${role}/requested-pets`,
-          icon: DashboardIcon,
+          icon: VisibilityIcon,
         },
         {
           title: "Change-password",
           path: `${role}/change-password`,
-          icon: DashboardIcon,
+          icon: KeyIcon,
         },
         {
           title: "Profile",
           path: `${role}/profile`,
-          icon: DashboardIcon,
+          icon: AccountBoxIcon,
         }
       );
       break;

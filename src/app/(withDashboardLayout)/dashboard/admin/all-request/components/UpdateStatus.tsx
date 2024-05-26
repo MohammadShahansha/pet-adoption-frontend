@@ -53,10 +53,11 @@ type TProps = {
 const UpdateStatus = ({ open, setOpen, id, defaultValue }: TProps) => {
   const [updateRequest] = useUpdateRequestMutation();
   console.log(id);
+
   const handleUpdatePets = async (formData: FieldValues) => {
     try {
-      const res = await updateRequest({ id, ...formData }).unwrap();
-      console.log(res);
+      const res = await updateRequest({ id, status: formData.status }).unwrap();
+      // console.log(res);
       if (res?.id) {
         toast.success("Status update successfully");
         setOpen(false);

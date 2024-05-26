@@ -32,6 +32,7 @@ const adoptionRequestApi = baseApi.injectEndpoints({
         url: `/adoption-requests/${arg?.id}`,
         method: "PUT",
         data: arg,
+        contentType: "application/json",
       }),
       invalidatesTags: ["adoption"],
     }),

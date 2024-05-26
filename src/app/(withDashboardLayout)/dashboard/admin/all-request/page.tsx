@@ -16,7 +16,7 @@ const AllRequest = () => {
   const [statusModalOpen, setStatusModalOpen] = useState<boolean>(false);
   const { data: requestedData, isLoading } = useGetAllAdoptionRequestQuery({});
   const [deleteRequest] = useDeleteRequestMutation();
-  console.log(requestedData);
+  // console.log(requestedData);
   const [selectedReq, setSelectedReq] = useState<any>(null);
 
   const handleUpdateStatus = (row: any) => {
