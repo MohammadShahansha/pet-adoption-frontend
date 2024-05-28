@@ -19,6 +19,7 @@ import { useState } from "react";
 import PetDetailsModal from "./PetDetailsModal";
 import { useGetMeQuery } from "@/redux/api/allApi/usersApi";
 import Link from "next/link";
+import DropDown from "./DropDown";
 
 const PetsShow = () => {
   const { data, isLoading } = useGetAllpetsQuery({});
@@ -79,7 +80,16 @@ const PetsShow = () => {
           </IconButton>
         </Box>
         <Box>
-          <Button>Filter By</Button>
+          {/* <Button
+            sx={{
+              ":hover": {
+                backgroundColor: "secondary.main",
+              },
+            }}
+          >
+            Filter By
+          </Button> */}
+          <DropDown />
         </Box>
       </Stack>
       <Box mt="20px" sx={{}}>
@@ -196,6 +206,11 @@ const PetsShow = () => {
                             <Button
                               size="small"
                               onClick={() => handleModalOpen(pet)}
+                              sx={{
+                                ":hover": {
+                                  backgroundColor: "secondary.main",
+                                },
+                              }}
                             >
                               See Details
                             </Button>
@@ -209,7 +224,15 @@ const PetsShow = () => {
                           </Box>
                         ) : (
                           <Box component={Link} href="/login">
-                            <Button>See Details</Button>
+                            <Button
+                              sx={{
+                                ":hover": {
+                                  backgroundColor: "secondary.main",
+                                },
+                              }}
+                            >
+                              See Details
+                            </Button>
                           </Box>
                         )}
                       </CardActions>

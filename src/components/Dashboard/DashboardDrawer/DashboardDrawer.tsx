@@ -9,6 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import SideBar from "../SideBar/SideBar";
+import { useGetMeQuery } from "@/redux/api/allApi/usersApi";
 
 const drawerWidth = 240;
 
@@ -20,6 +21,8 @@ export default function DashboardDrawer({
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
 
+  const { data: myData, isLoading } = useGetMeQuery({});
+  // console.log(myData);
   const handleDrawerClose = () => {
     setIsClosing(true);
     setMobileOpen(false);
@@ -62,7 +65,7 @@ export default function DashboardDrawer({
           </IconButton>
           <Box>
             <Typography variant="body2" noWrap component="div" color="gray">
-              Hi, mr. .....
+              Hi, {!isLoading ? myData?.name : <h1>.....</h1>}
             </Typography>
             <Typography
               variant="body2"

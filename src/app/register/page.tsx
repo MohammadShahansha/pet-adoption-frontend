@@ -19,7 +19,7 @@ const RegisterPage = () => {
     console.log(values);
     try {
       const res = await userRegister(values);
-      console.log(res);
+      // console.log(res);
       if (res?.data?.id) {
         toast.success(res?.message);
         router.push("/login");
@@ -27,7 +27,7 @@ const RegisterPage = () => {
           email: values.email,
           password: values.password,
         });
-        console.log(res);
+        // console.log(res);
         if (directLoggin?.data?.token) {
           storeUserInfo({ accessToken: directLoggin?.data?.token });
           router.push("/dashboard");
@@ -115,12 +115,7 @@ const RegisterPage = () => {
                   />
                 </Grid>
                 <Grid item md={6}>
-                  <PAInput
-                    label="Photo"
-                    placeholder="Photo"
-                    fullWidth={true}
-                    name="photo"
-                  />
+                  <PAInput label="Photo" fullWidth={true} name="photo" />
                 </Grid>
                 <Grid item md={6}>
                   <PAInput

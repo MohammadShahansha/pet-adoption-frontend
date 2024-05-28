@@ -36,11 +36,6 @@ const drawerItems = (role: userRole): sidebarItem[] => {
           icon: RequestPageIcon,
         },
         {
-          title: "Change-Password",
-          path: `${role}/change-password`,
-          icon: KeyIcon,
-        },
-        {
           title: "Profile",
           path: `${role}/profile`,
           icon: AccountBoxIcon,
