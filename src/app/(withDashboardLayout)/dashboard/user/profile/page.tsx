@@ -4,4 +4,4 @@ const UserProfilePage = () => {
   return <UserProfile />;
 };
 
-export default UserProfile;
+export default UserProfilePage;

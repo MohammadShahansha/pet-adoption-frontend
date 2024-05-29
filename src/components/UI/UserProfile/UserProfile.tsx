@@ -4,6 +4,7 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 import UserUpdateModal from "./Components/UserUpdateModal";
+import PasswordChangeModal from "./Components/PasswordChangeModal";
 const UserProfile = () => {
   const { data: myData, isLoading } = useGetMeQuery({});
 
@@ -11,11 +12,16 @@ const UserProfile = () => {
   const [selectedUser, setSelectedUser] = useState<any>(null);
 
   const [changePasswordModalOpen, setChangePasswordModalOpen] = useState(false);
-  console.log("myData:", myData);
-
+  const [selectForPass, setSellectForPass] = useState<any>(null);
+  // console.log("myData:", myData);
   const handleUpdateProfile = (userData: any) => {
     setSelectedUser(userData);
     setUserModalOpen(true);
+  };
+
+  const handleChangePassword = (userData: any) => {
+    setSellectForPass(userData);
+    setChangePasswordModalOpen(true);
   };
   return (
     <Box>
@@ -40,6 +46,7 @@ const UserProfile = () => {
             >
               <Box>
                 <Button
+                  onClick={() => handleChangePassword(myData)}
                   sx={{
                     ":hover": {
                       backgroundColor: "secondary.main",
@@ -48,6 +55,17 @@ const UserProfile = () => {
                 >
                   Change Password
                 </Button>
+                {/* <PasswordChangeModal
+                  open={changePasswordModalOpen}
+                  setOpen={setChangePasswordModalOpen}
+                  defaultValue={{ oldPassword: "", newPassword: "" }}
+                /> */}
+                {selectForPass && (
+                  <PasswordChangeModal
+                    open={changePasswordModalOpen}
+                    setOpen={setChangePasswordModalOpen}
+                  />
+                )}
               </Box>
               <Box>
                 <Button

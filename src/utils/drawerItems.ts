@@ -5,7 +5,6 @@ import GroupIcon from "@mui/icons-material/Group";
 import PetsIcon from "@mui/icons-material/Pets";
 import SendIcon from "@mui/icons-material/Send";
 import RequestPageIcon from "@mui/icons-material/RequestPage";
-import KeyIcon from "@mui/icons-material/Key";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
@@ -58,11 +57,6 @@ const drawerItems = (role: userRole): sidebarItem[] => {
           title: "See-Update-Req",
           path: `${role}/requested-pets`,
           icon: VisibilityIcon,
-        },
-        {
-          title: "Change-password",
-          path: `${role}/change-password`,
-          icon: KeyIcon,
         },
         {
           title: "Profile",
