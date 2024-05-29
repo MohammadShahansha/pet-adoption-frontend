@@ -39,10 +39,30 @@ const NavbarPage = () => {
         </Stack>
 
         <Stack direction="row" justifyContent="space-between" gap={4}>
-          <Typography component={Link} href="/">
+          <Typography
+            component={Link}
+            href="/"
+            sx={{
+              fontWeight: "500",
+              fontSize: "18px",
+              ":hover": {
+                color: "primary.main",
+              },
+            }}
+          >
             Home
           </Typography>
-          <Typography component={Link} href="/about-us">
+          <Typography
+            component={Link}
+            href="/about"
+            sx={{
+              fontWeight: "500",
+              fontSize: "18px",
+              ":hover": {
+                color: "primary.main",
+              },
+            }}
+          >
             About Us
           </Typography>
         </Stack>
