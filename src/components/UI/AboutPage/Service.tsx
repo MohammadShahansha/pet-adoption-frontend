@@ -3,7 +3,7 @@ import PetsIcon from "@mui/icons-material/Pets";
 import EmailIcon from "@mui/icons-material/Email";
 import CallIcon from "@mui/icons-material/Call";
 import Image from "next/image";
-import serviceImg from "@/assets/images/serviceImg.png";
+import serviceImg from "@/assets/images/serviceImg.webp";
 
 const Service = () => {
   return (
