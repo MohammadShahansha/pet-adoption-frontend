@@ -2,21 +2,20 @@ import { getUserInfo, removeUserInfo } from "@/serviece/authService";
 import { Button } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Avatar from "@mui/material/Avatar";
+import { useGetMeQuery } from "@/redux/api/allApi/usersApi";
+import UserProfileShow from "./UserProfileShow";
 
 const AuthButton = () => {
-  const router = useRouter();
   const userInfo = getUserInfo();
-  console.log(userInfo);
-  const handleLogout = () => {
-    removeUserInfo();
-    router.refresh();
-  };
+
   return (
     <>
       {userInfo?.email ? (
-        <Button color="error" onClick={handleLogout}>
-          Logout
-        </Button>
+        // <button onClick={handleLogout}>
+        //   <Avatar alt="Remy Sharp" src={myData?.photo} />
+        // </button>
+        <UserProfileShow />
       ) : (
         <Button component={Link} href="/login">
           Login

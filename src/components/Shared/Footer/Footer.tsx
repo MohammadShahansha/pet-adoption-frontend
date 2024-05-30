@@ -10,7 +10,6 @@ const FootePage = () => {
   return (
     <Stack
       sx={{
-        mt: "20px",
         backgroundColor: "black",
         py: "40px",
       }}

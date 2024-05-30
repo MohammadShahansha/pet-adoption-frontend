@@ -10,6 +10,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import SideBar from "../SideBar/SideBar";
 import { useGetMeQuery } from "@/redux/api/allApi/usersApi";
+import UserProfileShow from "@/components/UI/AuthButton/UserProfileShow";
 
 const drawerWidth = 240;
 
@@ -51,6 +52,9 @@ export default function DashboardDrawer({
           background: "#F4F7FE",
           boxShadow: 0,
           borderBottom: "1px solid lightgray",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
         }}
       >
         <Toolbar>
@@ -63,20 +67,37 @@ export default function DashboardDrawer({
           >
             <MenuIcon />
           </IconButton>
-          <Box>
-            <Typography variant="body2" noWrap component="div" color="gray">
-              Hi, {!isLoading ? myData?.name : <h1>.....</h1>}
-            </Typography>
-            <Typography
-              variant="body2"
-              noWrap
-              component="div"
-              color="primary.main"
-            >
-              Welcom To Pet Adoption Shop
-            </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Box>
+              <Typography variant="body2" noWrap component="div" color="gray">
+                Hi, {!isLoading ? myData?.name : <h1>.....</h1>}
+              </Typography>
+              <Typography
+                variant="body2"
+                noWrap
+                component="div"
+                color="primary.main"
+              >
+                Welcom To Pet Adoption Shop
+              </Typography>
+            </Box>
           </Box>
         </Toolbar>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "end",
+            mr: "200px",
+          }}
+        >
+          <UserProfileShow />
+        </Box>
       </AppBar>
       <Box
         component="nav"
