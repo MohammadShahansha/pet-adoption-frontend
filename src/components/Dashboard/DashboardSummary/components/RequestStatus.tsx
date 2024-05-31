@@ -1,12 +1,11 @@
 import * as React from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
-import { useGetUserStatusQuery } from "@/redux/api/allApi/usersApi";
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
+import { useGetRequestStatusQuery } from "@/redux/api/allApi/adoptionRequestApi";
 
-export default function StatusPieChart() {
-  const { data: userStatus, isLoading } = useGetUserStatusQuery({});
-  console.log(userStatus);
-
+export default function RequestStatus() {
+  const { data: requestStatus, isLoading } = useGetRequestStatusQuery({});
+  console.log(requestStatus);
   if (isLoading) {
     return (
       <Box display="flex" alignItems="center" justifyContent="center">
@@ -16,22 +15,22 @@ export default function StatusPieChart() {
   }
   const data = [
     {
-      id: 0,
-      value: userStatus.activeUsers || 0,
-      label: "Active",
-      color: "#00ff00",
-    },
-    {
       id: 1,
-      value: userStatus.blockedUsers || 0,
-      label: "Blocked",
+      value: requestStatus.pendingRequest || 0,
+      label: "Pending",
       color: "#DAF7A6 ",
     },
     {
       id: 2,
-      value: userStatus.deletedUsers || 0,
-      label: "Deleted",
-      color: "#FF5733",
+      value: requestStatus.rejectedRequest || 0,
+      label: "Rejected",
+      color: "#E4352A ",
+    },
+    {
+      id: 0,
+      value: requestStatus.approvedRequest || 0,
+      label: "Approved",
+      color: "#50E56B",
     },
   ];
 

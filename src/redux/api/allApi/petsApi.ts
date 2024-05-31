@@ -42,6 +42,13 @@ const petsApi = baseApi.injectEndpoints({
       }),
       providesTags: ["pets"],
     }),
+    availabelPets: build.query({
+      query: () => ({
+        url: "/availavle-pets",
+        method: "GET",
+      }),
+      providesTags: ["pets"],
+    }),
   }),
 });
 
@@ -51,4 +58,5 @@ export const {
   useDeletePetMutation,
   useUpdatePetMutation,
   useGetSinglePetsQuery,
+  useAvailabelPetsQuery,
 } = petsApi;

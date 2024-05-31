@@ -15,8 +15,8 @@ const RecentRegistrationTable = () => {
     <Box
       sx={{
         display: "flex",
-        justifyContent: "space-between",
         alignItems: "center",
+        gap: "50px",
       }}
     >
       <Box>
@@ -41,6 +41,9 @@ const RecentRegistrationTable = () => {
         </Box>
       </Box>
       <Box>
+        <Typography fontWeight={400} color="black" ml={5} mt={0}>
+          User Status:
+        </Typography>
         <StatusPieChart />
       </Box>
     </Box>

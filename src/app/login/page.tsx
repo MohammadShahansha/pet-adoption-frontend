@@ -1,5 +1,13 @@
 "use client";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import logo from "@/assets/logo/logo.webp";
 import Image from "next/image";
 import { z } from "zod";
@@ -10,9 +18,8 @@ import PAInput from "@/components/Formas/PAInput";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { userLogin } from "@/serviece/Actions/UserLogin";
 import { toast } from "sonner";
-import { getUserInfo, storeUserInfo } from "@/serviece/authService";
+import { storeUserInfo } from "@/serviece/authService";
 import { useRouter } from "next/navigation";
-import { useGetMeQuery } from "@/redux/api/allApi/usersApi";
 
 export const validatinSchema = z.object({
   email: z.string().email("Please inter a valid email"),
@@ -22,7 +29,16 @@ export const validatinSchema = z.object({
 const LoginPage = () => {
   const router = useRouter();
   const [error, setError] = useState("");
-  const { data: myData, isLoading } = useGetMeQuery({});
+  // const { data: myData, isLoading } = useGetMeQuery({});
+
+  // if (isLoading) {
+  //   return (
+  //     <Box display="flex" alignItems="center" justifyContent="center">
+  //       <CircularProgress />
+  //     </Box>
+  //   );
+  // }
+  // console.log(myData);
 
   const handleLoggin: SubmitHandler<FieldValues> = async (values) => {
     console.log(values);
@@ -33,7 +49,7 @@ const LoginPage = () => {
         toast.success("user login successfully");
         storeUserInfo({ accessToken: res?.data?.token });
         router.refresh();
-        router.push(`/dashboard/${myData?.role?.toLowerCase()}`);
+        router.push(`/dashboard/${res?.data?.role?.toLowerCase()}`);
       } else {
         setError(res.message);
       }
