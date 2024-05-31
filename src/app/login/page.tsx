@@ -10,8 +10,9 @@ import PAInput from "@/components/Formas/PAInput";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { userLogin } from "@/serviece/Actions/UserLogin";
 import { toast } from "sonner";
-import { storeUserInfo } from "@/serviece/authService";
+import { getUserInfo, storeUserInfo } from "@/serviece/authService";
 import { useRouter } from "next/navigation";
+import { useGetMeQuery } from "@/redux/api/allApi/usersApi";
 
 export const validatinSchema = z.object({
   email: z.string().email("Please inter a valid email"),
@@ -21,6 +22,7 @@ export const validatinSchema = z.object({
 const LoginPage = () => {
   const router = useRouter();
   const [error, setError] = useState("");
+  const { data: myData, isLoading } = useGetMeQuery({});
 
   const handleLoggin: SubmitHandler<FieldValues> = async (values) => {
     console.log(values);
@@ -30,7 +32,8 @@ const LoginPage = () => {
       if (res?.data?.token) {
         toast.success("user login successfully");
         storeUserInfo({ accessToken: res?.data?.token });
-        router.push("/dashboard");
+        router.refresh();
+        router.push(`/dashboard/${myData?.role?.toLowerCase()}`);
       } else {
         setError(res.message);
       }

@@ -58,6 +58,14 @@ const usersApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["users"],
     }),
+
+    getUserStatus: build.query({
+      query: () => ({
+        url: "/find-user-status",
+        method: "GET",
+      }),
+      providesTags: ["users"],
+    }),
   }),
 });
 
@@ -68,4 +76,5 @@ export const {
   useGetMeQuery,
   useUpdateMeMutation,
   useChangePasswordMutation,
+  useGetUserStatusQuery,
 } = usersApi;
