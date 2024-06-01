@@ -1,7 +1,6 @@
 "use client";
 import { Box, Typography } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import RequestStatus from "./components/RequestStatus";
 import { useAvailabelPetsQuery } from "@/redux/api/allApi/petsApi";
 
 const RecentPets = () => {

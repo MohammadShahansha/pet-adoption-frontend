@@ -8,7 +8,7 @@ const QuestionAns = () => {
     <Box
       sx={{
         backgroundColor: "rgba(1,201,214,0.1)",
-        my: "80px",
+
         display: "flex",
         alignItems: "center",
         gap: "30px",

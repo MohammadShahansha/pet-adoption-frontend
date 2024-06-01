@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import SideBar from "../SideBar/SideBar";
 import { useGetMeQuery } from "@/redux/api/allApi/usersApi";
 import UserProfileShow from "@/components/UI/AuthButton/UserProfileShow";
+import BadgeNotification from "./BadgeNotification";
 
 const drawerWidth = 240;
 
@@ -93,9 +94,11 @@ export default function DashboardDrawer({
           sx={{
             display: "flex",
             justifyContent: "end",
+            alignItems: "center",
             mr: "200px",
           }}
         >
+          <BadgeNotification />
           <UserProfileShow />
         </Box>
       </AppBar>

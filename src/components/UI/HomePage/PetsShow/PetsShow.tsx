@@ -45,13 +45,13 @@ const PetsShow = () => {
           my: "10px",
         }}
       >
-        <Typography fontWeight={600} fontSize="40px">
+        <Typography fontWeight={600} fontSize="40px" color="black">
           Find &
         </Typography>
         <Typography fontWeight={600} fontSize="40px" color="primary.main">
           Choose
         </Typography>
-        <Typography fontWeight={600} fontSize="40px">
+        <Typography fontWeight={600} fontSize="40px" color="black">
           Pet
         </Typography>
       </Box>
