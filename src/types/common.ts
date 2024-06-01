@@ -43,3 +43,5 @@ export const roleUser = ["ADMIN", "USER"];
 export const userStatus = ["ACTIVE", "BLOCKED", "DELETED"];
 
 export const requestStatus = ["PENDING", "APPROVED", "REJECTED"];
+
+export const reviewStatus = ["PENDING", "APPROVED"];

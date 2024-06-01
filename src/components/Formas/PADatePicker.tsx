@@ -2,11 +2,10 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import dayjs from "dayjs";
-import { SxProps } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 import { TInputProps } from "./FormTypes";
 
-const HCDatePicker = ({
+const PADatePicker = ({
   name,
   size = "small",
   label,
@@ -49,4 +48,4 @@ const HCDatePicker = ({
   );
 };
 
-export default HCDatePicker;
+export default PADatePicker;

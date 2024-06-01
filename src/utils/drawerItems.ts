@@ -39,6 +39,16 @@ const drawerItems = (role: userRole): sidebarItem[] => {
           title: "Profile",
           path: `${role}/profile`,
           icon: AccountBoxIcon,
+        },
+        {
+          title: "Create-Post",
+          path: `${role}/post`,
+          icon: AccountBoxIcon,
+        },
+        {
+          title: "Review Update",
+          path: `${role}/review-update`,
+          icon: RateReviewIcon,
         }
       );
       break;

@@ -1,20 +1,23 @@
 "use client";
-import { useGetHomeReviewQuery } from "@/redux/api/allApi/reviewApi";
+import { useGetAllReviewsQuery } from "@/redux/api/allApi/reviewApi";
 import {
   Avatar,
   Box,
+  Button,
   CircularProgress,
   Container,
   Grid,
-  Rating,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
 import iconImg from "@/assets/icons/icon.png";
+import { useState } from "react";
+import UpdateReviewStatus from "./component.tsx/UpdateReviewStatus";
 
-const ReviewSection = () => {
-  const { data: reviewData, isLoading } = useGetHomeReviewQuery({});
-  //   const { data: reviewsData, isLoading } = useGetAllReviewsQuery({});
+const UpdateReview = () => {
+  const { data: reviewData, isLoading } = useGetAllReviewsQuery({});
+  const [reviewUpdatModalOpen, setReviewUpdatModalOpen] = useState(false);
+  const [selectReviewdata, setSelectReviewData] = useState<any>(null);
   if (isLoading) {
     return (
       <Box display="flex" alignItems="center" justifyContent="center">
@@ -23,6 +26,11 @@ const ReviewSection = () => {
     );
   }
   console.log(reviewData);
+
+  const handleUpdateStatus = (row: any) => {
+    setSelectReviewData(row);
+    setReviewUpdatModalOpen(true);
+  };
   return (
     <Box
       sx={{
@@ -32,25 +40,11 @@ const ReviewSection = () => {
       }}
     >
       <Container>
-        <Box>
-          <Typography
-            component="h2"
-            variant="h3"
-            fontWeight={600}
-            textAlign="center"
-          >
-            {" "}
-            What Customers Say About Us
-          </Typography>
-          <Typography component="p" textAlign="center" my="50px">
-            See Why Thousands of Customer Love Us!
-          </Typography>
-        </Box>
         <Grid container spacing={2}>
           {!isLoading ? (
             reviewData.map((review: any, index: number) => {
               return (
-                <Grid item sm={12} md={4} key={index}>
+                <Grid item sm={12} md={6} key={index}>
                   <Box
                     sx={{
                       backgroundColor: "white",
@@ -100,12 +94,31 @@ const ReviewSection = () => {
                           </Typography>
                         </Box>
                       </Box>
-                      <Box mt={6}>
-                        <Rating
-                          name="size-medium"
-                          defaultValue={review?.rating}
-                          precision={0.5}
-                        />
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "end",
+                          mt: "30px",
+                        }}
+                      >
+                        <Button
+                          onClick={() => handleUpdateStatus(review)}
+                          sx={{
+                            ":hover": {
+                              backgroundColor: "secondary.main",
+                            },
+                          }}
+                        >
+                          Update Status
+                        </Button>
+                        {selectReviewdata && (
+                          <UpdateReviewStatus
+                            open={reviewUpdatModalOpen}
+                            setOpen={setReviewUpdatModalOpen}
+                            defaultValue={selectReviewdata}
+                            id={review?.id}
+                          />
+                        )}
                       </Box>
                     </Box>
                   </Box>
@@ -123,4 +136,4 @@ const ReviewSection = () => {
   );
 };
 
-export default ReviewSection;
+export default UpdateReview;
