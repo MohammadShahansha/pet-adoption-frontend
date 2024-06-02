@@ -20,6 +20,7 @@ import PetDetailsModal from "./PetDetailsModal";
 import { useGetMeQuery } from "@/redux/api/allApi/usersApi";
 import Link from "next/link";
 import DropDown from "./DropDown";
+import FilterBySize from "./FilterBySize";
 
 const PetsShow = () => {
   const { data, isLoading } = useGetAllpetsQuery({});
@@ -27,6 +28,11 @@ const PetsShow = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [petSelected, setPetSelected] = useState<any>(null);
+
+  //copy
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
+
   const petsData = data?.data;
   //   console.log(user);
   //   console.log(petsData);
@@ -34,6 +40,20 @@ const PetsShow = () => {
     setPetSelected(pet);
     setModalOpen(true);
   };
+
+  const handleSearchTerm = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+  const handleSelectSize = (size: string) => {
+    setSelectedSize(size);
+  };
+
+  const filteredPets = petsData
+    ?.filter((pet: any) =>
+      pet.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .filter((pet: any) => (selectedSize ? pet.size === selectedSize : true));
+
   return (
     <Box sx={{ backgroundColor: "rgba(1,201,214,0.1)", py: "80px" }}>
       <Container>
@@ -67,6 +87,10 @@ const PetsShow = () => {
               placeholder="Search"
               size="small"
               fullWidth
+              value={searchTerm}
+              onChange={handleSearchTerm}
+              // value={searchTerm}
+              // onChange={handleSearchChange}
               sx={{
                 position: "absolute",
               }}
@@ -90,13 +114,13 @@ const PetsShow = () => {
           >
             Filter By
           </Button> */}
-            <DropDown />
+            <FilterBySize onSizeSelect={handleSelectSize} />
           </Box>
         </Stack>
         <Box mt="20px" sx={{}}>
           <Grid container spacing={2}>
             {!isLoading ? (
-              petsData.map((pet: any, index: number) => {
+              filteredPets.map((pet: any, index: number) => {
                 return (
                   <Grid item key={index} sm={12} md={4}>
                     <Card sx={{ maxWidth: 345 }}>

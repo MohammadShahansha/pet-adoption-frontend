@@ -7,23 +7,21 @@ import { styled } from "@mui/system";
 import { CssTransition } from "@mui/base/Transitions";
 import { PopupContext } from "@mui/base/Unstable_Popup";
 
-export default function DropDown() {
+export default function FilterBySize({ onSizeSelect }: any) {
   const createHandleMenuClick = (menuItem: string) => {
     return () => {
       console.log(`Clicked on ${menuItem}`);
+      onSizeSelect(menuItem);
     };
   };
 
   return (
     <Dropdown>
-      <MenuButton>Filter By</MenuButton>
+      <MenuButton>Filter By Size</MenuButton>
       <Menu slots={{ listbox: AnimatedListbox }}>
-        <MenuItem onClick={createHandleMenuClick("size")}>Size</MenuItem>
-        <MenuItem onClick={createHandleMenuClick("age")}>Age</MenuItem>
-        <MenuItem onClick={createHandleMenuClick("gender")}>Gender</MenuItem>
-        <MenuItem onClick={createHandleMenuClick("specialNeeds")}>
-          Special Needs
-        </MenuItem>
+        <MenuItem onClick={createHandleMenuClick("SMALL")}>Small</MenuItem>
+        <MenuItem onClick={createHandleMenuClick("MEDIUM")}>Medium</MenuItem>
+        <MenuItem onClick={createHandleMenuClick("LARGE")}>Large</MenuItem>
       </Menu>
     </Dropdown>
   );
