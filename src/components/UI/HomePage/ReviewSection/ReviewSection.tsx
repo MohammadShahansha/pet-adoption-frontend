@@ -15,13 +15,13 @@ import iconImg from "@/assets/icons/icon.png";
 const ReviewSection = () => {
   const { data: reviewData, isLoading } = useGetHomeReviewQuery({});
   //   const { data: reviewsData, isLoading } = useGetAllReviewsQuery({});
-  if (isLoading) {
-    return (
-      <Box display="flex" alignItems="center" justifyContent="center">
-        <CircularProgress />
-      </Box>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <Box display="flex" alignItems="center" justifyContent="center">
+  //       <CircularProgress />
+  //     </Box>
+  //   );
+  // }
   console.log(reviewData);
   return (
     <Box
@@ -48,7 +48,7 @@ const ReviewSection = () => {
         </Box>
         <Grid container spacing={2}>
           {!isLoading ? (
-            reviewData.map((review: any, index: number) => {
+            reviewData?.map((review: any, index: number) => {
               return (
                 <Grid item sm={12} md={4} key={index}>
                   <Box

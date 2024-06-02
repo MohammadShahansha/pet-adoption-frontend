@@ -3,16 +3,14 @@ import Image from "next/image";
 import bannerImg from "@/assets/images/digSky.jpg";
 import CommonButton from "@/utils/Common/CommonButton";
 import Link from "next/link";
-import { Fullscreen } from "@mui/icons-material";
 const BannerSection = () => {
   return (
     <Box
       sx={{
         position: "relative",
         gap: "10px",
-        my: "20px",
         alignItems: "center",
-        height: "710px",
+        height: "700px",
       }}
     >
       <Box
@@ -86,7 +84,7 @@ const BannerSection = () => {
             heart and home adopt a pet and experience the magic of a loyal
             companion.
           </Typography>
-          <Typography component={Link} href="/about-us">
+          <Typography component={Link} href="/about">
             <CommonButton buttonName="About Us"></CommonButton>
           </Typography>
         </Box>

@@ -2,15 +2,16 @@ import BannerSection from "@/components/UI/HomePage/BannerSection/BannerSection"
 import PetsShow from "@/components/UI/HomePage/PetsShow/PetsShow";
 import QuestionAns from "@/components/UI/HomePage/QuestinnsAns/QuestionAns";
 import ReviewSection from "@/components/UI/HomePage/ReviewSection/ReviewSection";
+import { Box } from "@mui/material";
 
 const HomePage = () => {
   return (
-    <div>
+    <Box mt="60px">
       <BannerSection />
       <PetsShow />
       <ReviewSection />
       <QuestionAns />
-    </div>
+    </Box>
   );
 };
 

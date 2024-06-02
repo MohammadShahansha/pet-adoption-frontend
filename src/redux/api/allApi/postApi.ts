@@ -14,7 +14,14 @@ const postApi = baseApi.injectEndpoints({
 
     getAllPost: build.query({
       query: () => ({
-        url: "/get-psot",
+        url: "/get-post",
+        method: "GET",
+      }),
+      providesTags: ["post"],
+    }),
+    getSinglePost: build.query({
+      query: (arg) => ({
+        url: `/get-single-post/${arg?.id}`,
         method: "GET",
       }),
       providesTags: ["post"],
@@ -23,4 +30,8 @@ const postApi = baseApi.injectEndpoints({
   overrideExisting: true,
 });
 
-export const { useCreatePostMutation, useGetAllPostQuery } = postApi;
+export const {
+  useCreatePostMutation,
+  useGetAllPostQuery,
+  useGetSinglePostQuery,
+} = postApi;
