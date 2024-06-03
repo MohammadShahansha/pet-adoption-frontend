@@ -4,7 +4,7 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import PetsIcon from "@mui/icons-material/Pets";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Box } from "@mui/system";
-import { CircularProgress, Grid, Typography } from "@mui/material";
+import { CircularProgress, Grid, Skeleton, Typography } from "@mui/material";
 import RecentRegistrationTable from "@/components/Dashboard/DashboardSummary/RecentRegistrationTable";
 import RecentRequestTable from "@/components/Dashboard/DashboardSummary/RecentRequestTable";
 import { useAvailabelPetsQuery } from "@/redux/api/allApi/petsApi";
@@ -15,10 +15,39 @@ const TotalSummary = () => {
   const { data: userData, isLoading: userLoading } = useGetUserStatusQuery({});
   const { data: reqData, isLoading: reqLoading } = useGetRequestStatusQuery({});
 
+  const forLoading = [1, 2, 3, 4];
   if (petsLoadin || userLoading || reqLoading) {
     return (
-      <Box display="flex" alignItems="center" justifyContent="center">
-        <CircularProgress />
+      <Box>
+        <Grid container spacing={2}>
+          {forLoading.map((item: number, index: number) => {
+            return (
+              <Grid item key={index} sm={12} md={3}>
+                <Box sx={{ backgroundColor: "#F8F4F4 ", p: "5px" }}>
+                  <Box>
+                    <Skeleton width="200px" height="25px" />
+                    <Skeleton width="100px" height="30px" />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "end",
+                      mt: "50px",
+                    }}
+                  >
+                    <Skeleton
+                      width="50px"
+                      height="70px"
+                      sx={{
+                        borderRadius: "50%",
+                      }}
+                    />
+                  </Box>
+                </Box>
+              </Grid>
+            );
+          })}
+        </Grid>
       </Box>
     );
   }

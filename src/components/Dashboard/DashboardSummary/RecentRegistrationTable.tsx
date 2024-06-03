@@ -1,11 +1,12 @@
 "use client";
 import { useGetAllUsersQuery } from "@/redux/api/allApi/usersApi";
-import { Box, Typography } from "@mui/material";
+import { Box, Skeleton, Typography } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import StatusPieChart from "./components/StatusPieChart";
 
 const RecentRegistrationTable = () => {
   const { data: userData, isLoading } = useGetAllUsersQuery({});
+  const forLoading = [1, 2, 3, 4];
   const columns: GridColDef[] = [
     { field: "name", headerName: "Name", width: 150 },
     { field: "email", headerName: "Email", width: 200 },
@@ -20,30 +21,52 @@ const RecentRegistrationTable = () => {
       }}
     >
       <Box>
-        <Typography
-          sx={{
-            color: "black",
-            fontWeight: 400,
-          }}
-        >
-          Recent User Registration:
-        </Typography>
+        {!isLoading ? (
+          <Typography
+            sx={{
+              color: "black",
+              fontWeight: 400,
+            }}
+          >
+            Recent User Registration:
+          </Typography>
+        ) : (
+          <Box>
+            {" "}
+            <Skeleton width="200px" height="25px" />
+          </Box>
+        )}
         <Box width={600} height={250}>
           {!isLoading ? (
             <DataGrid
-              rows={userData.slice(0, 5)}
+              rows={userData?.slice(0, 10)}
               columns={columns}
               hideFooter
             />
           ) : (
-            <h1>Loading....</h1>
+            <Box>
+              {forLoading.map((item: number) => {
+                return (
+                  <Box key={item}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "20px",
+                      }}
+                    >
+                      <Skeleton sx={{ width: "200px", height: "70px" }} />
+                      <Skeleton sx={{ width: "200px", height: "70px" }} />
+                      <Skeleton sx={{ width: "200px", height: "70px" }} />
+                    </Box>
+                  </Box>
+                );
+              })}
+            </Box>
           )}
         </Box>
       </Box>
       <Box>
-        <Typography fontWeight={400} color="black" ml={5} mt={0}>
-          User Status:
-        </Typography>
         <StatusPieChart />
       </Box>
     </Box>

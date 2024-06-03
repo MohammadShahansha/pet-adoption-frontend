@@ -46,9 +46,6 @@ const UpdateUser = ({ open, setOpen, id, defaultValue }: TProps) => {
       <PAForm onSubmit={handleUpdateUser} defaultValues={defaultValue}>
         <Grid container spacing={2}>
           <Grid item sm={12} md={12}>
-            <PAInput name="name" label="Name" fullWidth={true} />
-          </Grid>
-          <Grid item sm={12} md={12}>
             <PASelectField
               name="role"
               label="Role"

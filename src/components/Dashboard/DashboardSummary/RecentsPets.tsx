@@ -86,7 +86,7 @@ const RecentPets = () => {
         <Box width={800} height={300}>
           {!isLoading ? (
             <DataGrid
-              rows={rowData.slice(0, 20)}
+              rows={rowData?.slice(0, 20)}
               columns={columns}
               hideFooter
             />

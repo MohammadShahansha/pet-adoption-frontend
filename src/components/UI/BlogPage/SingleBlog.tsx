@@ -16,10 +16,24 @@ const SingleBlog = (id: TProp) => {
       </Box>
     );
   }
+  const spliceDescriptionIntoSentence = (text: string): string[] => {
+    return text.match(/[^.!?]+[.!?]+[\])'"`’”]*|.+/g) || [];
+  };
+
+  const sentence = spliceDescriptionIntoSentence(singleData?.description || "");
+  const firstPara = sentence.slice(0, 6).join(" ");
+  const secondPara = sentence.slice(6, 8).join(" ");
+  const thirdPara = sentence.slice(8).join("");
   return (
-    <Box>
-      <Typography component="h2" variant="h4" fontWeight={600}>
-        {singleData?.title}:
+    <Box sx={{ backgroundColor: "#e5e7eb", p: "30px" }}>
+      <Typography
+        component="h2"
+        variant="h4"
+        fontWeight={600}
+        my="30px"
+        textAlign="center"
+      >
+        {singleData?.title}
       </Typography>
       <Image
         src={singleData?.image}
@@ -35,14 +49,24 @@ const SingleBlog = (id: TProp) => {
         Posted At: {singleData?.createdAt.slice(0, 10)}
       </Typography>
       <Typography component="p" fontSize="18px">
-        {singleData?.description.slice(0, 500)}-
+        {firstPara}
       </Typography>
-      <Typography component="p" fontSize="18px" my="20px">
-        {singleData?.description.slice(500, 1100)}-
-      </Typography>
-      <Typography component="p" fontSize="18px" my="20px">
-        {singleData?.description.slice(1100)}-
-      </Typography>
+      {secondPara && (
+        <Typography
+          component="p"
+          fontSize="18px"
+          my="30px"
+          ml="100px"
+          color="primary.main"
+        >
+          {secondPara}
+        </Typography>
+      )}
+      {thirdPara && (
+        <Typography component="p" fontSize="18px">
+          {thirdPara}
+        </Typography>
+      )}
     </Box>
   );
 };

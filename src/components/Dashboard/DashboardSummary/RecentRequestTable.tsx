@@ -1,11 +1,12 @@
 "use client";
-import { Box, Typography } from "@mui/material";
+import { Box, Skeleton, Typography } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useGetAllAdoptionRequestQuery } from "@/redux/api/allApi/adoptionRequestApi";
 import RequestStatus from "./components/RequestStatus";
 
 const RecentRequestTable = () => {
   const { data: adoptionReq, isLoading } = useGetAllAdoptionRequestQuery({});
+  const forLoading = [1, 2, 3, 4];
   const columns: GridColDef[] = [
     {
       field: "pet.name",
@@ -43,29 +44,53 @@ const RecentRequestTable = () => {
       }}
     >
       <Box>
-        <Typography fontWeight={400} color="black" ml={5} mt={0}>
-          Request Status:
-        </Typography>
         <RequestStatus />
       </Box>
       <Box>
-        <Typography
-          sx={{
-            color: "black",
-            fontWeight: 400,
-          }}
-        >
-          Recent Adoption Request:
-        </Typography>
+        {!isLoading ? (
+          <Typography
+            sx={{
+              color: "black",
+              fontWeight: 400,
+            }}
+          >
+            Recent Adoption Request:
+          </Typography>
+        ) : (
+          <Box>
+            <Box>
+              {" "}
+              <Skeleton width="200px" height="25px" />
+            </Box>
+          </Box>
+        )}
         <Box width={600} height={250}>
           {!isLoading ? (
             <DataGrid
-              rows={adoptionReq.slice(0, 10)}
+              rows={adoptionReq?.slice(0, 10)}
               columns={columns}
               hideFooter
             />
           ) : (
-            <h1>Loading....</h1>
+            <Box>
+              {forLoading.map((item: number) => {
+                return (
+                  <Box key={item}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "20px",
+                      }}
+                    >
+                      <Skeleton sx={{ width: "200px", height: "70px" }} />
+                      <Skeleton sx={{ width: "200px", height: "70px" }} />
+                      <Skeleton sx={{ width: "200px", height: "70px" }} />
+                    </Box>
+                  </Box>
+                );
+              })}
+            </Box>
           )}
         </Box>
       </Box>

@@ -9,6 +9,7 @@ import {
   Container,
   Grid,
   IconButton,
+  Skeleton,
   Stack,
   TextField,
   Typography,
@@ -19,23 +20,23 @@ import { useState } from "react";
 import PetDetailsModal from "./PetDetailsModal";
 import { useGetMeQuery } from "@/redux/api/allApi/usersApi";
 import Link from "next/link";
-import DropDown from "./DropDown";
 import FilterBySize from "./FilterBySize";
+import FilterByGender from "./FilterByGender";
 
 const PetsShow = () => {
   const { data, isLoading } = useGetAllpetsQuery({});
   const { data: user, isLoading: loading } = useGetMeQuery({});
+  const forLoading = [1, 2, 3, 4, 5];
 
   const [modalOpen, setModalOpen] = useState(false);
   const [petSelected, setPetSelected] = useState<any>(null);
 
-  //copy
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
+  const [selectedGender, setSelectedGender] = useState("");
 
   const petsData = data?.data;
-  //   console.log(user);
-  //   console.log(petsData);
+
   const handleModalOpen = (pet: any) => {
     setPetSelected(pet);
     setModalOpen(true);
@@ -47,12 +48,18 @@ const PetsShow = () => {
   const handleSelectSize = (size: string) => {
     setSelectedSize(size);
   };
+  const handleSelectGender = (gender: string) => {
+    setSelectedGender(gender);
+  };
 
   const filteredPets = petsData
     ?.filter((pet: any) =>
       pet.name.toLowerCase().includes(searchTerm.toLowerCase())
     )
-    .filter((pet: any) => (selectedSize ? pet.size === selectedSize : true));
+    .filter((pet: any) => (selectedSize ? pet.size === selectedSize : true))
+    .filter((pet: any) =>
+      selectedGender ? pet.gender === selectedGender : true
+    );
 
   return (
     <Box sx={{ backgroundColor: "rgba(1,201,214,0.1)", py: "80px" }}>
@@ -105,22 +112,14 @@ const PetsShow = () => {
             </IconButton>
           </Box>
           <Box>
-            {/* <Button
-            sx={{
-              ":hover": {
-                backgroundColor: "secondary.main",
-              },
-            }}
-          >
-            Filter By
-          </Button> */}
             <FilterBySize onSizeSelect={handleSelectSize} />
+            <FilterByGender onGenderSelect={handleSelectGender} />
           </Box>
         </Stack>
         <Box mt="20px" sx={{}}>
           <Grid container spacing={2}>
             {!isLoading ? (
-              filteredPets.map((pet: any, index: number) => {
+              filteredPets?.map((pet: any, index: number) => {
                 return (
                   <Grid item key={index} sm={12} md={4}>
                     <Card sx={{ maxWidth: 345 }}>
@@ -267,7 +266,25 @@ const PetsShow = () => {
                 );
               })
             ) : (
-              <h1>Loading...</h1>
+              <Box mt="20px">
+                <Grid container spacing={2}>
+                  {forLoading.map((item: number, index: number) => {
+                    return (
+                      <Grid item sm={12} md={4} key={index}>
+                        <Skeleton
+                          variant="rectangular"
+                          width={350}
+                          height={150}
+                        />
+                        <Box sx={{ pt: 0.5 }}>
+                          <Skeleton width="300px" />
+                          <Skeleton width="40%" />
+                        </Box>
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+              </Box>
             )}
           </Grid>
         </Box>

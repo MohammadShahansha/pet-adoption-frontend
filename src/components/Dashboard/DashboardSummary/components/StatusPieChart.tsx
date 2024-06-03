@@ -1,7 +1,7 @@
 import * as React from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useGetUserStatusQuery } from "@/redux/api/allApi/usersApi";
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, CircularProgress, Skeleton, Typography } from "@mui/material";
 
 export default function StatusPieChart() {
   const { data: userStatus, isLoading } = useGetUserStatusQuery({});
@@ -9,8 +9,25 @@ export default function StatusPieChart() {
 
   if (isLoading) {
     return (
-      <Box display="flex" alignItems="center" justifyContent="center">
-        <CircularProgress />
+      <Box>
+        <Skeleton width={150} height={20} />
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="end"
+          gap={10}
+          ml={20}
+          mt={-5}
+        >
+          <Skeleton
+            sx={{ width: "200px", height: "350px", borderRadius: "50%" }}
+          />
+          <Box>
+            <Skeleton width="150px" height="20px" />
+            <Skeleton width="150px" height="20px" />
+            <Skeleton width="150px" height="20px" />
+          </Box>
+        </Box>
       </Box>
     );
   }
@@ -37,6 +54,10 @@ export default function StatusPieChart() {
 
   return (
     <Box>
+      <Typography fontWeight={400} color="black" ml={5} mt={0}>
+        User Status:
+      </Typography>
+
       <Box>
         <PieChart
           series={[

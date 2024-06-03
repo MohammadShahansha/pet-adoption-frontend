@@ -1,6 +1,6 @@
 "use client";
 import { useGetAllPostQuery } from "@/redux/api/allApi/postApi";
-import { Box, Divider, Grid, Typography } from "@mui/material";
+import { Box, Divider, Grid, Skeleton, Typography } from "@mui/material";
 import React, { useState } from "react";
 import SingleBlog from "./SingleBlog";
 import Image from "next/image";
@@ -16,7 +16,7 @@ export type TBlog = {
 const AllBlog = () => {
   const { data: postData, isLoading } = useGetAllPostQuery({});
   const [selectId, setSelectId] = useState<string | null>(null);
-  //   console.log(postData);
+  const forLoading = [1, 2, 3, 4, 5];
 
   const handlePost = async (id: string) => {
     setSelectId(id);
@@ -77,7 +77,27 @@ const AllBlog = () => {
               })}
             </Box>
           ) : (
-            <h1>lodaing</h1>
+            <Box>
+              {forLoading.map((item: number, index: number) => {
+                return (
+                  <Box key={index}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "20px",
+                      }}
+                    >
+                      <Skeleton width={50} height={70} />
+                      <Box>
+                        <Skeleton sx={{ width: "150px", height: "30px" }} />
+                        <Skeleton sx={{ width: "100px", height: "20px" }} />
+                      </Box>
+                    </Box>
+                  </Box>
+                );
+              })}
+            </Box>
           )}
         </Grid>
 
@@ -86,25 +106,55 @@ const AllBlog = () => {
             <SingleBlog id={selectId} />
           ) : (
             <Box mt={10}>
-              <Typography
-                component="h1"
-                variant="h3"
-                textAlign="center"
-                fontWeight={600}
-                color="gray"
-              >
-                Choose Your Blog
-              </Typography>
-              <Typography
-                component="p"
-                textAlign="center"
-                fontWeight={300}
-                color="gray"
-                mt="50px"
-              >
-                Get here how will you take care of your pets and how give and
-                get intertainment
-              </Typography>
+              {!isLoading ? (
+                <Box>
+                  <Typography
+                    component="h1"
+                    variant="h3"
+                    textAlign="center"
+                    fontWeight={600}
+                    color="gray"
+                  >
+                    Choose Your Blog
+                  </Typography>
+                  <Typography
+                    component="p"
+                    textAlign="center"
+                    fontWeight={300}
+                    color="gray"
+                    mt="50px"
+                  >
+                    Get here how will you take care of your pets and how give
+                    and get intertainment
+                  </Typography>
+                </Box>
+              ) : (
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Skeleton
+                    sx={{
+                      width: "400px",
+                      height: "100px",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  />
+                  <Skeleton
+                    sx={{
+                      width: "800px",
+                      height: "20px",
+                      display: "flex",
+                      justifyContent: "center",
+                      mt: "50px",
+                    }}
+                  />
+                </Box>
+              )}
             </Box>
           )}
         </Grid>

@@ -7,6 +7,7 @@ import {
   Container,
   Grid,
   Rating,
+  Skeleton,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
@@ -14,15 +15,7 @@ import iconImg from "@/assets/icons/icon.png";
 
 const ReviewSection = () => {
   const { data: reviewData, isLoading } = useGetHomeReviewQuery({});
-  //   const { data: reviewsData, isLoading } = useGetAllReviewsQuery({});
-  // if (isLoading) {
-  //   return (
-  //     <Box display="flex" alignItems="center" justifyContent="center">
-  //       <CircularProgress />
-  //     </Box>
-  //   );
-  // }
-  console.log(reviewData);
+  const forLoading = [1, 2, 3, 4, 5];
   return (
     <Box
       sx={{
@@ -113,8 +106,55 @@ const ReviewSection = () => {
               );
             })
           ) : (
-            <Box>
-              <CircularProgress />
+            <Box mt="20px">
+              <Grid container spacing={2}>
+                {forLoading.map((item: number, index: number) => {
+                  return (
+                    <Grid item sm={12} md={4} key={index}>
+                      <Skeleton variant="rectangular" width={350} />
+                      <Skeleton
+                        variant="rectangular"
+                        width={350}
+                        sx={{ my: "5px" }}
+                      />
+                      <Skeleton variant="rectangular" width={350} />
+                      <Skeleton
+                        variant="rectangular"
+                        width={350}
+                        sx={{ my: "5px" }}
+                      />
+                      <Box
+                        sx={{
+                          mt: "10px",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            display: "flex",
+                            // justifyContent: "space-between",
+                            gap: "20px",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Skeleton
+                            width={50}
+                            height={70}
+                            sx={{ borderRadius: "50% " }}
+                          />
+                          <Box>
+                            <Skeleton sx={{ width: "100px" }} />
+                            <Skeleton width="100px" />
+                          </Box>
+                        </Box>
+                        <Skeleton width="100px" height="20px" />
+                      </Box>
+                    </Grid>
+                  );
+                })}
+              </Grid>
             </Box>
           )}
         </Grid>

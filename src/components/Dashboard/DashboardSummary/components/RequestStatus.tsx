@@ -1,6 +1,6 @@
 import * as React from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Skeleton, Typography } from "@mui/material";
 import { useGetRequestStatusQuery } from "@/redux/api/allApi/adoptionRequestApi";
 
 export default function RequestStatus() {
@@ -8,8 +8,25 @@ export default function RequestStatus() {
   console.log(requestStatus);
   if (isLoading) {
     return (
-      <Box display="flex" alignItems="center" justifyContent="center">
-        <CircularProgress />
+      <Box>
+        <Skeleton width={150} height={20} />
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="end"
+          gap={10}
+          ml={20}
+          mt={-5}
+        >
+          <Skeleton
+            sx={{ width: "200px", height: "350px", borderRadius: "50%" }}
+          />
+          <Box>
+            <Skeleton width="150px" height="20px" />
+            <Skeleton width="150px" height="20px" />
+            <Skeleton width="150px" height="20px" />
+          </Box>
+        </Box>
       </Box>
     );
   }
@@ -36,6 +53,9 @@ export default function RequestStatus() {
 
   return (
     <Box>
+      <Typography fontWeight={400} color="black" ml={5} mt={0}>
+        Request Status:
+      </Typography>
       <Box>
         <PieChart
           series={[
