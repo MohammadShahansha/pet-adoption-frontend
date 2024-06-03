@@ -2,6 +2,7 @@
 import PAForm from "@/components/Formas/PAForm";
 import PAInput from "@/components/Formas/PAInput";
 import PATextAreaInput from "@/components/Formas/PATextAreaInput";
+import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
 import { useCreatePostMutation } from "@/redux/api/allApi/postApi";
 import { Box, Button, Grid, TextareaAutosize, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
@@ -27,7 +28,14 @@ const CreatePost = () => {
     }
   };
   return (
-    <Box mt={3}>
+    <Box>
+      <Box>
+        <DashboardBanner
+          title="Create a Blog To Post "
+          routeLink="/dashboard/admin/post"
+          selfName="Create_Post"
+        />
+      </Box>
       <PAForm onSubmit={handleLoggin}>
         <Grid container spacing={3} sx={{ width: "500px", mx: "auto" }}>
           <Grid item md={12}>
@@ -50,23 +58,24 @@ const CreatePost = () => {
           </Grid>
         </Grid>
 
-        <Button
-          fullWidth={true}
-          sx={{
-            marginTop: "20px",
-            ":hover": {
-              backgroundColor: "#111e42",
-            },
-            width: "300px",
-            mx: "auto",
-            display: "flex",
-            justifyContent: "center",
-          }}
-          type="submit"
-        >
-          {" "}
-          Submit
-        </Button>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Button
+            sx={{
+              marginTop: "20px",
+              ":hover": {
+                backgroundColor: "#111e42",
+              },
+              width: "480px",
+              ml: "35px",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            type="submit"
+          >
+            {" "}
+            Submit
+          </Button>
+        </Box>
       </PAForm>
     </Box>
   );

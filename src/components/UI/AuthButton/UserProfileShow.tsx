@@ -61,7 +61,7 @@ export default function UserProfileShow() {
                 src={myData?.photo}
                 alt="Profile"
               >
-                M
+                P
               </Avatar>
             ) : (
               <Box sx={{ display: "flex" }}>
@@ -109,9 +109,7 @@ export default function UserProfileShow() {
         <MenuItem onClick={handleProfile}>
           <Avatar src={myData?.photo} /> Profile
         </MenuItem>
-        {/* <MenuItem onClick={handleClose}>
-          <Avatar /> My account
-        </MenuItem> */}
+
         <Divider />
         <MenuItem onClick={handleAccount}>
           <ListItemIcon>
@@ -119,12 +117,7 @@ export default function UserProfileShow() {
           </ListItemIcon>
           Add another account
         </MenuItem>
-        {/* <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem> */}
+
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />

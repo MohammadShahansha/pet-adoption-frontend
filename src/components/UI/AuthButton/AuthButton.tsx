@@ -12,12 +12,13 @@ const AuthButton = () => {
   return (
     <>
       {userInfo?.email ? (
-        // <button onClick={handleLogout}>
-        //   <Avatar alt="Remy Sharp" src={myData?.photo} />
-        // </button>
         <UserProfileShow />
       ) : (
-        <Button component={Link} href="/login">
+        <Button
+          component={Link}
+          href="/login"
+          sx={{ ":hover": { backgroundColor: "secondary.main" } }}
+        >
           Login
         </Button>
       )}

@@ -1,11 +1,14 @@
 "use client";
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Avatar, Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/assets/logo/logo.webp";
+import logo from "@/assets/logo/logo.png";
 import AuthButton from "@/components/UI/AuthButton/AuthButton";
+import { getUserInfo } from "@/serviece/authService";
 
 const NavbarPage = () => {
+  const userInfo = getUserInfo();
+  console.log(userInfo);
   const navBarRoute = [
     {
       href: "/",
@@ -41,25 +44,16 @@ const NavbarPage = () => {
         >
           <Stack direction="row" alignItems="center" component={Link} href="/">
             <Typography variant="h5" fontWeight={600}>
-              <Box>
-                P
-                <Box component="span" color="primary.main">
-                  et
-                </Box>{" "}
-                Adap
-                <Box component="span" color="primary.main">
-                  tion
-                </Box>
-              </Box>
+              Petsmart
             </Typography>
             <Box
+              width={40}
+              height={40}
               sx={{
-                width: "40px",
-                height: "40px",
                 borderRadius: "50%",
               }}
             >
-              <Image src={logo} alt="logo" />
+              <Image src={logo} alt="logo" width={40} height={40} />
             </Box>
           </Stack>
 
@@ -81,6 +75,22 @@ const NavbarPage = () => {
                 {item.label}
               </Typography>
             ))}
+            {userInfo && (
+              <Typography
+                component={Link}
+                href={`/dashboard/${userInfo?.role}`}
+                sx={{
+                  fontWeight: "500",
+                  fontSize: "18px",
+
+                  ":hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
+                Dashboard
+              </Typography>
+            )}
           </Stack>
           <AuthButton />
         </Stack>

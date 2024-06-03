@@ -1,5 +1,6 @@
 "use client";
 import {
+  Avatar,
   Box,
   Button,
   CircularProgress,
@@ -8,7 +9,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import logo from "@/assets/logo/logo.webp";
+import logo from "@/assets/logo/logo.png";
 import Image from "next/image";
 import { z } from "zod";
 import { useState } from "react";
@@ -84,27 +85,9 @@ const LoginPage = () => {
             <Box>
               <Image src={logo} alt="logo" width={50} height={50}></Image>
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "10px",
-              }}
-            >
-              <Typography variant="h5" mt={1} fontWeight={600}>
-                Login
-              </Typography>
-              <Typography
-                variant="h5"
-                mt={1}
-                color="primary.main"
-                fontWeight={600}
-              >
-                Pet
-              </Typography>
-              <Typography variant="h5" mt={1} fontWeight={600}>
-                Adaption
+            <Box>
+              <Typography variant="h5" fontWeight={600}>
+                Login Please!!
               </Typography>
             </Box>
           </Stack>
@@ -153,7 +136,7 @@ const LoginPage = () => {
                   />
                 </Grid>
               </Grid>
-              <Typography
+              {/* <Typography
                 fontWeight={300}
                 sx={{
                   display: "flex",
@@ -161,7 +144,7 @@ const LoginPage = () => {
                 }}
               >
                 Forget password?
-              </Typography>
+              </Typography> */}
               <Button
                 fullWidth={true}
                 sx={{

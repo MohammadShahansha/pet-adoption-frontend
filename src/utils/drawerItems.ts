@@ -8,6 +8,7 @@ import RequestPageIcon from "@mui/icons-material/RequestPage";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import RateReviewIcon from "@mui/icons-material/RateReview";
+import PostAddIcon from "@mui/icons-material/PostAdd";
 
 const drawerItems = (role: userRole): sidebarItem[] => {
   const roleMenus: sidebarItem[] = [];
@@ -43,7 +44,7 @@ const drawerItems = (role: userRole): sidebarItem[] => {
         {
           title: "Create-Post",
           path: `${role}/post`,
-          icon: AccountBoxIcon,
+          icon: PostAddIcon,
         },
         {
           title: "Review Update",

@@ -1,12 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-
 const AboutBanner = () => {
   return (
     <Box
       sx={{
-        height: "300px",
+        height: "250px",
         backgroundColor: "#f3f8f4",
         display: "flex",
         alignItems: "center",

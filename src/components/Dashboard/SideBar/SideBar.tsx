@@ -1,5 +1,5 @@
 import { Box, List, Stack, Typography } from "@mui/material";
-import logo from "@/assets/logo/logo.webp";
+import logo from "@/assets/logo/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { userRole } from "@/types/common";
@@ -36,13 +36,7 @@ const SideBar = () => {
           }}
         >
           <Typography variant="h6" component="h1" sx={{}}>
-            P
-          </Typography>
-          <Typography variant="h6" component="h1" color="primary.main">
-            et
-          </Typography>
-          <Typography variant="h6" component="h1" sx={{}} ml={1}>
-            Adoption
+            Petsmart
           </Typography>
         </Box>
       </Stack>

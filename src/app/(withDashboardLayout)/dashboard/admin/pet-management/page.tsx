@@ -1,5 +1,12 @@
 "use client";
-import { Box, Button, IconButton, Stack, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  Skeleton,
+  Stack,
+  TextField,
+} from "@mui/material";
 import CreatePetModal from "./components/CreatePetModal";
 import { useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
@@ -12,6 +19,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import { toast } from "sonner";
 import UpdatePets from "./components/UpdatePets";
 import DetailsPet from "./components/DetailsPet";
+import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
+import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
 
 const PetManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -24,6 +33,8 @@ const PetManagement = () => {
   const { data, isLoading } = useGetAllpetsQuery({});
   const [deletePet] = useDeletePetMutation();
   const rowData = data?.data;
+
+  const forLoading = [1, 2, 3, 4, 5, 6, 7, 8];
 
   ///delete operation---------------------------------
   const handleDeletRow = async (id: string) => {
@@ -139,16 +150,64 @@ const PetManagement = () => {
 
   return (
     <Box>
-      <Stack direction="row" justifyContent="space-between" alignItems="center">
-        <Button onClick={() => setIsModalOpen(true)}>Create Pet</Button>
-        <CreatePetModal open={isModalOpen} setOpen={setIsModalOpen} />
-        <TextField placeholder="search pet" size="small" />
-      </Stack>
-      <Box mt={4}>
+      <Box>
+        {!isLoading ? (
+          <Box>
+            <DashboardBanner
+              title="Manage Pets By Updateing & Deleting"
+              routeLink="/dashboard/admin/pet-management"
+              selfName="Pet_Management"
+            />
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+            >
+              <Button onClick={() => setIsModalOpen(true)}>Create Pet</Button>
+              <CreatePetModal open={isModalOpen} setOpen={setIsModalOpen} />
+            </Stack>
+          </Box>
+        ) : (
+          <Box>
+            <BannerLoader />
+            <Skeleton
+              sx={{
+                width: "120px",
+                height: "60px",
+                borderRadius: "5px",
+                my: "10px",
+              }}
+            />
+          </Box>
+        )}
+      </Box>
+
+      <Box mt={2}>
         {!isLoading ? (
           <DataGrid rows={rowData} columns={columns} hideFooter />
         ) : (
-          <h1>Loading....</h1>
+          <Box>
+            {forLoading.map((item: number) => {
+              return (
+                <Box key={item}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "20px",
+                    }}
+                  >
+                    <Skeleton sx={{ width: "300px", height: "70px" }} />
+                    <Skeleton sx={{ width: "300px", height: "70px" }} />
+                    <Skeleton sx={{ width: "300px", height: "70px" }} />
+                    <Skeleton sx={{ width: "300px", height: "70px" }} />
+                    <Skeleton sx={{ width: "300px", height: "70px" }} />
+                    <Skeleton sx={{ width: "100%", height: "70px" }} />
+                  </Box>
+                </Box>
+              );
+            })}
+          </Box>
         )}
       </Box>
       {selectedPet && (

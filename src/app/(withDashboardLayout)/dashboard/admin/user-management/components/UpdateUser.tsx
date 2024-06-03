@@ -51,6 +51,7 @@ const UpdateUser = ({ open, setOpen, id, defaultValue }: TProps) => {
               label="Role"
               items={roleUser}
               fullWidth={true}
+              sx={{ width: "500px" }}
             />
           </Grid>
           <Grid item sm={12} md={12}>
@@ -59,6 +60,7 @@ const UpdateUser = ({ open, setOpen, id, defaultValue }: TProps) => {
               label="Status"
               items={userStatus}
               fullWidth={true}
+              sx={{ width: "500px" }}
             />
           </Grid>
         </Grid>

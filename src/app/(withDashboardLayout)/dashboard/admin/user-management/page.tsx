@@ -3,13 +3,17 @@ import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
 } from "@/redux/api/allApi/usersApi";
-import { Box, Button, IconButton, Skeleton } from "@mui/material";
+import { Box, Button, IconButton, Skeleton, Typography } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { toast } from "sonner";
 import { useState } from "react";
 import UpdateUser from "./components/UpdateUser";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import Link from "next/link";
+import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
+import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
 
 const UserManagement = () => {
   const { data: userData, isLoading } = useGetAllUsersQuery({});
@@ -104,14 +108,17 @@ const UserManagement = () => {
   ];
   return (
     <Box>
-      <Box
-        sx={{
-          width: "100%",
-          height: "200px",
-          backgroundColor: "#f3f8f4",
-          mb: "10px",
-        }}
-      ></Box>
+      <Box>
+        {!isLoading ? (
+          <DashboardBanner
+            title="Manage User By Updateing & Deleting"
+            routeLink="/dashboard/admin/user-management"
+            selfName="User_Management"
+          />
+        ) : (
+          <BannerLoader />
+        )}
+      </Box>
       {!isLoading ? (
         <DataGrid rows={userData} columns={columns} hideFooter />
       ) : (

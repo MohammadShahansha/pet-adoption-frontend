@@ -6,7 +6,7 @@ import { Box } from "@mui/material";
 
 const HomePage = () => {
   return (
-    <Box mt="60px">
+    <Box>
       <BannerSection />
       <PetsShow />
       <ReviewSection />

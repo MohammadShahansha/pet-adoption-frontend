@@ -1,5 +1,5 @@
 "use client";
-import { Box, Button, IconButton } from "@mui/material";
+import { Box, Button, IconButton, Skeleton } from "@mui/material";
 import { useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import {
@@ -9,6 +9,8 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import SendRequest from "./components/SendRequest";
 import SeeDetals from "./components/SeeDetails";
+import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
+import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
 const PetInformatin = () => {
   const [reqModalOpen, setReqModalOpen] = useState<boolean>(false);
   const [detailsModalOpen, setDetailsModalOpen] = useState<boolean>(false);
@@ -18,6 +20,7 @@ const PetInformatin = () => {
 
   const { data, isLoading } = useGetAllpetsQuery({});
   const rowData = data?.data;
+  const forLoading = [1, 2, 3, 4, 5];
 
   const handleSendRequest = (row: any) => {
     setSelectPet(row);
@@ -91,11 +94,42 @@ const PetInformatin = () => {
 
   return (
     <Box>
+      <Box>
+        {!isLoading ? (
+          <DashboardBanner
+            title="Choose a Pet to Send Request"
+            routeLink="/dashboard/user/pet-information"
+            selfName="User_Management"
+          />
+        ) : (
+          <BannerLoader />
+        )}
+      </Box>
       <Box mt={4}>
         {!isLoading ? (
           <DataGrid rows={rowData} columns={columns} hideFooter />
         ) : (
-          <h1>Loading....</h1>
+          <Box>
+            {forLoading.map((item: number) => {
+              return (
+                <Box key={item}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "20px",
+                    }}
+                  >
+                    <Skeleton sx={{ width: "300px", height: "70px" }} />
+                    <Skeleton sx={{ width: "400px", height: "70px" }} />
+                    <Skeleton sx={{ width: "300px", height: "70px" }} />
+                    <Skeleton sx={{ width: "300px", height: "70px" }} />
+                    <Skeleton sx={{ width: "100%", height: "70px" }} />
+                  </Box>
+                </Box>
+              );
+            })}
+          </Box>
         )}
       </Box>
       {selectPet && (

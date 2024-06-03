@@ -1,6 +1,6 @@
 "use client";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
-import logo from "@/assets/logo/logo.webp";
+import logo from "@/assets/logo/logo.png";
 import Image from "next/image";
 import PAForm from "@/components/Formas/PAForm";
 import { useRouter } from "next/navigation";
@@ -73,18 +73,7 @@ const RegisterPage = () => {
               }}
             >
               <Typography variant="h5" mt={1} fontWeight={600}>
-                SignUp
-              </Typography>
-              <Typography
-                variant="h5"
-                mt={1}
-                color="primary.main"
-                fontWeight={600}
-              >
-                Pet
-              </Typography>
-              <Typography variant="h5" mt={1} fontWeight={600}>
-                Adaption
+                SignUp Please!!
               </Typography>
             </Box>
           </Stack>

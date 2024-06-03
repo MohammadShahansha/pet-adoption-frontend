@@ -1,10 +1,12 @@
 "use client";
 import { useGetMeQuery } from "@/redux/api/allApi/usersApi";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Skeleton, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 import UserUpdateModal from "./Components/UserUpdateModal";
 import PasswordChangeModal from "./Components/PasswordChangeModal";
+import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
+import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
 const UserProfile = () => {
   const { data: myData, isLoading } = useGetMeQuery({});
 
@@ -25,6 +27,17 @@ const UserProfile = () => {
   };
   return (
     <Box>
+      <Box>
+        {!isLoading ? (
+          <DashboardBanner
+            title="Update Your Profile"
+            routeLink="/dashboard/admin/profile"
+            selfName="Profile"
+          />
+        ) : (
+          <BannerLoader />
+        )}
+      </Box>
       {!isLoading ? (
         <Box
           sx={{
@@ -55,11 +68,7 @@ const UserProfile = () => {
                 >
                   Change Password
                 </Button>
-                {/* <PasswordChangeModal
-                  open={changePasswordModalOpen}
-                  setOpen={setChangePasswordModalOpen}
-                  defaultValue={{ oldPassword: "", newPassword: "" }}
-                /> */}
+
                 {selectForPass && (
                   <PasswordChangeModal
                     open={changePasswordModalOpen}
@@ -146,7 +155,40 @@ const UserProfile = () => {
           </Box>
         </Box>
       ) : (
-        <Typography>Loading....</Typography>
+        <Box>
+          <Box sx={{ display: "flex", gap: "100px" }}>
+            <Skeleton width={400} height={400} sx={{ mt: "-80px" }} />
+            <Box>
+              <Skeleton width="250px" height="40px" />
+              <Skeleton width="250px" height="40px" />
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "30px",
+              alignItems: "center",
+              mt: "-80px",
+            }}
+          >
+            <Skeleton
+              sx={{
+                width: "180px",
+                height: "70px",
+                borderRadius: "5px",
+                my: "10px",
+              }}
+            />
+            <Skeleton
+              sx={{
+                width: "180px",
+                height: "70px",
+                borderRadius: "5px",
+                my: "10px",
+              }}
+            />
+          </Box>
+        </Box>
       )}
     </Box>
   );

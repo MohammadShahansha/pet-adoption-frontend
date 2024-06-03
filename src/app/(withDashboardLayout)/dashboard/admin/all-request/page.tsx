@@ -1,5 +1,5 @@
 "use client";
-import { Box, Button, IconButton } from "@mui/material";
+import { Box, Button, IconButton, Skeleton } from "@mui/material";
 import { useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
@@ -11,12 +11,15 @@ import {
   useGetAllAdoptionRequestQuery,
 } from "@/redux/api/allApi/adoptionRequestApi";
 import UpdateStatus from "./components/UpdateStatus";
+import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
+import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
 
 const AllRequest = () => {
   const [statusModalOpen, setStatusModalOpen] = useState<boolean>(false);
   const { data: requestedData, isLoading } = useGetAllAdoptionRequestQuery({});
   const [deleteRequest] = useDeleteRequestMutation();
-  // console.log(requestedData);
+  const forLoading = [1, 2, 3, 4, 5, 6, 7, 8];
+
   const [selectedReq, setSelectedReq] = useState<any>(null);
 
   const handleUpdateStatus = (row: any) => {
@@ -129,11 +132,43 @@ const AllRequest = () => {
 
   return (
     <Box>
-      <Box mt={4}>
+      <Box>
+        {!isLoading ? (
+          <DashboardBanner
+            title="Manage Pet Adoption Request"
+            routeLink="/dashboard/admin/all-request"
+            selfName="All_Request"
+          />
+        ) : (
+          <BannerLoader />
+        )}
+      </Box>
+      <Box mt={2}>
         {!isLoading ? (
           <DataGrid rows={requestedData} columns={columns} hideFooter />
         ) : (
-          <h1>Loading....</h1>
+          <Box>
+            {forLoading.map((item: number) => {
+              return (
+                <Box key={item}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "20px",
+                    }}
+                  >
+                    <Skeleton sx={{ width: "330px", height: "70px" }} />
+                    <Skeleton sx={{ width: "430px", height: "70px" }} />
+                    <Skeleton sx={{ width: "330px", height: "70px" }} />
+                    <Skeleton sx={{ width: "330px", height: "70px" }} />
+                    <Skeleton sx={{ width: "330px", height: "70px" }} />
+                    <Skeleton sx={{ width: "100%", height: "70px" }} />
+                  </Box>
+                </Box>
+              );
+            })}
+          </Box>
         )}
       </Box>
       {selectedReq && (
