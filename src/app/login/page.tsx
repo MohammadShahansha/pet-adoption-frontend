@@ -30,16 +30,6 @@ export const validatinSchema = z.object({
 const LoginPage = () => {
   const router = useRouter();
   const [error, setError] = useState("");
-  // const { data: myData, isLoading } = useGetMeQuery({});
-
-  // if (isLoading) {
-  //   return (
-  //     <Box display="flex" alignItems="center" justifyContent="center">
-  //       <CircularProgress />
-  //     </Box>
-  //   );
-  // }
-  // console.log(myData);
 
   const handleLoggin: SubmitHandler<FieldValues> = async (values) => {
     console.log(values);

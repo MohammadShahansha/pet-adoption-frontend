@@ -88,10 +88,16 @@ const AllBlog = () => {
                         gap: "20px",
                       }}
                     >
-                      <Skeleton width={50} height={70} />
+                      <Skeleton width={50} height={70} animation="wave" />
                       <Box>
-                        <Skeleton sx={{ width: "150px", height: "30px" }} />
-                        <Skeleton sx={{ width: "100px", height: "20px" }} />
+                        <Skeleton
+                          animation="wave"
+                          sx={{ width: "150px", height: "30px" }}
+                        />
+                        <Skeleton
+                          animation="wave"
+                          sx={{ width: "100px", height: "20px" }}
+                        />
                       </Box>
                     </Box>
                   </Box>
@@ -137,20 +143,20 @@ const AllBlog = () => {
                   }}
                 >
                   <Skeleton
+                    animation="wave"
                     sx={{
                       width: "400px",
-                      height: "100px",
-                      display: "flex",
-                      justifyContent: "center",
+                      height: "80px",
+                      mx: "auto",
                     }}
                   />
                   <Skeleton
+                    animation="wave"
                     sx={{
                       width: "800px",
-                      height: "20px",
-                      display: "flex",
-                      justifyContent: "center",
-                      mt: "50px",
+                      height: "25px",
+                      mx: "auto",
+                      mt: "40px",
                     }}
                   />
                 </Box>

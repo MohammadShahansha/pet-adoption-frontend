@@ -6,7 +6,7 @@ import React from "react";
 
 const AboutPage = () => {
   return (
-    <Box pt="70px">
+    <Box>
       <AboutBanner />
       <AboutSecondBanner />
       <Service />

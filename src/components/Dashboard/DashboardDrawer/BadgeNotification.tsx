@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
@@ -5,6 +6,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import { useGetRequestStatusQuery } from "@/redux/api/allApi/adoptionRequestApi";
 import { Box, CircularProgress } from "@mui/material";
 import CircleNotificationsIcon from "@mui/icons-material/CircleNotifications";
+import { getUserInfo } from "@/serviece/authService";
 
 function notificationsLabel(count: number) {
   if (count === 0) {
@@ -18,13 +20,27 @@ function notificationsLabel(count: number) {
 
 export default function BadgeNotification() {
   const { data: reqStatusData, isLoading } = useGetRequestStatusQuery({});
+  const [userRole, setUserRole] = React.useState("");
+  React.useEffect(() => {
+    const { role } = getUserInfo() as any;
+    setUserRole(role);
+  }, []);
   return (
     <Box>
       {!isLoading ? (
         <IconButton aria-label={notificationsLabel(100)}>
-          <Badge badgeContent={reqStatusData?.pendingRequest} color="primary">
-            <CircleNotificationsIcon fontSize="large" />
-          </Badge>
+          {userRole === "admin" ? (
+            <Badge badgeContent={reqStatusData?.pendingRequest} color="primary">
+              <CircleNotificationsIcon fontSize="large" />
+            </Badge>
+          ) : (
+            <Badge
+              badgeContent={reqStatusData?.approvedRequest}
+              color="primary"
+            >
+              <CircleNotificationsIcon fontSize="large" />
+            </Badge>
+          )}
         </IconButton>
       ) : (
         <CircularProgress />

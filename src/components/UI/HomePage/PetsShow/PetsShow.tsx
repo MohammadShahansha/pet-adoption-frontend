@@ -74,16 +74,10 @@ const PetsShow = () => {
           }}
         >
           <Typography fontWeight={600} fontSize="40px" color="black">
-            Find &
-          </Typography>
-          <Typography fontWeight={600} fontSize="40px" color="primary.main">
-            Choose
-          </Typography>
-          <Typography fontWeight={600} fontSize="40px" color="black">
-            Pet
+            Find & Choose Pet
           </Typography>
         </Box>
-        <Stack direction="row" gap={6} justifyContent="center">
+        <Stack direction="row" gap={6} justifyContent="center" my="20px">
           <Box
             sx={{
               position: "relative",
@@ -111,7 +105,7 @@ const PetsShow = () => {
               <SearchIcon />
             </IconButton>
           </Box>
-          <Box>
+          <Box sx={{ display: "flex", gap: "20px" }}>
             <FilterBySize onSizeSelect={handleSelectSize} />
             <FilterByGender onGenderSelect={handleSelectGender} />
           </Box>
@@ -274,11 +268,27 @@ const PetsShow = () => {
                         <Skeleton
                           variant="rectangular"
                           width={350}
-                          height={150}
+                          height={180}
                         />
-                        <Box sx={{ pt: 0.5 }}>
-                          <Skeleton width="300px" />
-                          <Skeleton width="40%" />
+                        <Box sx={{ pt: 0.5, display: "flex" }}>
+                          <Box>
+                            <Skeleton animation="wave" width="220px" />
+                            <Skeleton animation="wave" width="180px" />
+                            <Skeleton animation="wave" width="150px" />
+                          </Box>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              justifyContent: "end",
+                              mt: "30px",
+                            }}
+                          >
+                            <Skeleton
+                              animation="wave"
+                              width="120px"
+                              height="60px"
+                            />
+                          </Box>
                         </Box>
                       </Grid>
                     );
