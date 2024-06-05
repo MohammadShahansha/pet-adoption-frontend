@@ -34,3 +34,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Project Name: Petsmart
+
+MY Project Link: https://pet-adaption-frontend.vercel.app/
+
+My Project name is Petsmart. It is my first project where I use next js, material Ui. As well as here I use prisma for backend, redux for statement, sonner for notification and others. First I work for setup nav bar then I work for Login register and then dashboard. In my project have two role. Here is my project link:https://pet-adaption-frontend.vercel.app/. In this project you can coose a pet for adopt and you can give review.
