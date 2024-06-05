@@ -30,7 +30,7 @@ const UserProfile = () => {
       <Box>
         {!isLoading ? (
           <DashboardBanner
-            title="Update Your Profile"
+            title="Personal Information"
             routeLink="/dashboard/admin/profile"
             selfName="Profile"
           />

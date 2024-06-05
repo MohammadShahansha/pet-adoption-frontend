@@ -163,7 +163,12 @@ const PetManagement = () => {
               justifyContent="space-between"
               alignItems="center"
             >
-              <Button onClick={() => setIsModalOpen(true)}>Create Pet</Button>
+              <Button
+                onClick={() => setIsModalOpen(true)}
+                sx={{ ":hover": { backgroundColor: "secondary.main" } }}
+              >
+                Create Pet
+              </Button>
               <CreatePetModal open={isModalOpen} setOpen={setIsModalOpen} />
             </Stack>
           </Box>

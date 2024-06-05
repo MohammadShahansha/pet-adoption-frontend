@@ -8,7 +8,7 @@ import { getUserInfo } from "@/serviece/authService";
 
 const NavbarPage = () => {
   const userInfo = getUserInfo();
-  console.log(userInfo);
+  // console.log(userInfo);
   const navBarRoute = [
     {
       href: "/",

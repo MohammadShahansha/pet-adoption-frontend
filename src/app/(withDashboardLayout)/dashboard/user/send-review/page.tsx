@@ -20,7 +20,12 @@ const ReviewPage = () => {
         />
       </Box>
       <Stack direction="row" justifyContent="space-between" alignItems="center">
-        <Button onClick={() => setReviewModalOpen(true)}>Send Review</Button>
+        <Button
+          onClick={() => setReviewModalOpen(true)}
+          sx={{ ":hover": { backgroundColor: "secondary.main" } }}
+        >
+          Send Review
+        </Button>
         <CreateReviewModal
           open={reviewModalOpen}
           setOpen={setReviewModalOpen}

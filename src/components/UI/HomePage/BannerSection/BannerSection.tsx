@@ -16,14 +16,14 @@ const BannerSection = () => {
       <Container sx={{ display: "flex", alignItems: "center", mt: "100px" }}>
         <Box>
           <Box>
-            <Typography variant="h4" component="h1" fontWeight={600}>
+            <Typography variant="h3" component="h1" fontWeight={600}>
               Find your perfect companion and
             </Typography>
-            <Typography variant="h4" component="h3" fontWeight={600}>
+            <Typography variant="h3" component="h3" fontWeight={600}>
               give a loving home to a
             </Typography>
             <Typography
-              variant="h4"
+              variant="h3"
               component="h3"
               fontWeight={600}
               color="primary.main"

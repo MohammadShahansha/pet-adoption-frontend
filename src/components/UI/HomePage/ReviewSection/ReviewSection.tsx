@@ -41,7 +41,7 @@ const ReviewSection = () => {
         </Box>
         <Grid container spacing={2}>
           {!isLoading ? (
-            reviewData?.map((review: any, index: number) => {
+            reviewData?.slice(0, 9).map((review: any, index: number) => {
               return (
                 <Grid item sm={12} md={4} key={index}>
                   <Box

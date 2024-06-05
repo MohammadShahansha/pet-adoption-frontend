@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import logo from "@/assets/logo/logo.png";
 import Image from "next/image";
-import { z } from "zod";
 import { useState } from "react";
 import PAForm from "@/components/Formas/PAForm";
 import Link from "next/link";
@@ -21,11 +20,6 @@ import { userLogin } from "@/serviece/Actions/UserLogin";
 import { toast } from "sonner";
 import { storeUserInfo } from "@/serviece/authService";
 import { useRouter } from "next/navigation";
-
-export const validatinSchema = z.object({
-  email: z.string().email("Please inter a valid email"),
-  password: z.string().min(5, "Must be at least 5 characters"),
-});
 
 const LoginPage = () => {
   const router = useRouter();
@@ -100,14 +94,7 @@ const LoginPage = () => {
             </Box>
           )}
           <Box mt={3}>
-            <PAForm
-              onSubmit={handleLoggin}
-              // resolver={zodResolver(validatinSchema)}
-              defaultValues={{
-                email: "",
-                password: "",
-              }}
-            >
+            <PAForm onSubmit={handleLoggin}>
               <Grid container spacing={3}>
                 <Grid item md={12}>
                   <PAInput
@@ -126,15 +113,7 @@ const LoginPage = () => {
                   />
                 </Grid>
               </Grid>
-              {/* <Typography
-                fontWeight={300}
-                sx={{
-                  display: "flex",
-                  justifyContent: "end",
-                }}
-              >
-                Forget password?
-              </Typography> */}
+
               <Button
                 fullWidth={true}
                 sx={{

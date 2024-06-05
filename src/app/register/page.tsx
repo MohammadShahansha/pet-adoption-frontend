@@ -19,7 +19,6 @@ const RegisterPage = () => {
     console.log(values);
     try {
       const res = await userRegister(values);
-      // console.log(res);
       if (res?.data?.id) {
         toast.success(res?.message);
         router.push("/login");
@@ -30,7 +29,7 @@ const RegisterPage = () => {
         // console.log(res);
         if (directLoggin?.data?.token) {
           storeUserInfo({ accessToken: directLoggin?.data?.token });
-          router.push("/dashboard");
+          router.push(`/dashboard/${directLoggin?.data?.role.toLowerCase()}`);
         }
       }
     } catch (err: any) {
@@ -78,11 +77,7 @@ const RegisterPage = () => {
             </Box>
           </Stack>
           <Box mt={3}>
-            <PAForm
-              onSubmit={handleRegister}
-              // resolver={zodResolver(validationSchema)}
-              // defaultValues={defaultValues}
-            >
+            <PAForm onSubmit={handleRegister}>
               <Grid container spacing={3}>
                 <Grid item md={12}>
                   <PAInput label="Name" fullWidth={true} name="name" />
@@ -103,8 +98,9 @@ const RegisterPage = () => {
                     name="password"
                   />
                 </Grid>
+
                 <Grid item md={6}>
-                  <PAInput label="Photo" fullWidth={true} name="photo" />
+                  <PAInput label="Photo_URL" fullWidth={true} name="photo" />
                 </Grid>
                 <Grid item md={6}>
                   <PAInput

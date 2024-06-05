@@ -4,7 +4,7 @@ import bannerImg from "@/assets/images/about.png";
 
 const AboutSecondBanner = () => {
   return (
-    <Box sx={{ backgroundColor: "#e5e7eb", py: "80px" }}>
+    <Box sx={{ backgroundColor: "#e5e7eb", py: "100px" }}>
       <Container>
         <Stack
           direction="row"
@@ -19,8 +19,9 @@ const AboutSecondBanner = () => {
           <Box width="50%">
             <Typography
               fontWeight={700}
+              component="h1"
+              variant="h3"
               sx={{
-                fontSize: "40px",
                 color: "black",
               }}
             >
@@ -28,8 +29,9 @@ const AboutSecondBanner = () => {
             </Typography>
             <Typography
               fontWeight={700}
+              component="h1"
+              variant="h3"
               sx={{
-                fontSize: "40px",
                 color: "black",
                 mb: "20px",
               }}

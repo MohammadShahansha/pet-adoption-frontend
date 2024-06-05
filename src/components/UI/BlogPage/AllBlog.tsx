@@ -22,7 +22,7 @@ const AllBlog = () => {
     setSelectId(id);
   };
   return (
-    <Box mx={5}>
+    <Box mx={5} py="40px">
       <Grid container spacing={10}>
         <Grid item md={3}>
           <Typography component="h1" variant="h5" fontWeight={500}>

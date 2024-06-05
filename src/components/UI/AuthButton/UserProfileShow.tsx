@@ -21,7 +21,7 @@ export default function UserProfileShow() {
   const open = Boolean(anchorEl);
 
   const router = useRouter();
-  const { data: myData, isLoading } = useGetMeQuery({});
+  const { data: myData, isLoading, refetch } = useGetMeQuery({});
   const userInfo = getUserInfo();
 
   const role = userInfo?.role;

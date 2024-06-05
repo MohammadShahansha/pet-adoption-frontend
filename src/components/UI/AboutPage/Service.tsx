@@ -10,7 +10,7 @@ const Service = () => {
     <Stack
       sx={{
         backgroundColor: "rgba(1,201,214,0.1)",
-        py: "40px",
+        py: "100px",
       }}
     >
       <Container>
@@ -23,18 +23,33 @@ const Service = () => {
         >
           <Box>
             <Box>
-              {/* <Typography fontWeight={700} fontSize="45px" color="black">
-              Our Passon is
-            </Typography>
-            <Typography fontWeight={700} fontSize="45px" color="black">
-              Providing Superior
-            </Typography>
-            <Typography fontWeight={700} fontSize="45px" color="black">
-              Pet Care
-            </Typography> */}
-              <Typography fontWeight={700} fontSize="40px" color="black">
-                Why We Are?
+              <Typography
+                fontWeight={700}
+                component="h1"
+                variant="h3"
+                color="black"
+              >
+                Our Passon is
               </Typography>
+              <Typography
+                fontWeight={700}
+                component="h1"
+                variant="h3"
+                color="black"
+              >
+                Providing Superior
+              </Typography>
+              <Typography
+                fontWeight={700}
+                component="h1"
+                variant="h3"
+                color="black"
+              >
+                Pet Care
+              </Typography>
+              {/* <Typography fontWeight={700} fontSize="40px" color="black">
+                Why We Are?
+              </Typography> */}
               <Typography my={5} fontSize="18px" fontWeight={400}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Corrupti ab quis officiis animi harum aut consequatur
@@ -101,7 +116,6 @@ const Service = () => {
               sx={{
                 display: "flex",
                 mt: "40px",
-                mb: "80px",
               }}
             >
               <Box
