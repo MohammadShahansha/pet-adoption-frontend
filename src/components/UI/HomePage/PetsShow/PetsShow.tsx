@@ -73,7 +73,12 @@ const PetsShow = () => {
             my: "10px",
           }}
         >
-          <Typography fontWeight={600} fontSize="40px" color="black">
+          <Typography
+            fontWeight={600}
+            component="h2"
+            variant="h3"
+            color="black"
+          >
             Find & Choose Pet
           </Typography>
         </Box>

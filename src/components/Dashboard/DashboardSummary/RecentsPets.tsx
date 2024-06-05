@@ -81,7 +81,7 @@ const RecentPets = () => {
             fontWeight: 400,
           }}
         >
-          Recent Adoption Request:
+          Recent Pets:
         </Typography>
         <Box width={800} height={300}>
           {!isLoading ? (
