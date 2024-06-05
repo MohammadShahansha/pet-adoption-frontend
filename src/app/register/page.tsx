@@ -99,17 +99,17 @@ const RegisterPage = () => {
                   />
                 </Grid>
 
-                <Grid item md={6}>
+                <Grid item md={12}>
                   <PAInput label="Photo_URL" fullWidth={true} name="photo" />
                 </Grid>
-                <Grid item md={6}>
+                {/* <Grid item md={6}>
                   <PAInput
                     label="role"
                     placeholder="Role"
                     fullWidth={true}
                     name="role"
                   />
-                </Grid>
+                </Grid> */}
               </Grid>
               <Button
                 fullWidth={true}

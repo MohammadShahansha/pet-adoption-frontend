@@ -19,6 +19,13 @@ const adoptionRequestApi = baseApi.injectEndpoints({
       }),
       providesTags: ["adoption"],
     }),
+    getUserAdoptionRequest: build.query({
+      query: () => ({
+        url: "/user-adoption-requests",
+        method: "GET",
+      }),
+      providesTags: ["adoption"],
+    }),
 
     deleteRequest: build.mutation({
       query: (id) => ({
@@ -50,6 +57,7 @@ const adoptionRequestApi = baseApi.injectEndpoints({
 export const {
   useCreateAdoptionRequestMutation,
   useGetAllAdoptionRequestQuery,
+  useGetUserAdoptionRequestQuery,
   useUpdateRequestMutation,
   useDeleteRequestMutation,
   useGetRequestStatusQuery,

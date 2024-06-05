@@ -1,7 +1,10 @@
 "use client";
 import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
 import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
-import { useGetAllAdoptionRequestQuery } from "@/redux/api/allApi/adoptionRequestApi";
+import {
+  useGetAllAdoptionRequestQuery,
+  useGetUserAdoptionRequestQuery,
+} from "@/redux/api/allApi/adoptionRequestApi";
 import {
   Box,
   Button,
@@ -16,7 +19,7 @@ import {
 import React from "react";
 
 const RequestedPage = () => {
-  const { data: adoptionReqData, isLoading } = useGetAllAdoptionRequestQuery(
+  const { data: adoptionReqData, isLoading } = useGetUserAdoptionRequestQuery(
     {}
   );
   const forLoading = [1, 2, 3, 4, 5, 6];
@@ -26,7 +29,7 @@ const RequestedPage = () => {
       <Box>
         {!isLoading ? (
           <DashboardBanner
-            title="See Your Requested Pet's Updation"
+            title="See Your Requested Pet's & Updation"
             routeLink="/dashboard/user/requested-pets"
             selfName="See_Update_Request"
           />

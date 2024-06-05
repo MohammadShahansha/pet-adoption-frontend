@@ -1,41 +1,21 @@
 "use client";
-import {
-  useDeleteUserMutation,
-  useGetAllUsersQuery,
-} from "@/redux/api/allApi/usersApi";
-import { Box, Button, IconButton, Skeleton, Typography } from "@mui/material";
+import { useGetAllUsersQuery } from "@/redux/api/allApi/usersApi";
+import { Box, IconButton, Skeleton } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { toast } from "sonner";
 import { useState } from "react";
 import UpdateUser from "./components/UpdateUser";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import Link from "next/link";
 import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
 import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
 
 const UserManagement = () => {
   const { data: userData, isLoading } = useGetAllUsersQuery({});
-  const [deleteUser] = useDeleteUserMutation();
 
   const [userModalOpen, setUserModalOpen] = useState(false);
   const [selectUserRow, setSelectUserRow] = useState<any>(null);
   const forLoading = [1, 2, 3, 4, 5, 6, 7, 8];
 
-  console.log(userData);
-  const handleDeletUser = async (id: string) => {
-    console.log(id);
-    try {
-      const res = await deleteUser(id).unwrap();
-      console.log(res);
-      if (res?.id) {
-        toast.success("Delete pets successfully");
-      }
-    } catch (err) {
-      toast.error("Somthing went wrong");
-    }
-  };
+  // console.log(userData);
 
   const handleUpdateUser = (row: any) => {
     setSelectUserRow(row);
@@ -49,7 +29,7 @@ const UserManagement = () => {
     { field: "status", headerName: "Status", width: 200 },
     {
       field: "action",
-      headerName: "Actions",
+      headerName: "Update_Status",
       flex: 1,
       headerAlign: "center",
       align: "center",
@@ -73,34 +53,6 @@ const UserManagement = () => {
                 }}
               />
             </IconButton>
-            <IconButton
-              onClick={() => handleDeletUser(row.id)}
-              aria-label="delete"
-              sx={{
-                mx: "20px",
-                backgroundColor: "red",
-                ":hover": {
-                  backgroundColor: "secondary.main",
-                },
-              }}
-            >
-              <DeleteIcon
-                sx={{
-                  color: "white",
-                }}
-              />
-            </IconButton>
-
-            {/* <Button
-              onClick={() => handleDetailsRow(row)}
-              sx={{
-                ":hover": {
-                  backgroundColor: "secondary.main",
-                },
-              }}
-            >
-              See Detail
-            </Button> */}
           </>
         );
       },

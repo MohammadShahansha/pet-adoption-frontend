@@ -66,7 +66,7 @@ const drawerItems = (role: userRole): sidebarItem[] => {
           icon: SendIcon,
         },
         {
-          title: "See-Update-Req",
+          title: "Requested-Pets",
           path: `${role}/requested-pets`,
           icon: VisibilityIcon,
         },
