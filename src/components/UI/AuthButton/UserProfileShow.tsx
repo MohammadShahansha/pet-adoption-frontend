@@ -40,7 +40,7 @@ export default function UserProfileShow() {
   };
   const handleLogout = () => {
     removeUserInfo();
-    router.refresh();
+    // router.refresh();
     router.push("/");
   };
   return (

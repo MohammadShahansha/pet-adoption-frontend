@@ -31,19 +31,21 @@ const AllBlog = () => {
           {!isLoading ? (
             <Box>
               {postData?.map((singlePost: any, index: number) => {
+                const isActive = singlePost?.id === selectId;
                 return (
                   <Box key={index}>
                     <Box
                       component="button"
                       onClick={() => handlePost(singlePost?.id)}
                       sx={{
-                        backgroundColor: "#e5e7eb",
+                        backgroundColor: isActive ? "#e5e7eb" : "white",
                         width: "100%",
+                        height: "100px",
                         my: "10px",
                         border: "10px solid balck",
                         borderRadius: "5px",
                         ":hover": {
-                          backgroundColor: "primary.main",
+                          backgroundColor: "#e5e7eb",
                         },
                       }}
                     >
@@ -56,11 +58,13 @@ const AllBlog = () => {
                         <Image
                           src={singlePost?.image}
                           alt="blog_image"
-                          width={50}
-                          height={50}
+                          width={60}
+                          height={60}
                         />
                         <Box>
-                          <Typography>{singlePost?.title}</Typography>
+                          <Typography textAlign="start" fontWeight={600}>
+                            {singlePost?.title}
+                          </Typography>
                           <Typography
                             textAlign="start"
                             fontSize="10px"

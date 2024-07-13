@@ -21,7 +21,8 @@ const CreatePost = () => {
 
       if (res?.id) {
         toast.success("create post successfully");
-        router.refresh();
+        // router.refresh();
+        router.push("/dashboard/admin/post");
       }
     } catch (err: any) {
       toast.error("here are some problem");

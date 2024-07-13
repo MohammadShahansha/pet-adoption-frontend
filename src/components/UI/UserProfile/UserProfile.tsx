@@ -15,7 +15,8 @@ const UserProfile = () => {
 
   const [changePasswordModalOpen, setChangePasswordModalOpen] = useState(false);
   const [selectForPass, setSellectForPass] = useState<any>(null);
-  // console.log("myData:", myData);
+  console.log("myData:", myData);
+
   const handleUpdateProfile = (userData: any) => {
     setSelectedUser(userData);
     setUserModalOpen(true);
