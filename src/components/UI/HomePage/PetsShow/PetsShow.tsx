@@ -22,8 +22,13 @@ import { useGetMeQuery } from "@/redux/api/allApi/usersApi";
 import Link from "next/link";
 import FilterBySize from "./FilterBySize";
 import FilterByGender from "./FilterByGender";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const PetsShow = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   const { data, isLoading } = useGetAllpetsQuery({});
   const { data: user, isLoading: loading } = useGetMeQuery({});
   const forLoading = [1, 2, 3, 4, 5];
@@ -62,7 +67,12 @@ const PetsShow = () => {
     );
 
   return (
-    <Box sx={{ backgroundColor: "rgba(1,201,214,0.1)", py: "80px" }}>
+    <Box
+      sx={{
+        backgroundColor: "rgba(1,201,214,0.1)",
+        py: isSmallScreen ? "30px" : "80px",
+      }}
+    >
       <Container>
         <Box
           sx={{
@@ -74,15 +84,29 @@ const PetsShow = () => {
           }}
         >
           <Typography
-            fontWeight={600}
             component="h2"
             variant="h3"
             color="black"
+            sx={{
+              fontWeight: isSmallScreen ? 500 : 600,
+              fontSize: isSmallScreen ? "35px" : "45px",
+              mb: isSmallScreen ? "70px" : "0px",
+            }}
           >
             Find & Choose Pet
           </Typography>
         </Box>
-        <Stack direction="row" gap={6} justifyContent="center" my="20px">
+        <Box
+          gap={6}
+          // display="flex"
+
+          my="20px"
+          sx={{
+            display: isSmallScreen ? "col" : "flex",
+            justifyContent: "center",
+            // alignItems: "center",
+          }}
+        >
           <Box
             sx={{
               position: "relative",
@@ -99,29 +123,51 @@ const PetsShow = () => {
               // onChange={handleSearchChange}
               sx={{
                 position: "absolute",
+                bottom: isSmallScreen ? "30px" : "",
+                width: isSmallScreen ? "300px" : "100%",
+                px: isSmallScreen ? "5px" : "",
               }}
             />
             <IconButton
               sx={{
                 position: "absolute",
-                right: 0,
+                right: isSmallScreen ? "300px" : 0,
+                bottom: isSmallScreen ? "30px" : 0,
               }}
             >
               <SearchIcon />
             </IconButton>
           </Box>
-          <Box sx={{ display: "flex", gap: "20px" }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: isSmallScreen ? "center" : "",
+              gap: "20px",
+              // position: isSmallScreen ? "absolute" : "",
+            }}
+          >
             <FilterBySize onSizeSelect={handleSelectSize} />
             <FilterByGender onGenderSelect={handleSelectGender} />
           </Box>
-        </Stack>
-        <Box mt="20px" sx={{}}>
+        </Box>
+        <Box mt="20px">
           <Grid container spacing={2}>
             {!isLoading ? (
               filteredPets?.map((pet: any, index: number) => {
                 return (
-                  <Grid item key={index} sm={12} md={4}>
-                    <Card sx={{ maxWidth: 345 }}>
+                  <Grid
+                    item
+                    key={index}
+                    sm={12}
+                    md={6}
+                    lg={4}
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      width: "100%",
+                    }}
+                  >
+                    <Card sx={{ width: "100%" }}>
                       <CardMedia
                         sx={{ height: 180 }}
                         image={pet.image}
