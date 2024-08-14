@@ -17,6 +17,7 @@ const BannerSection = () => {
         width: "100%",
         py: "90px",
         display: "flex",
+        mt: isSmallScreen ? 0 : "70px",
       }}
     >
       <Container

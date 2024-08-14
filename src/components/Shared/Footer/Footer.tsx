@@ -1,3 +1,4 @@
+"use client";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import logo from "@/assets/logo/logo.png";
@@ -5,31 +6,36 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Link from "next/link";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const FootePage = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Stack
       sx={{
         backgroundColor: "black",
         py: "40px",
+        alignContent: "center",
       }}
     >
       <Container
         sx={{
-          display: "flex",
+          display: { md: "flex" },
           justifyContent: "space-between",
         }}
       >
         <Box>
           <Box
             sx={{
-              width: 40,
-              height: 40,
+              width: 60,
+              height: 60,
               borderRadius: "50%",
               overflow: "hidden",
             }}
           >
-            <Image src={logo} alt="logo" width={40} height={40} />
+            <Image src={logo} alt="logo" width={60} height={60} />
           </Box>
           <Typography variant="h5" fontWeight={600} color="white">
             Petsmart
@@ -42,12 +48,19 @@ const FootePage = () => {
             Providing reliable service since 1990
           </Typography>
         </Box>
-        <Box>
+        <Box
+          sx={{
+            my: isSmallScreen ? "10px" : 0,
+          }}
+        >
           <Typography
             component="h1"
             variant="h4"
-            fontWeight={600}
             color="white"
+            sx={{
+              fontWeight: isSmallScreen ? 500 : 600,
+              fontSize: isSmallScreen ? "35px" : "45px",
+            }}
           >
             Service
           </Typography>
@@ -82,8 +95,12 @@ const FootePage = () => {
           <Typography
             component="h1"
             variant="h4"
-            fontWeight={600}
+            // fontWeight={600}
             color="white"
+            sx={{
+              fontWeight: isSmallScreen ? 500 : 600,
+              fontSize: isSmallScreen ? "35px" : "45px",
+            }}
           >
             Contact
           </Typography>
@@ -92,19 +109,26 @@ const FootePage = () => {
           <Typography color="white">email@gamil.com</Typography>
           <Typography color="white">example@gamil.com</Typography>
         </Box>
-        <Box>
+        <Box
+          sx={{
+            my: isSmallScreen ? "10px" : 0,
+          }}
+        >
           <Typography
             component="h1"
             variant="h4"
-            fontWeight={600}
             color="white"
+            sx={{
+              fontWeight: isSmallScreen ? 500 : 600,
+              fontSize: isSmallScreen ? "35px" : "45px",
+            }}
           >
             Social
           </Typography>
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: isSmallScreen ? "start" : "space-between",
               alignItems: "center",
             }}
           >
@@ -141,6 +165,7 @@ const FootePage = () => {
         display="flex"
         justifyContent="center"
         mt="40px"
+        textAlign="center"
       >
         Copyright © 2024 - All right reserved by Pet Adoption shop
       </Typography>

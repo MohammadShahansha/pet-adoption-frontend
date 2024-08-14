@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
-// import SwipeableViews from "react-swipeable-views";
-import { useTheme } from "@mui/material/styles";
+
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -10,6 +9,7 @@ import Box from "@mui/material/Box";
 import ProductTab from "./ProductTab";
 import ServiceTap from "./ServiceTap";
 import CareTab from "./CareTab";
+import { useTheme } from "@mui/material/styles";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -58,7 +58,7 @@ export default function TabPage() {
       <AppBar
         position="static"
         sx={{
-          width: "500px",
+          width: { sm: "100%", md: "500px" },
         }}
       >
         <Tabs

@@ -12,8 +12,12 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import iconImg from "@/assets/icons/icon.png";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const ReviewSection = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const { data: reviewData, isLoading } = useGetHomeReviewQuery({});
   const forLoading = [1, 2, 3, 4, 5];
   return (
@@ -29,8 +33,12 @@ const ReviewSection = () => {
           <Typography
             component="h2"
             variant="h3"
-            fontWeight={600}
+            // fontWeight={600}
             textAlign="center"
+            sx={{
+              fontWeight: { sm: 500, md: 600 },
+              fontSize: isSmallScreen ? "35px" : "45px",
+            }}
           >
             {" "}
             What Customers Say About Us

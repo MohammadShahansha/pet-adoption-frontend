@@ -12,8 +12,8 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+// const pages = ["Products", "Pricing", "Blog"];
+// const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function NavbarPage() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -62,7 +62,7 @@ function NavbarPage() {
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 1000,
+        zIndex: 100,
         backgroundColor: "Background.paper",
         boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
       }}
@@ -72,7 +72,7 @@ function NavbarPage() {
           backgroundColor: "#f3f8f4",
         }}
       >
-        <Container maxWidth="xl">
+        <Container>
           <Toolbar disableGutters>
             <Typography
               variant="h6"
@@ -99,13 +99,13 @@ function NavbarPage() {
                   Petsmart
                 </Typography>
                 <Box
-                  width={40}
-                  height={40}
-                  sx={{
-                    borderRadius: "50%",
-                  }}
+                // width={40}
+                // height={40}
+                // sx={{
+                //   borderRadius: "50%",
+                // }}
                 >
-                  <Image src={logo} alt="logo" width={40} height={40} />
+                  <Image src={logo} alt="logo" width={50} height={50} />
                 </Box>
               </Stack>
             </Typography>
@@ -152,7 +152,7 @@ function NavbarPage() {
                 >
                   <Stack
                     direction="column"
-                    justifyContent="space-between"
+                    // justifyContent="space-between"
                     gap={2}
                     px={5}
                   >
