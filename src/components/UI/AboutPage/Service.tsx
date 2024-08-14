@@ -10,13 +10,13 @@ const Service = () => {
     <Stack
       sx={{
         backgroundColor: "rgba(1,201,214,0.1)",
-        py: "100px",
+        py: { xs: "50px", md: "100px" },
       }}
     >
       <Container>
         <Box
           sx={{
-            display: "flex",
+            display: { xs: "col", md: "flex" },
             justifyContent: "space-between",
             alignItems: "center",
           }}
@@ -24,41 +24,69 @@ const Service = () => {
           <Box>
             <Box>
               <Typography
-                fontWeight={700}
                 component="h1"
                 variant="h3"
                 color="black"
+                sx={{
+                  fontSize: { xs: "35px", md: "45px" },
+                  fontWeight: { xs: 500, md: 700 },
+                }}
               >
                 Our Passon is
               </Typography>
               <Typography
-                fontWeight={700}
                 component="h1"
                 variant="h3"
                 color="black"
+                sx={{
+                  fontSize: { xs: "35px", md: "45px" },
+                  fontWeight: { xs: 500, md: 700 },
+                }}
               >
                 Providing Superior
               </Typography>
               <Typography
-                fontWeight={700}
                 component="h1"
                 variant="h3"
                 color="black"
+                sx={{
+                  fontSize: { xs: "35px", md: "45px" },
+                  fontWeight: { xs: 500, md: 700 },
+                }}
               >
                 Pet Care
               </Typography>
               {/* <Typography fontWeight={700} fontSize="40px" color="black">
                 Why We Are?
               </Typography> */}
-              <Typography my={5} fontSize="18px" fontWeight={400}>
+              <Typography
+                my={5}
+                sx={{
+                  fontSize: { xs: "15px", md: "18px" },
+                  fontWeight: { xs: 300, md: 400 },
+                }}
+              >
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Corrupti ab quis officiis animi harum aut consequatur
                 consectetur! Tempora, quos modi!
               </Typography>
             </Box>
             <Box>
-              <Box display="flex" alignItems="center">
-                <Box display="flex" alignItems="center" gap="10px" width="100%">
+              <Box
+                sx={{
+                  display: { xs: "col", md: "flex" },
+                }}
+                alignItems="center"
+              >
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  gap="10px"
+                  width="100%"
+                  sx={{
+                    mb: { xs: "17px", md: 0 },
+                  }}
+                >
                   <Typography fontSize="22px" fontWeight={600} color="black">
                     <PetsIcon />
                   </Typography>
@@ -75,8 +103,22 @@ const Service = () => {
                   </Typography>
                 </Box>
               </Box>
-              <Box display="flex" alignItems="center" my="20px">
-                <Box display="flex" alignItems="center" gap="10px" width="100%">
+              <Box
+                sx={{
+                  display: { xs: "col", md: "flex" },
+                }}
+                alignItems="center"
+                my="20px"
+              >
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  gap="10px"
+                  width="100%"
+                  sx={{
+                    mb: { xs: "17px", md: 0 },
+                  }}
+                >
                   <Typography fontSize="22px" fontWeight={600} color="black">
                     <PetsIcon />
                   </Typography>
@@ -93,8 +135,22 @@ const Service = () => {
                   </Typography>
                 </Box>
               </Box>
-              <Box display="flex" alignItems="center" my="20px">
-                <Box display="flex" alignItems="center" gap="10px" width="100%">
+              <Box
+                sx={{
+                  display: { xs: "col", md: "flex" },
+                }}
+                alignItems="center"
+                my="20px"
+              >
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  gap="10px"
+                  width="100%"
+                  sx={{
+                    mb: { xs: "17px", md: 0 },
+                  }}
+                >
                   <Typography fontSize="22px" fontWeight={600} color="black">
                     <PetsIcon />
                   </Typography>
@@ -114,14 +170,16 @@ const Service = () => {
             </Box>
             <Box
               sx={{
-                display: "flex",
+                display: { md: "flex" },
                 mt: "40px",
+                // justifyContent: "center",
               }}
             >
               <Box
                 sx={{
                   display: "flex",
                   alignItems: "center",
+                  mb: { xs: "10px", md: 0 },
                   gap: "10px",
                   width: "50%",
                   ":hover": {
@@ -140,7 +198,13 @@ const Service = () => {
                   <EmailIcon />
                 </Button>
                 <Box>
-                  <Typography sx={{}}>Email us Any Time</Typography>
+                  <Typography
+                    sx={{
+                      color: "#0B1134CC",
+                    }}
+                  >
+                    Email us Any Time
+                  </Typography>
                   <Typography
                     fontWeight={500}
                     sx={{

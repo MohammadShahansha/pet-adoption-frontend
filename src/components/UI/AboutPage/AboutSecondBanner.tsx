@@ -1,39 +1,53 @@
+"use client";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import bannerImg from "@/assets/images/about.png";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const AboutSecondBanner = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Box sx={{ backgroundColor: "#e5e7eb", py: "100px" }}>
       <Container>
-        <Stack
-          direction="row"
-          flex={1}
+        <Box
+          // direction="row"
+          // flex={1}
           justifyContent="space-between"
           alignItems="center"
-          sx={{}}
+          sx={{
+            display: isSmallScreen ? "col" : "flex",
+            px: { xs: "5px", md: 0 },
+          }}
         >
           <Box width={500} height={500} borderRadius="50%">
             <Image src={bannerImg} alt="image" width={500} height={500} />
           </Box>
-          <Box width="50%">
+          <Box
+            sx={{
+              width: { xs: "100%", md: "50%" },
+            }}
+          >
             <Typography
-              fontWeight={700}
               component="h1"
               variant="h3"
               sx={{
                 color: "black",
+                fontSize: { xs: "35px", md: "45px" },
+                fontWeight: { xs: 500, md: 700 },
               }}
             >
               Experience Beyond
             </Typography>
             <Typography
-              fontWeight={700}
               component="h1"
               variant="h3"
               sx={{
                 color: "black",
                 mb: "20px",
+                fontSize: { xs: "35px", md: "45px" },
+                fontWeight: { xs: 500, md: 700 },
               }}
             >
               The Decades!
@@ -64,7 +78,7 @@ const AboutSecondBanner = () => {
               Read More
             </Button>
           </Box>
-        </Stack>
+        </Box>
       </Container>
     </Box>
   );

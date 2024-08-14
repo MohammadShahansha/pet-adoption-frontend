@@ -5,7 +5,8 @@ const AboutBanner = () => {
   return (
     <Box
       sx={{
-        height: "300px",
+        height: { xs: "200px", md: "300px" },
+        mt: "65px",
         backgroundColor: "#f3f8f4",
         display: "flex",
         alignItems: "center",
@@ -14,9 +15,9 @@ const AboutBanner = () => {
     >
       <Box>
         <Typography
-          fontWeight={700}
           sx={{
-            fontSize: "40px",
+            fontSize: { xs: "30px", md: "40px" },
+            fontWeight: { xs: 600, md: 700 },
           }}
         >
           About Us
