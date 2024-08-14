@@ -1,12 +1,13 @@
 "use client";
 import { useGetAllUsersQuery } from "@/redux/api/allApi/usersApi";
-import { Box, IconButton, Skeleton } from "@mui/material";
+import { Box, IconButton, Skeleton, useMediaQuery } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
 import UpdateUser from "./components/UpdateUser";
 import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
 import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
+import { useTheme } from "@mui/material/styles";
 
 const UserManagement = () => {
   const { data: userData, isLoading } = useGetAllUsersQuery({});
@@ -14,6 +15,9 @@ const UserManagement = () => {
   const [userModalOpen, setUserModalOpen] = useState(false);
   const [selectUserRow, setSelectUserRow] = useState<any>(null);
   const forLoading = [1, 2, 3, 4, 5, 6, 7, 8];
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   // console.log(userData);
 
@@ -72,7 +76,20 @@ const UserManagement = () => {
         )}
       </Box>
       {!isLoading ? (
-        <DataGrid rows={userData} columns={columns} hideFooter />
+        <Box sx={{ height: isMobile ? "400px" : "600px", width: "100%" }}>
+          <DataGrid
+            rows={userData}
+            columns={columns}
+            hideFooter
+            autoHeight={isMobile}
+            sx={{
+              "& .MuiDataGrid-root": {
+                borderRadius: "8px",
+                overflow: "hidden",
+              },
+            }}
+          />
+        </Box>
       ) : (
         <Box>
           {forLoading.map((item: number) => {

@@ -1,7 +1,7 @@
 "use client";
 import { useGetAllPostQuery } from "@/redux/api/allApi/postApi";
 import { Box, Divider, Grid, Skeleton, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import SingleBlog from "./SingleBlog";
 import Image from "next/image";
 export type TBlog = {
@@ -16,14 +16,23 @@ export type TBlog = {
 const AllBlog = () => {
   const { data: postData, isLoading } = useGetAllPostQuery({});
   const [selectId, setSelectId] = useState<string | null>(null);
+  const singleBlogRef = useRef<HTMLDivElement>(null);
   const forLoading = [1, 2, 3, 4, 5];
 
   const handlePost = async (id: string) => {
     setSelectId(id);
+    if (singleBlogRef.current) {
+      singleBlogRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
   return (
-    <Box mx={5} py="40px">
-      <Grid container spacing={10}>
+    <Box
+      mx={5}
+      sx={{
+        py: { xs: 0, md: "40px" },
+      }}
+    >
+      <Grid container spacing={2}>
         <Grid item md={3}>
           <Typography component="h1" variant="h5" fontWeight={500}>
             Recent Post
@@ -112,61 +121,63 @@ const AllBlog = () => {
         </Grid>
 
         <Grid item md={9}>
-          {selectId ? (
-            <SingleBlog id={selectId} />
-          ) : (
-            <Box mt={10}>
-              {!isLoading ? (
-                <Box>
-                  <Typography
-                    component="h1"
-                    variant="h3"
-                    textAlign="center"
-                    fontWeight={600}
-                    color="gray"
-                  >
-                    Choose Your Blog
-                  </Typography>
-                  <Typography
-                    component="p"
-                    textAlign="center"
-                    fontWeight={300}
-                    color="gray"
-                    mt="50px"
-                  >
-                    Get here how will you take care of your pets and how give
-                    and get intertainment
-                  </Typography>
-                </Box>
-              ) : (
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Skeleton
-                    animation="wave"
+          <Box ref={singleBlogRef}>
+            {selectId ? (
+              <SingleBlog id={selectId} />
+            ) : (
+              <Box mt={10}>
+                {!isLoading ? (
+                  <Box>
+                    <Typography
+                      component="h1"
+                      variant="h3"
+                      textAlign="center"
+                      fontWeight={600}
+                      color="gray"
+                    >
+                      Choose Your Blog
+                    </Typography>
+                    <Typography
+                      component="p"
+                      textAlign="center"
+                      fontWeight={300}
+                      color="gray"
+                      mt="50px"
+                    >
+                      Get here how will you take care of your pets and how give
+                      and get intertainment
+                    </Typography>
+                  </Box>
+                ) : (
+                  <Box
                     sx={{
-                      width: "400px",
-                      height: "80px",
-                      mx: "auto",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
                     }}
-                  />
-                  <Skeleton
-                    animation="wave"
-                    sx={{
-                      width: "800px",
-                      height: "25px",
-                      mx: "auto",
-                      mt: "40px",
-                    }}
-                  />
-                </Box>
-              )}
-            </Box>
-          )}
+                  >
+                    <Skeleton
+                      animation="wave"
+                      sx={{
+                        width: "400px",
+                        height: "80px",
+                        mx: "auto",
+                      }}
+                    />
+                    <Skeleton
+                      animation="wave"
+                      sx={{
+                        width: "800px",
+                        height: "25px",
+                        mx: "auto",
+                        mt: "40px",
+                      }}
+                    />
+                  </Box>
+                )}
+              </Box>
+            )}
+          </Box>
         </Grid>
       </Grid>
     </Box>

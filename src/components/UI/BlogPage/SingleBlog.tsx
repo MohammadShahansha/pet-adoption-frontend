@@ -16,22 +16,25 @@ const SingleBlog = (id: TProp) => {
       </Box>
     );
   }
-  const spliceDescriptionIntoSentence = (text: string): string[] => {
-    return text.match(/[^.!?]+[.!?]+[\])'"`’”]*|.+/g) || [];
-  };
+  // const spliceDescriptionIntoSentence = (text: string): string[] => {
+  //   return text.match(/[^.!?]+[.!?]+[\])'"`’”]*|.+/g) || [];
+  // };
 
-  const sentence = spliceDescriptionIntoSentence(singleData?.description || "");
-  const firstPara = sentence.slice(0, 6).join(" ");
-  const secondPara = sentence.slice(6, 8).join(" ");
-  const thirdPara = sentence.slice(8).join("");
+  // const sentence = spliceDescriptionIntoSentence(singleData?.description || "");
+  // const firstPara = sentence.slice(0, 6).join(" ");
+  // const secondPara = sentence.slice(6, 8).join(" ");
+  // const thirdPara = sentence.slice(8).join("");
   return (
-    <Box sx={{ backgroundColor: "#e5e7eb", p: "30px" }}>
+    <Box sx={{ backgroundColor: "#e5e7eb", p: { xs: "5px", md: "30px" } }}>
       <Typography
         component="h2"
         variant="h4"
-        fontWeight={600}
         my="30px"
         textAlign="center"
+        sx={{
+          fontWeight: { xs: 500, md: 600 },
+          fontSize: { xs: "25px", md: "35px" },
+        }}
       >
         {singleData?.title}
       </Typography>
@@ -49,9 +52,9 @@ const SingleBlog = (id: TProp) => {
         Posted At: {singleData?.createdAt.slice(0, 10)}
       </Typography>
       <Typography component="p" fontSize="18px">
-        {firstPara}
+        {singleData?.description}
       </Typography>
-      {secondPara && (
+      {/* {secondPara && (
         <Typography
           component="p"
           fontSize="18px"
@@ -66,7 +69,7 @@ const SingleBlog = (id: TProp) => {
         <Typography component="p" fontSize="18px">
           {thirdPara}
         </Typography>
-      )}
+      )} */}
     </Box>
   );
 };
