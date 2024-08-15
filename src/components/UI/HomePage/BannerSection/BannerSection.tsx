@@ -34,7 +34,7 @@ const BannerSection = () => {
               component="h1"
               sx={{
                 fontWeight: isSmallScreen ? 500 : 600,
-                fontSize: isSmallScreen ? "35px" : "45px",
+                fontSize: isSmallScreen ? "30px" : "45px",
               }}
             >
               Find your perfect companion and
@@ -44,7 +44,7 @@ const BannerSection = () => {
               component="h3"
               sx={{
                 fontWeight: isSmallScreen ? 500 : 600,
-                fontSize: isSmallScreen ? "35px" : "45px",
+                fontSize: isSmallScreen ? "30px" : "45px",
               }}
             >
               give a loving home to a
@@ -54,7 +54,7 @@ const BannerSection = () => {
               component="h3"
               sx={{
                 fontWeight: isSmallScreen ? 500 : 600,
-                fontSize: isSmallScreen ? "35px" : "45px",
+                fontSize: isSmallScreen ? "30px" : "45px",
               }}
               color="primary.main"
             >

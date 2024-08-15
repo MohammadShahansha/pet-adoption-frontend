@@ -25,7 +25,7 @@ const ReviewSection = () => {
       sx={{
         backgroundColor: "#e5e7eb",
         width: "100%",
-        py: "80px",
+        py: isSmallScreen ? "30px" : "80px",
       }}
     >
       <Container>
@@ -36,7 +36,7 @@ const ReviewSection = () => {
             // fontWeight={600}
             textAlign="center"
             sx={{
-              fontWeight: { sm: 500, md: 600 },
+              fontWeight: isSmallScreen ? 500 : 600,
               fontSize: isSmallScreen ? "35px" : "45px",
             }}
           >

@@ -42,7 +42,7 @@ const UserProfile = () => {
       {!isLoading ? (
         <Box
           sx={{
-            display: "flex",
+            display: { xs: "col", md: "flex" },
             gap: "100px",
           }}
         >

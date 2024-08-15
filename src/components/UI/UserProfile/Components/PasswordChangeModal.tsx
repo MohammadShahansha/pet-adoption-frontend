@@ -42,11 +42,11 @@ const PasswordChangeModal = ({ open, setOpen }: TProps) => {
         // resolver={validationSchema}
       >
         <Grid container spacing={2}>
-          <Grid item sm={12} md={12}>
+          <Grid item xs={12} md={12}>
             <PAInput name="oldPassword" label="oldPassword" fullWidth={true} />
           </Grid>
 
-          <Grid item sm={12} md={12}>
+          <Grid item xs={12} md={12}>
             <PAInput name="newPassword" label="newPassword" fullWidth={true} />
           </Grid>
         </Grid>

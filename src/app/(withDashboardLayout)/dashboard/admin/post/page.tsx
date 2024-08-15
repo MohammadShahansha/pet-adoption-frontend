@@ -38,11 +38,15 @@ const CreatePost = () => {
         />
       </Box>
       <PAForm onSubmit={handleLoggin}>
-        <Grid container spacing={3} sx={{ width: "500px", mx: "auto" }}>
-          <Grid item md={12}>
+        <Grid
+          container
+          spacing={3}
+          // sx={{ width: { xs: "100%", md: "500px" }, mx: "auto" }}
+        >
+          <Grid item xs={12} md={12}>
             <PAInput name="title" label="Title" fullWidth={true} />
           </Grid>
-          <Grid item md={12}>
+          <Grid item xs={12} md={12}>
             <PAInput
               name="image"
               label="Image"
@@ -50,7 +54,7 @@ const CreatePost = () => {
               sx={{ color: "black" }}
             />
           </Grid>
-          <Grid item md={12}>
+          <Grid item xs={12} md={12}>
             <PATextAreaInput
               name="description"
               aria-label="maximum height"

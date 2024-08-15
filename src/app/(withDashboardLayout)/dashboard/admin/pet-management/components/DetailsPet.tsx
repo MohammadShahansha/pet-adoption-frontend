@@ -36,7 +36,7 @@ const DetailsPet = ({ open, setOpen, row: petData }: TProps) => {
       <Container>
         <Stack>
           <Grid container spacing={10}>
-            <Grid item sm={12} md={4}>
+            <Grid item xs={12} md={4}>
               <Image
                 src={petData.image}
                 alt="Pet Image"
@@ -44,7 +44,7 @@ const DetailsPet = ({ open, setOpen, row: petData }: TProps) => {
                 height={400}
               />
             </Grid>
-            <Grid item sm={12} md={4}>
+            <Grid item xs={12} md={4}>
               <Box
                 sx={{
                   display: "flex",

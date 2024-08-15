@@ -97,20 +97,18 @@ const PetsShow = () => {
           </Typography>
         </Box>
         <Box
-          gap={6}
-          // display="flex"
-
+          // gap={6}
           my="20px"
           sx={{
             display: isSmallScreen ? "col" : "flex",
             justifyContent: "center",
-            // alignItems: "center",
           }}
         >
           <Box
             sx={{
               position: "relative",
-              width: "600px",
+              width: { xs: "100%", md: "600px" },
+              alignContent: "center",
             }}
           >
             <TextField
@@ -119,31 +117,29 @@ const PetsShow = () => {
               fullWidth
               value={searchTerm}
               onChange={handleSearchTerm}
-              // value={searchTerm}
-              // onChange={handleSearchChange}
               sx={{
                 position: "absolute",
                 bottom: isSmallScreen ? "30px" : "",
-                width: isSmallScreen ? "300px" : "100%",
-                px: isSmallScreen ? "5px" : "",
+                width: isSmallScreen ? "100%" : "100%",
+                // pl: isSmallScreen ? "20px" : "",
               }}
             />
             <IconButton
               sx={{
                 position: "absolute",
-                right: isSmallScreen ? "300px" : 0,
+                right: isSmallScreen ? "10px" : 0,
                 bottom: isSmallScreen ? "30px" : 0,
               }}
             >
               <SearchIcon />
             </IconButton>
           </Box>
+
           <Box
             sx={{
               display: "flex",
               justifyContent: isSmallScreen ? "center" : "",
               gap: "20px",
-              // position: isSmallScreen ? "absolute" : "",
             }}
           >
             <FilterBySize onSizeSelect={handleSelectSize} />

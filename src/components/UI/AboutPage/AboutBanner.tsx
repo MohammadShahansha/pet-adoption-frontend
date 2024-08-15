@@ -5,7 +5,7 @@ const AboutBanner = () => {
   return (
     <Box
       sx={{
-        height: { xs: "200px", md: "300px" },
+        height: { xs: "150px", md: "300px" },
         mt: "65px",
         backgroundColor: "#f3f8f4",
         display: "flex",

@@ -35,11 +35,11 @@ const UserUpdateModal = ({ open, setOpen, userInfo }: TProps) => {
     <PASmallModal open={open} setOpen={setOpen} title="Update User">
       <PAForm onSubmit={handleUpdateMe} defaultValues={userInfo}>
         <Grid container spacing={2}>
-          <Grid item sm={12} md={12}>
+          <Grid item xs={12} md={12}>
             <PAInput name="name" label="Name" fullWidth={true} />
           </Grid>
 
-          <Grid item sm={12} md={12}>
+          <Grid item xs={12} md={12}>
             <PAInput name="photo" label="Choose Image Link" fullWidth={true} />
           </Grid>
         </Grid>

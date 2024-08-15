@@ -58,13 +58,13 @@ const UpdatePets = ({ open, setOpen, id, defaultValue }: TProps) => {
     <PAModal open={open} setOpen={setOpen} title="Update Pet">
       <PAForm onSubmit={handleUpdatePets} defaultValues={defaultValue}>
         <Grid container spacing={2}>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PAInput name="name" label="Name" fullWidth={true} />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PAInput name="species" label="Species" fullWidth={true} />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PAInput
               name="breed"
               label="Breed"
@@ -72,10 +72,10 @@ const UpdatePets = ({ open, setOpen, id, defaultValue }: TProps) => {
               fullWidth={true}
             />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PAInput name="age" label="Age" fullWidth={true} />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PASelectField
               name="size"
               label="Size"
@@ -83,7 +83,7 @@ const UpdatePets = ({ open, setOpen, id, defaultValue }: TProps) => {
               fullWidth={true}
             />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PASelectField
               name="gender"
               label="Gender"
@@ -91,36 +91,36 @@ const UpdatePets = ({ open, setOpen, id, defaultValue }: TProps) => {
               fullWidth={true}
             />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PAInput name="location" label="Location" fullWidth={true} />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PAInput
               name="specialNeeds"
               label="Special Needs"
               fullWidth={true}
             />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PAInput name="image" label="Image" fullWidth={true} />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PAInput name="helthStatus" label="Helth Status" fullWidth={true} />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PAInput name="description" label="Description" fullWidth={true} />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PAInput name="temperament" label="Temperament" fullWidth={true} />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PAInput
               name="medicalHistory"
               label="Medical History"
               fullWidth={true}
             />
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid item xs={12} md={4}>
             <PAInput
               name="adoptionRequirements"
               label="Adoption Requirements"

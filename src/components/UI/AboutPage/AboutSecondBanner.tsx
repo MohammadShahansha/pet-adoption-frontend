@@ -9,7 +9,7 @@ const AboutSecondBanner = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <Box sx={{ backgroundColor: "#e5e7eb", py: "100px" }}>
+    <Box sx={{ backgroundColor: "#e5e7eb", py: { xs: "30px", md: "100px" } }}>
       <Container>
         <Box
           // direction="row"
@@ -21,7 +21,11 @@ const AboutSecondBanner = () => {
             px: { xs: "5px", md: 0 },
           }}
         >
-          <Box width={500} height={500} borderRadius="50%">
+          <Box
+            sx={{
+              width: { xs: "100%", md: 500 },
+            }}
+          >
             <Image src={bannerImg} alt="image" width={500} height={500} />
           </Box>
           <Box

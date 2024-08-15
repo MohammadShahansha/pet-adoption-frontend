@@ -76,7 +76,7 @@ const UserManagement = () => {
         )}
       </Box>
       {!isLoading ? (
-        <Box sx={{ height: isMobile ? "400px" : "600px", width: "100%" }}>
+        <Box sx={{ height: isMobile ? "400px" : "600px" }}>
           <DataGrid
             rows={userData}
             columns={columns}

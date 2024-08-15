@@ -1,6 +1,14 @@
 "use client";
 import * as React from "react";
-import { Box, Container, Stack, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Container,
+  MenuItem,
+  Stack,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo/logo.png";
@@ -13,7 +21,7 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 
 // const pages = ["Products", "Pricing", "Blog"];
-// const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function NavbarPage() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -39,7 +47,7 @@ function NavbarPage() {
   };
 
   const userInfo = getUserInfo();
-  // console.log(userInfo);
+  console.log(userInfo);
   const navBarRoute = [
     {
       href: "/",
