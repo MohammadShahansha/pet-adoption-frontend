@@ -27,14 +27,20 @@ const UserManagement = () => {
   };
 
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Name", width: 200 },
-    { field: "email", headerName: "Email", width: 200 },
-    { field: "role", headerName: "Role", width: 200 },
-    { field: "status", headerName: "Status", width: 200 },
+    { field: "name", headerName: "Name", flex: 1, minWidth: 150 },
+    { field: "email", headerName: "Email", flex: 1, minWidth: 150 },
+    { field: "role", headerName: "Role", flex: 1, minWidth: 150 },
+    {
+      field: "status",
+      headerName: "Status",
+      flex: 1,
+      minWidth: 150,
+    },
     {
       field: "action",
       headerName: "Update_Status",
       flex: 1,
+      minWidth: 150,
       headerAlign: "center",
       align: "center",
       renderCell: ({ row }) => {
@@ -67,7 +73,7 @@ const UserManagement = () => {
       <Box>
         {!isLoading ? (
           <DashboardBanner
-            title="Manage User By Updateing & Deleting"
+            title="Manage User By Updateing "
             routeLink="/dashboard/admin/user-management"
             selfName="User_Management"
           />
@@ -76,16 +82,28 @@ const UserManagement = () => {
         )}
       </Box>
       {!isLoading ? (
-        <Box sx={{ height: isMobile ? "400px" : "600px" }}>
+        <Box
+          sx={{
+            // width: isMobile ? "300px" : "100%",
+            width: { xs: "330px", sm: "500px", md: "100%" },
+            overflowX: "auto",
+            overflowY: "auto",
+
+            mx: "auto",
+          }}
+        >
           <DataGrid
             rows={userData}
             columns={columns}
             hideFooter
-            autoHeight={isMobile}
+            autoHeight
             sx={{
               "& .MuiDataGrid-root": {
                 borderRadius: "8px",
                 overflow: "hidden",
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                backgroundColor: theme.palette.primary.light,
               },
             }}
           />

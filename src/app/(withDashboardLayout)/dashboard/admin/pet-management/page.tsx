@@ -189,7 +189,9 @@ const PetManagement = () => {
 
       <Box mt={2}>
         {!isLoading ? (
-          <DataGrid rows={rowData} columns={columns} hideFooter />
+          <Box>
+            <DataGrid rows={rowData} columns={columns} hideFooter />
+          </Box>
         ) : (
           <Box>
             {forLoading.map((item: number) => {

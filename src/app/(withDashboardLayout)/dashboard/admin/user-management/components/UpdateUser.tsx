@@ -45,22 +45,22 @@ const UpdateUser = ({ open, setOpen, id, defaultValue }: TProps) => {
     <PASmallModal open={open} setOpen={setOpen} title="Update User">
       <PAForm onSubmit={handleUpdateUser} defaultValues={defaultValue}>
         <Grid container spacing={2}>
-          <Grid item sm={12} md={12}>
+          <Grid item xs={12} md={12}>
             <PASelectField
               name="role"
               label="Role"
               items={roleUser}
               fullWidth={true}
-              sx={{ width: "500px" }}
+              sx={{ width: { xs: "100%", md: "500px" } }}
             />
           </Grid>
-          <Grid item sm={12} md={12}>
+          <Grid item xs={12} md={12}>
             <PASelectField
               name="status"
               label="Status"
               items={userStatus}
               fullWidth={true}
-              sx={{ width: "500px" }}
+              sx={{ minWidth: { xs: "100%", md: "500px" } }}
             />
           </Grid>
         </Grid>

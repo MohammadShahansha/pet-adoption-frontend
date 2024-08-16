@@ -13,7 +13,7 @@ const DashboardBanner = ({ title, routeLink, selfName }: TBanner) => {
     <Box
       sx={{
         width: "100%",
-        height: "200px",
+        height: { xs: "150px", md: "200px" },
         backgroundColor: "#f3f8f4",
         mb: "10px",
         display: "flex",
@@ -28,6 +28,10 @@ const DashboardBanner = ({ title, routeLink, selfName }: TBanner) => {
           fontWeight={600}
           textAlign="center"
           mb="15px"
+          sx={{
+            fontWeight: { xs: 500, md: 600 },
+            fontSize: { xs: "25px", md: "35px" },
+          }}
         >
           {title}
         </Typography>
