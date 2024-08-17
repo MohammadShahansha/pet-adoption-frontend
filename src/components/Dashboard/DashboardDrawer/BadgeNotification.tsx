@@ -31,14 +31,22 @@ export default function BadgeNotification() {
         <IconButton aria-label={notificationsLabel(100)}>
           {userRole === "admin" ? (
             <Badge badgeContent={reqStatusData?.pendingRequest} color="primary">
-              <CircleNotificationsIcon fontSize="large" />
+              <CircleNotificationsIcon
+                sx={{
+                  fontSize: { xs: "small", md: "large" },
+                }}
+              />
             </Badge>
           ) : (
             <Badge
               badgeContent={reqStatusData?.approvedRequest}
               color="primary"
             >
-              <CircleNotificationsIcon fontSize="large" />
+              <CircleNotificationsIcon
+                sx={{
+                  fontSize: { xs: "small", md: "large" },
+                }}
+              />
             </Badge>
           )}
         </IconButton>

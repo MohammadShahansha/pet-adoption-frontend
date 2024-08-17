@@ -96,7 +96,7 @@ export default function DashboardDrawer({
               display: "flex",
               justifyContent: "end",
               alignItems: "center",
-              mr: "200px",
+              mr: { xs: "50px", md: "200px" },
             }}
           >
             <BadgeNotification />

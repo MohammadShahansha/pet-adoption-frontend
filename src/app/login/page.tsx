@@ -75,6 +75,24 @@ const LoginPage = () => {
               </Typography>
             </Box>
           </Stack>
+          <Stack sx={{ mx: "auto" }}>
+            <Box sx={{ mx: "auto" }}>
+              <Typography component="p" fontWeight={500} color="black">
+                Admin gmial: yeasin@gmail.com
+              </Typography>
+              <Typography component="p" fontWeight={500} color="black">
+                Admin password: 12345
+              </Typography>
+            </Box>
+            <Box mt={4} sx={{ mx: "auto" }}>
+              <Typography component="p" fontWeight={500} color="black">
+                user gmial: jihad@gmail.com
+              </Typography>
+              <Typography component="p" fontWeight={500} color="black">
+                user password: 12345
+              </Typography>
+            </Box>
+          </Stack>
           {error && (
             <Box
               sx={{

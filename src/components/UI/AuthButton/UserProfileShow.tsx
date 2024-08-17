@@ -57,14 +57,14 @@ export default function UserProfileShow() {
           >
             {!isLoading ? (
               <Avatar
-                sx={{ width: 50, height: 50 }}
+                sx={{ width: { xs: 30, md: 50 }, height: { xs: 30, md: 50 } }}
                 src={myData?.photo}
                 alt="Profile"
               >
                 P
               </Avatar>
             ) : (
-              <Box sx={{ display: "flex" }}>
+              <Box>
                 <CircularProgress />
               </Box>
             )}
@@ -111,12 +111,12 @@ export default function UserProfileShow() {
         </MenuItem>
 
         <Divider />
-        <MenuItem onClick={handleAccount}>
+        {/* <MenuItem onClick={handleAccount}>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
           Add another account
-        </MenuItem>
+        </MenuItem> */}
 
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>
