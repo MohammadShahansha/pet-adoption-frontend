@@ -2,6 +2,7 @@
 import {
   Box,
   Button,
+  DialogProps,
   IconButton,
   Skeleton,
   Stack,
@@ -24,6 +25,8 @@ import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
 
 const PetManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  // const [scroll, setScroll] = useState<DialogProps["scroll"]>("paper");
+
   const [updateModalOpen, setUpdateModalOpen] = useState<boolean>(false);
   const [detailModalOpen, setDetailModalOpen] = useState<boolean>(false);
 
@@ -60,89 +63,98 @@ const PetManagement = () => {
     setDetailModalOpen(true);
   };
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Name", width: 150 },
+    { field: "name", headerName: "Name", flex: 1, minWidth: 120 },
     {
       field: "gender",
       headerName: "Gender",
-      width: 150,
+      flex: 1,
+      minWidth: 120,
     },
     {
       field: "age",
       headerName: "Age",
-      width: 150,
+      flex: 1,
+      minWidth: 120,
     },
 
     {
       field: "size",
       headerName: "Size",
-      width: 150,
+      flex: 1,
+      minWidth: 120,
     },
     {
       field: "location",
       headerName: "Location",
-      width: 150,
+      flex: 1,
+      minWidth: 120,
     },
     {
       field: "action",
       headerName: "Actions",
-      flex: 1,
+      flex: 2,
+      minWidth: 300,
       headerAlign: "center",
       align: "center",
       renderCell: ({ row }) => {
         // console.log(row.id);
         return (
-          <>
-            <IconButton
-              onClick={() => handleEditRow(row)}
-              aria-label="update"
-              sx={{
-                backgroundColor: "primary.main",
-                ":hover": {
-                  backgroundColor: "secondary.main",
-                },
-              }}
-            >
-              <EditIcon
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "8px",
+              flexWrap: "wrap",
+              width: { xs: "300px", md: "100%" },
+            }}
+          >
+            <Box sx={{ width: "100%" }}>
+              <IconButton
+                onClick={() => handleEditRow(row)}
+                aria-label="update"
                 sx={{
-                  color: "white",
+                  backgroundColor: "primary.main",
+                  ":hover": {
+                    backgroundColor: "secondary.main",
+                  },
                 }}
-              />
-              {/* <UpdatePets
-                open={updateModalOpen}
-                setOpen={setUpdateModalOpen}
-                id={row.id}
-                defaultValue={row}
-              /> */}
-            </IconButton>
-            <IconButton
-              onClick={() => handleDeletRow(row.id)}
-              aria-label="delete"
-              sx={{
-                mx: "20px",
-                backgroundColor: "red",
-                ":hover": {
-                  backgroundColor: "secondary.main",
-                },
-              }}
-            >
-              <DeleteIcon
+              >
+                <EditIcon
+                  sx={{
+                    color: "white",
+                  }}
+                />
+              </IconButton>
+              <IconButton
+                onClick={() => handleDeletRow(row.id)}
+                aria-label="delete"
                 sx={{
-                  color: "white",
+                  mx: "20px",
+                  backgroundColor: "red",
+                  ":hover": {
+                    backgroundColor: "secondary.main",
+                  },
                 }}
-              />
-            </IconButton>
+              >
+                <DeleteIcon
+                  sx={{
+                    color: "white",
+                  }}
+                />
+              </IconButton>
 
-            <Button
-              onClick={() => handleDetailsRow(row)}
-              sx={{
-                ":hover": {
-                  backgroundColor: "secondary.main",
-                },
-              }}
-            >
-              See Detail
-            </Button>
-          </>
+              <Button
+                onClick={() => handleDetailsRow(row)}
+                sx={{
+                  ":hover": {
+                    backgroundColor: "secondary.main",
+                  },
+                }}
+              >
+                See Detail
+              </Button>
+            </Box>
+          </Box>
         );
       },
     },
@@ -189,8 +201,17 @@ const PetManagement = () => {
 
       <Box mt={2}>
         {!isLoading ? (
-          <Box>
-            <DataGrid rows={rowData} columns={columns} hideFooter />
+          <Box
+            sx={{
+              // width: isMobile ? "300px" : "100%",
+              width: { xs: "330px", sm: "500px", md: "100%" },
+              overflowX: "auto",
+              overflowY: "auto",
+
+              mx: "auto",
+            }}
+          >
+            <DataGrid rows={rowData} columns={columns} hideFooter autoHeight />
           </Box>
         ) : (
           <Box>

@@ -119,7 +119,7 @@ const PetsShow = () => {
               onChange={handleSearchTerm}
               sx={{
                 position: "absolute",
-                bottom: isSmallScreen ? "30px" : "",
+                bottom: isSmallScreen ? "30px" : 0,
                 width: isSmallScreen ? "100%" : "100%",
                 // pl: isSmallScreen ? "20px" : "",
               }}

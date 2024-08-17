@@ -1,4 +1,5 @@
 import BannerSection from "@/components/UI/HomePage/BannerSection/BannerSection";
+import Gallery from "@/components/UI/HomePage/Gallery/Gallery";
 import PetsShow from "@/components/UI/HomePage/PetsShow/PetsShow";
 import QuestionAns from "@/components/UI/HomePage/QuestinnsAns/QuestionAns";
 import ReviewSection from "@/components/UI/HomePage/ReviewSection/ReviewSection";
@@ -11,6 +12,7 @@ const HomePage = () => {
       <PetsShow />
       <ReviewSection />
       <QuestionAns />
+      <Gallery />
     </Box>
   );
 };

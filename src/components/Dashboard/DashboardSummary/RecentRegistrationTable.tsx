@@ -8,15 +8,16 @@ const RecentRegistrationTable = () => {
   const { data: userData, isLoading } = useGetAllUsersQuery({});
   const forLoading = [1, 2, 3, 4];
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Name", width: 150 },
-    { field: "email", headerName: "Email", width: 200 },
-    { field: "status", headerName: "Status", width: 150 },
+    { field: "name", headerName: "Name", flex: 1, minWidth: 150 },
+    { field: "email", headerName: "Email", flex: 1, minWidth: 150 },
+    { field: "status", headerName: "Status", flex: 1, minWidth: 150 },
   ];
   return (
     <Box
       sx={{
-        display: "flex",
+        display: { md: "flex" },
         alignItems: "center",
+
         gap: "50px",
       }}
     >
@@ -25,7 +26,7 @@ const RecentRegistrationTable = () => {
           <Typography
             sx={{
               color: "black",
-              fontWeight: 400,
+              fontWeight: 500,
             }}
           >
             Recent User Registration:
@@ -36,7 +37,13 @@ const RecentRegistrationTable = () => {
             <Skeleton width="200px" height="25px" />
           </Box>
         )}
-        <Box width={600} height={250}>
+        <Box
+          height={250}
+          sx={{
+            width: { xs: "300px", md: "600px" },
+            // mx: "auto",
+          }}
+        >
           {!isLoading ? (
             <DataGrid
               rows={userData?.slice(0, 10)}

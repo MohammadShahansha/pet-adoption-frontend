@@ -4,6 +4,8 @@ import Image from "next/image";
 import bannerImg from "@/assets/images/about.png";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import CommonButton from "@/utils/Common/CommonButton";
+import Link from "next/link";
 
 const AboutSecondBanner = () => {
   const theme = useTheme();
@@ -66,21 +68,14 @@ const AboutSecondBanner = () => {
               Corrupti iure dicta quas nostrum natus, voluptatem nihil
               perspiciatis repellendus itaque
             </Typography>
-            <Typography>
+            <Typography sx={{ mb: "10px" }}>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum
               veritatis excepturi magni eius tempore maxime dolor nesciunt
               molestiae repudiandae pariatur.
             </Typography>
-            <Button
-              sx={{
-                mt: "30px",
-                ":hover": {
-                  backgroundColor: "secondary.main",
-                },
-              }}
-            >
-              Read More
-            </Button>
+            <Typography component={Link} href="/blog">
+              <CommonButton buttonName="Read More"></CommonButton>
+            </Typography>
           </Box>
         </Box>
       </Container>

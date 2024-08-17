@@ -40,8 +40,8 @@ const CreatePost = () => {
       <PAForm onSubmit={handleLoggin}>
         <Grid
           container
-          spacing={3}
-          // sx={{ width: { xs: "100%", md: "500px" }, mx: "auto" }}
+          spacing={1}
+          sx={{ width: { xs: "100%", md: "500px" }, mx: "auto" }}
         >
           <Grid item xs={12} md={12}>
             <PAInput name="title" label="Title" fullWidth={true} />
@@ -70,8 +70,9 @@ const CreatePost = () => {
               ":hover": {
                 backgroundColor: "#111e42",
               },
-              width: "480px",
-              ml: "35px",
+
+              ml: "10px",
+              width: { xs: "100%", md: "500px" },
               display: "flex",
               justifyContent: "center",
             }}

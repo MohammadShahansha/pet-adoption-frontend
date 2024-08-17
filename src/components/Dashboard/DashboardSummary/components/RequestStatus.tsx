@@ -53,10 +53,24 @@ export default function RequestStatus() {
 
   return (
     <Box>
-      <Typography fontWeight={400} color="black" ml={5} mt={0}>
+      <Typography
+        fontWeight={500}
+        color="black"
+        // ml={5}
+        // mt={0}
+        sx={{
+          ml: { xs: 0, md: "40px" },
+          mt: { xs: "20px", md: 0 },
+        }}
+      >
         Request Status:
       </Typography>
-      <Box>
+      <Box
+        sx={{
+          width: { xs: "300px", md: "500px" },
+          height: { xs: "180px", md: "240px" },
+        }}
+      >
         <PieChart
           series={[
             {
@@ -65,8 +79,8 @@ export default function RequestStatus() {
               faded: { innerRadius: 30, additionalRadius: -30, color: "gray" },
             },
           ]}
-          height={240}
-          width={500}
+          // height={240}
+          // width={500}
         />
       </Box>
     </Box>

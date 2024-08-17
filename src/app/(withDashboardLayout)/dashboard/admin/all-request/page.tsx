@@ -43,7 +43,8 @@ const AllRequest = () => {
     {
       field: "pet.name",
       headerName: "Pets_Name",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
       renderCell: ({ row }) => {
         return <Box>{row?.pet?.name}</Box>;
       },
@@ -51,7 +52,8 @@ const AllRequest = () => {
     {
       field: "user.name",
       headerName: "User_Name",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
       renderCell: ({ row }) => {
         return <Box>{row?.user?.name}</Box>;
       },
@@ -59,7 +61,8 @@ const AllRequest = () => {
     {
       field: "email",
       headerName: "User_Email",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
       renderCell: ({ row }) => {
         return <Box>{row?.user?.email}</Box>;
       },
@@ -68,7 +71,8 @@ const AllRequest = () => {
     {
       field: "pet.size",
       headerName: "Pets_Size",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
       renderCell: ({ row }) => {
         return <Box>{row?.pet?.size}</Box>;
       },
@@ -76,7 +80,8 @@ const AllRequest = () => {
     {
       field: "pet.location",
       headerName: "Pets_Location",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
       renderCell: ({ row }) => {
         return <Box>{row?.pet?.location}</Box>;
       },
@@ -85,6 +90,7 @@ const AllRequest = () => {
       field: "action",
       headerName: "Actions",
       flex: 1,
+      minWidth: 200,
       headerAlign: "center",
       align: "center",
       renderCell: ({ row }) => {
@@ -135,7 +141,7 @@ const AllRequest = () => {
       <Box>
         {!isLoading ? (
           <DashboardBanner
-            title="Manage Pet Adoption Request"
+            title="Manage Adoption Request By Updateing & Deleting"
             routeLink="/dashboard/admin/all-request"
             selfName="All_Request"
           />
@@ -145,7 +151,18 @@ const AllRequest = () => {
       </Box>
       <Box mt={2}>
         {!isLoading ? (
-          <DataGrid rows={requestedData} columns={columns} hideFooter />
+          <Box
+            sx={{
+              // width: isMobile ? "300px" : "100%",
+              width: { xs: "330px", sm: "500px", md: "100%" },
+              overflowX: "auto",
+              overflowY: "auto",
+
+              mx: "auto",
+            }}
+          >
+            <DataGrid rows={requestedData} columns={columns} hideFooter />
+          </Box>
         ) : (
           <Box>
             {forLoading.map((item: number) => {

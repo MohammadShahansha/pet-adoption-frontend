@@ -11,7 +11,8 @@ const RecentRequestTable = () => {
     {
       field: "pet.name",
       headerName: "Pets_Name",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
       renderCell: ({ row }) => {
         return <Box>{row?.pet?.name}</Box>;
       },
@@ -19,7 +20,8 @@ const RecentRequestTable = () => {
     {
       field: "user.name",
       headerName: "User_Name",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
       renderCell: ({ row }) => {
         return <Box>{row?.user?.name}</Box>;
       },
@@ -27,17 +29,18 @@ const RecentRequestTable = () => {
     {
       field: "user.email",
       headerName: "User_Email",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
       renderCell: ({ row }) => {
         return <Box>{row?.user?.email}</Box>;
       },
     },
-    { field: "status", headerName: "Status", width: 150 },
+    { field: "status", headerName: "Status", flex: 1, minWidth: 150 },
   ];
   return (
     <Box
       sx={{
-        display: "flex",
+        display: { md: "flex" },
         alignItems: "center",
         gap: "50px",
         mt: "40px",
@@ -51,7 +54,7 @@ const RecentRequestTable = () => {
           <Typography
             sx={{
               color: "black",
-              fontWeight: 400,
+              fontWeight: 500,
             }}
           >
             Recent Adoption Request:
@@ -64,7 +67,13 @@ const RecentRequestTable = () => {
             </Box>
           </Box>
         )}
-        <Box width={600} height={250}>
+        <Box
+          height={250}
+          sx={{
+            width: { xs: "300px", md: "600px" },
+            // mx: "auto",
+          }}
+        >
           {!isLoading ? (
             <DataGrid
               rows={adoptionReq?.slice(0, 10)}

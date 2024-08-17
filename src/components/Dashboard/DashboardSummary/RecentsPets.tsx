@@ -7,62 +7,73 @@ const RecentPets = () => {
   const { data: petsData, isLoading } = useAvailabelPetsQuery({});
   const rowData = petsData?.pets;
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Name", width: 150 },
+    { field: "name", headerName: "Name", flex: 1, minWidth: 150 },
     {
       field: "gender",
       headerName: "Gender",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
     },
     {
       field: "age",
       headerName: "Age",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
     },
 
     {
       field: "size",
       headerName: "Size",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
     },
     {
       field: "location",
       headerName: "Location",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
     },
     {
       field: "breed",
       headerName: "Breed",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
     },
     {
       field: "species",
       headerName: "Species",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
     },
     {
       field: "specialNeeds",
       headerName: "Special_Needs",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
     },
     {
       field: "helthStatus",
       headerName: "Helth_Status",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
     },
     {
       field: "medicalHistory",
       headerName: "MedicalHistory",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
     },
     {
       field: "temperament",
       headerName: "Temperament",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
     },
     {
       field: "description",
       headerName: "Description",
-      width: 150,
+      flex: 1,
+      minWidth: 150,
     },
   ];
   return (
@@ -78,12 +89,18 @@ const RecentPets = () => {
         <Typography
           sx={{
             color: "black",
-            fontWeight: 400,
+            fontWeight: 500,
           }}
         >
           Recent Pets:
         </Typography>
-        <Box width={800} height={300}>
+        <Box
+          height={250}
+          sx={{
+            width: { xs: "300px", md: "100%" },
+            // mx: "auto",
+          }}
+        >
           {!isLoading ? (
             <DataGrid
               rows={rowData?.slice(0, 20)}
