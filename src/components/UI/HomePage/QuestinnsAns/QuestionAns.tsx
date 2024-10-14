@@ -12,7 +12,8 @@ const QuestionAns = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "rgba(1,201,214,0.1)",
+        // backgroundColor: "rgba(1,201,214,0.1)",
+        backgroundColor: "white",
 
         display: isSmallScreen ? "column" : "flex",
         alignItems: "center",

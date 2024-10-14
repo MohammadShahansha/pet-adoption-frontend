@@ -15,16 +15,16 @@ const BannerSection = () => {
       sx={{
         backgroundColor: "#e5e7eb",
         width: "100%",
-        py: "90px",
+        pb: "30px",
         display: "flex",
-        mt: isSmallScreen ? 0 : "70px",
+        mt: isSmallScreen ? 0 : "60px",
       }}
     >
       <Container
         sx={{
           display: isSmallScreen ? "" : "flex",
           alignItems: "center",
-          mt: isSmallScreen ? "20px" : "100px",
+          mt: isSmallScreen ? "20px" : "30px",
         }}
       >
         <Box>

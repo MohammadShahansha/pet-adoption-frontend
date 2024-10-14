@@ -3,11 +3,13 @@ import Gallery from "@/components/UI/HomePage/Gallery/Gallery";
 import PetsShow from "@/components/UI/HomePage/PetsShow/PetsShow";
 import QuestionAns from "@/components/UI/HomePage/QuestinnsAns/QuestionAns";
 import ReviewSection from "@/components/UI/HomePage/ReviewSection/ReviewSection";
+import Slider from "@/components/UI/HomePage/Slider/Slider";
 import { Box } from "@mui/material";
 
 const HomePage = () => {
   return (
     <Box>
+      <Slider />
       <BannerSection />
       <PetsShow />
       <ReviewSection />

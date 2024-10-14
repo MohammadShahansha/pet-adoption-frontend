@@ -25,7 +25,7 @@ const ReviewSection = () => {
       sx={{
         backgroundColor: "#e5e7eb",
         width: "100%",
-        py: isSmallScreen ? "30px" : "80px",
+        py: isSmallScreen ? "30px" : "50px",
       }}
     >
       <Container>

@@ -43,10 +43,10 @@ export default function ProductTab() {
           >
             <AccordionSummary
               expandIcon={<SouthEastIcon />}
-              sx={{ backgroundColor: "rgba(1,201,214,0.1)" }}
+              sx={{ backgroundColor: "white" }}
             >
               <Typography
-                fontWeight={300}
+                fontWeight={400}
                 sx={{
                   color: "black",
                   fontSize: { xs: "20px", md: "27px" },
@@ -55,7 +55,7 @@ export default function ProductTab() {
                 {item.question}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails sx={{ backgroundColor: "rgba(1,201,214,0.1)" }}>
+            <AccordionDetails sx={{ backgroundColor: "white" }}>
               <Typography>{item.answer}</Typography>
             </AccordionDetails>
           </Accordion>

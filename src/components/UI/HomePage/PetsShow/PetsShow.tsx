@@ -69,8 +69,9 @@ const PetsShow = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "rgba(1,201,214,0.1)",
-        py: isSmallScreen ? "30px" : "80px",
+        // backgroundColor: "rgba(1,201,214,0.1)",
+        backgroundColor: "white",
+        py: isSmallScreen ? "30px" : "50px",
       }}
     >
       <Container>
@@ -266,7 +267,27 @@ const PetsShow = () => {
                             mt: "15px",
                           }}
                         >
-                          {user ? (
+                          <Box>
+                            <Button
+                              size="small"
+                              onClick={() => handleModalOpen(pet)}
+                              sx={{
+                                ":hover": {
+                                  backgroundColor: "secondary.main",
+                                },
+                              }}
+                            >
+                              See Details
+                            </Button>
+                            {petSelected && (
+                              <PetDetailsModal
+                                open={modalOpen}
+                                setOpen={setModalOpen}
+                                petsData={petSelected}
+                              />
+                            )}
+                          </Box>
+                          {/* {user ? (
                             <Box>
                               <Button
                                 size="small"
@@ -299,7 +320,7 @@ const PetsShow = () => {
                                 See Details
                               </Button>
                             </Box>
-                          )}
+                          )} */}
                         </CardActions>
                       </Box>
                     </Card>

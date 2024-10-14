@@ -17,7 +17,7 @@ export default function Gallery() {
       sx={{
         backgroundColor: "#e5e7eb",
         width: "100%",
-        py: { xs: "30px", md: "80px" },
+        py: { xs: "30px", md: "50px" },
       }}
     >
       <Typography
