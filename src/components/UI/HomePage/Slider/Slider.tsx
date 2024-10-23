@@ -110,20 +110,29 @@ const Slider = () => {
       };
   };
 
+  const [isFirstRender, setIsFirstRender] = React.useState(true);
+
+  React.useEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+    }
+  }, [isFirstRender]);
+
   return (
     <Box
       sx={{
         width: "100%",
         pt: "60px",
-        mt: isSmallScreen ? 0 : "70px",
+        mt: isSmallScreen ? "30px" : "30px",
+        display: isSmallScreen ? "none" : "",
       }}
     >
       {/* carousel */}
-      <div className="slideC">
+      <div className="slideC ">
         {data?.map((item: any, i: number) => (
           <React.Fragment key={item.id}>
             <div
-              className="slide"
+              className="slide "
               style={{
                 background: item.bgColor,
                 boxShadow: `0 5px 20px ${item.bgColor}30`,
@@ -144,20 +153,29 @@ const Slider = () => {
       </div>
       {/* carousel */}
 
-      <div className="btns text-center">
-        <FontAwesomeIcon
-          className="btn"
-          onClick={prev}
-          icon={faChevronLeft}
-          size="2x"
-        />
-        <FontAwesomeIcon
-          className="btn"
-          onClick={next}
-          icon={faChevronRight}
-          size="2x"
-        />
-      </div>
+      <Box
+        sx={{
+          mb: { xs: "50px", md: "-60px" },
+          mt: { xs: "-50px", md: "-70px" },
+        }}
+      >
+        {!isFirstRender && (
+          <div className="btns text-center">
+            <FontAwesomeIcon
+              className="btn"
+              onClick={prev}
+              icon={faChevronLeft}
+              size="2x"
+            />
+            <FontAwesomeIcon
+              className="btn"
+              onClick={next}
+              icon={faChevronRight}
+              size="2x"
+            />
+          </div>
+        )}
+      </Box>
     </Box>
   );
 };
@@ -165,13 +183,7 @@ const Slider = () => {
 const SliderContent = (props: any) => {
   return (
     <div className="sliderContent">
-      {/* {props.image} */}
-      <Image
-        src={props.image}
-        alt="pussy image"
-        // width={350}
-        // height={350}
-      ></Image>
+      <Image src={props.image} alt="pussy image"></Image>
       <h2>{props.title}</h2>
     </div>
   );

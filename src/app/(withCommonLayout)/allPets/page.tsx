@@ -17,13 +17,13 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import { useGetAllpetsQuery } from "@/redux/api/allApi/petsApi";
 import { useState } from "react";
-import PetDetailsModal from "./PetDetailsModal";
 import { useGetMeQuery } from "@/redux/api/allApi/usersApi";
-import Link from "next/link";
-import FilterBySize from "./FilterBySize";
-import FilterByGender from "./FilterByGender";
+
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import FilterBySize from "@/components/UI/HomePage/PetsShow/FilterBySize";
+import FilterByGender from "@/components/UI/HomePage/PetsShow/FilterByGender";
+import PetDetailsModal from "@/components/UI/HomePage/PetsShow/PetDetailsModal";
 
 const PetsShow = () => {
   const theme = useTheme();
@@ -71,7 +71,7 @@ const PetsShow = () => {
       sx={{
         // backgroundColor: "rgba(1,201,214,0.1)",
         backgroundColor: "white",
-        py: isSmallScreen ? "30px" : "50px",
+        py: isSmallScreen ? "80px" : "80px",
       }}
     >
       <Container>
@@ -146,32 +146,12 @@ const PetsShow = () => {
           >
             <FilterBySize onSizeSelect={handleSelectSize} />
             <FilterByGender onGenderSelect={handleSelectGender} />
-            <Link href="/allPets">
-              <Box
-                sx={{
-                  backgroundColor: "primary.main",
-                  px: "20px",
-                  py: "10px",
-                  borderRadius: "8px",
-                  color: "white",
-                  fontWeight: "600",
-                  fontSize: "0.875rem",
-                  fontFamily: "sans-serif",
-                  // fontFamily: 'IBM Plex Sans', sans-serif;
-                  ":hover": {
-                    backgroundColor: "secondary.main",
-                  },
-                }}
-              >
-                All Pets
-              </Box>
-            </Link>
           </Box>
         </Box>
         <Box mt="30px">
           <Grid container spacing={2}>
             {!isLoading ? (
-              filteredPets?.slice(0, 3)?.map((pet: any, index: number) => {
+              filteredPets?.map((pet: any, index: number) => {
                 return (
                   <Grid
                     item

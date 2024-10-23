@@ -2,7 +2,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import TabPage from "./TabComponent/TabPage";
 import Image from "next/image";
-import img from "@/assets/images/Rectangle.webp";
+import img from "@/assets/images/home.png";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -14,10 +14,11 @@ const QuestionAns = () => {
       sx={{
         // backgroundColor: "rgba(1,201,214,0.1)",
         backgroundColor: "white",
-
         display: isSmallScreen ? "column" : "flex",
         alignItems: "center",
         gap: "30px",
+        py: "50px",
+        mx: isSmallScreen ? "5px" : "150px",
       }}
     >
       <Box
@@ -31,7 +32,7 @@ const QuestionAns = () => {
         {isSmallScreen ? (
           <Box>
             <Typography
-              fontWeight={500}
+              fontWeight={400}
               sx={{
                 fontSize: "25px",
                 color: "black",
@@ -54,9 +55,9 @@ const QuestionAns = () => {
         ) : (
           <Box>
             <Typography
-              fontWeight={500}
+              fontWeight={400}
               sx={{
-                fontSize: "40px",
+                fontSize: "30px",
                 color: "black",
                 lineHeight: "30px",
               }}
@@ -66,7 +67,7 @@ const QuestionAns = () => {
             <Typography
               fontWeight={400}
               sx={{
-                fontSize: "40px",
+                fontSize: "30px",
                 color: "black",
               }}
             >
@@ -78,8 +79,9 @@ const QuestionAns = () => {
           <Typography
             fontWeight={300}
             sx={{
-              fontSize: "20px",
-              my: "30px",
+              fontSize: "18px",
+              mt: "20px",
+              mb: "30px",
               wordSpacing: "8px",
             }}
           >

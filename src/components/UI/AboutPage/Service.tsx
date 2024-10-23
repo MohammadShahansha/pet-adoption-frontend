@@ -10,7 +10,7 @@ const Service = () => {
     <Stack
       sx={{
         backgroundColor: "rgba(1,201,214,0.1)",
-        py: { xs: "50px", md: "100px" },
+        py: { xs: "50px", md: "40px" },
       }}
     >
       <Container>

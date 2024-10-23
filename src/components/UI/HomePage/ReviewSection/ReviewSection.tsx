@@ -19,7 +19,7 @@ const ReviewSection = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const { data: reviewData, isLoading } = useGetHomeReviewQuery({});
-  const forLoading = [1, 2, 3, 4, 5];
+  const forLoading = [1, 2, 3];
   return (
     <Box
       sx={{
@@ -37,19 +37,19 @@ const ReviewSection = () => {
             textAlign="center"
             sx={{
               fontWeight: isSmallScreen ? 500 : 600,
-              fontSize: isSmallScreen ? "35px" : "45px",
+              fontSize: isSmallScreen ? "30px" : "35px",
             }}
           >
             {" "}
             What Customers Say About Us
           </Typography>
-          <Typography component="p" textAlign="center" my="50px">
+          <Typography component="p" textAlign="center" my="40px">
             See Why Thousands of Customer Love Us!
           </Typography>
         </Box>
         <Grid container spacing={2}>
           {!isLoading ? (
-            reviewData?.slice(0, 9).map((review: any, index: number) => {
+            reviewData?.slice(0, 3).map((review: any, index: number) => {
               return (
                 <Grid item sm={12} md={4} key={index}>
                   <Box

@@ -19,6 +19,8 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 // const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -46,7 +48,11 @@ function NavbarPage() {
     setAnchorElUser(null);
   };
 
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   const userInfo = getUserInfo();
+
   console.log(userInfo);
   const navBarRoute = [
     {
@@ -62,7 +68,13 @@ function NavbarPage() {
       label: "Blog",
     },
   ];
+  const [isFirstRender, setIsFirstRender] = React.useState(true);
 
+  React.useEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+    }
+  }, [isFirstRender]);
   return (
     <Box
       sx={{
@@ -75,95 +87,179 @@ function NavbarPage() {
         boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <AppBar
-        sx={{
-          backgroundColor: "#f3f8f4",
-        }}
-      >
-        <Container>
-          <Toolbar disableGutters>
-            <Typography
-              variant="h6"
-              noWrap
-              component={Link}
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              <Stack
-                direction="row"
-                alignItems="center"
+      {!isFirstRender && (
+        <AppBar
+          sx={{
+            backgroundColor: "#f3f8f4",
+          }}
+        >
+          <Container>
+            <Toolbar disableGutters>
+              <Typography
+                variant="h6"
+                noWrap
                 component={Link}
                 href="/"
+                sx={{
+                  mr: 2,
+                  display: { xs: "none", md: "flex" },
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
               >
-                <Typography variant="h5" fontWeight={600} color="black">
-                  Petsmart
-                </Typography>
-                <Box
-                // width={40}
-                // height={40}
-                // sx={{
-                //   borderRadius: "50%",
-                // }}
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  component={Link}
+                  href="/"
                 >
-                  <Image src={logo} alt="logo" width={50} height={50} />
-                </Box>
-              </Stack>
-            </Typography>
-            <Stack
-              py={1}
-              direction="row"
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              width="100%"
-            >
-              <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-                <IconButton
-                  size="large"
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleOpenNavMenu}
-                  color="inherit"
-                >
-                  <MenuIcon
-                    sx={{
-                      color: "black",
+                  <Typography variant="h5" fontWeight={600} color="black">
+                    Petsmart
+                  </Typography>
+                  <Box
+                  // width={40}
+                  // height={40}
+                  // sx={{
+                  //   borderRadius: "50%",
+                  // }}
+                  >
+                    <Image src={logo} alt="logo" width={50} height={50} />
+                  </Box>
+                </Stack>
+              </Typography>
+              <Stack
+                py={1}
+                direction="row"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                width="100%"
+              >
+                <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleOpenNavMenu}
+                    color="inherit"
+                  >
+                    <MenuIcon
+                      sx={{
+                        color: "black",
+                      }}
+                    />
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorElNav}
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "left",
                     }}
-                  />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorElNav}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "left",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "left",
-                  }}
-                  open={Boolean(anchorElNav)}
-                  onClose={handleCloseNavMenu}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "left",
+                    }}
+                    open={Boolean(anchorElNav)}
+                    onClose={handleCloseNavMenu}
+                    sx={{
+                      display: { xs: "block", md: "none" },
+                    }}
+                  >
+                    <Stack
+                      direction="column"
+                      // justifyContent="space-between"
+                      gap={2}
+                      px={5}
+                    >
+                      {navBarRoute.map((item) => (
+                        <Typography
+                          key={item.href}
+                          component={Link}
+                          href={item.href}
+                          sx={{
+                            fontWeight: "500",
+                            fontSize: "18px",
+                            ":hover": {
+                              color: "primary.main",
+                            },
+                          }}
+                        >
+                          {item.label}
+                        </Typography>
+                      ))}
+                      {userInfo && (
+                        <Typography
+                          component={Link}
+                          href={`/dashboard/${userInfo?.role}`}
+                          sx={{
+                            fontWeight: "500",
+                            fontSize: "18px",
+
+                            ":hover": {
+                              color: "primary.main",
+                            },
+                          }}
+                        >
+                          Dashboard
+                        </Typography>
+                      )}
+                    </Stack>
+                    <Box px={5} mt={3}>
+                      <AuthButton />
+                    </Box>
+                  </Menu>
+                </Box>
+                <Typography
+                  variant="h5"
+                  noWrap
+                  component={Link}
+                  href="/"
                   sx={{
-                    display: { xs: "block", md: "none" },
+                    mr: 2,
+                    display: { xs: "flex", md: "none" },
+                    flexGrow: 1,
+                    fontFamily: "monospace",
+                    fontWeight: 700,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none",
                   }}
                 >
                   <Stack
-                    direction="column"
-                    // justifyContent="space-between"
-                    gap={2}
-                    px={5}
+                    direction="row"
+                    alignItems="center"
+                    component={Link}
+                    href="/"
                   >
+                    <Typography variant="h5" fontWeight={600} color="black">
+                      Petsmart
+                    </Typography>
+                    <Box
+                      width={40}
+                      height={40}
+                      sx={{
+                        borderRadius: "50%",
+                      }}
+                    >
+                      <Image src={logo} alt="logo" width={40} height={40} />
+                    </Box>
+                  </Stack>
+                </Typography>
+                <Box
+                  sx={{
+                    display: { xs: "none", md: "flex" },
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "20px",
+                  }}
+                >
+                  <Stack direction="row" justifyContent="space-between" gap={4}>
                     {navBarRoute.map((item) => (
                       <Typography
                         key={item.href}
@@ -172,6 +268,7 @@ function NavbarPage() {
                         sx={{
                           fontWeight: "500",
                           fontSize: "18px",
+
                           ":hover": {
                             color: "primary.main",
                           },
@@ -197,96 +294,12 @@ function NavbarPage() {
                       </Typography>
                     )}
                   </Stack>
-                  <Box px={5} mt={3}>
+                  <Box>
                     <AuthButton />
                   </Box>
-                </Menu>
-              </Box>
-              <Typography
-                variant="h5"
-                noWrap
-                component={Link}
-                href="/"
-                sx={{
-                  mr: 2,
-                  display: { xs: "flex", md: "none" },
-                  flexGrow: 1,
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  letterSpacing: ".3rem",
-                  color: "inherit",
-                  textDecoration: "none",
-                }}
-              >
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  component={Link}
-                  href="/"
-                >
-                  <Typography variant="h5" fontWeight={600} color="black">
-                    Petsmart
-                  </Typography>
-                  <Box
-                    width={40}
-                    height={40}
-                    sx={{
-                      borderRadius: "50%",
-                    }}
-                  >
-                    <Image src={logo} alt="logo" width={40} height={40} />
-                  </Box>
-                </Stack>
-              </Typography>
-              <Box
-                sx={{
-                  display: { xs: "none", md: "flex" },
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: "20px",
-                }}
-              >
-                <Stack direction="row" justifyContent="space-between" gap={4}>
-                  {navBarRoute.map((item) => (
-                    <Typography
-                      key={item.href}
-                      component={Link}
-                      href={item.href}
-                      sx={{
-                        fontWeight: "500",
-                        fontSize: "18px",
-
-                        ":hover": {
-                          color: "primary.main",
-                        },
-                      }}
-                    >
-                      {item.label}
-                    </Typography>
-                  ))}
-                  {userInfo && (
-                    <Typography
-                      component={Link}
-                      href={`/dashboard/${userInfo?.role}`}
-                      sx={{
-                        fontWeight: "500",
-                        fontSize: "18px",
-
-                        ":hover": {
-                          color: "primary.main",
-                        },
-                      }}
-                    >
-                      Dashboard
-                    </Typography>
-                  )}
-                </Stack>
-                <Box>
-                  <AuthButton />
                 </Box>
-              </Box>
-            </Stack>
-            {/* {userInfo && (
+              </Stack>
+              {/* {userInfo && (
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -320,9 +333,10 @@ function NavbarPage() {
                 </Menu>
               </Box>
             )} */}
-          </Toolbar>
-        </Container>
-      </AppBar>
+            </Toolbar>
+          </Container>
+        </AppBar>
+      )}
     </Box>
   );
 }

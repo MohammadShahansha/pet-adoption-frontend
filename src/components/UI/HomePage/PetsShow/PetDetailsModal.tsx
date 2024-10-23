@@ -1,4 +1,4 @@
-import PAModal from "@/components/Shared/PAModal/PAModal";
+import PASmallModal from "@/components/Shared/PAModal/PASmallModal";
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 
@@ -25,17 +25,17 @@ type TProps = {
   petsData: TPet;
 };
 const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
-  console.log(petsData);
+  // console.log(petsData);
   return (
-    <PAModal
+    <PASmallModal
       open={open}
       setOpen={setOpen}
       title="See Detail to Choose and Adoption a Pet"
     >
       <Container>
         <Stack>
-          <Grid container spacing={10}>
-            <Grid item sm={12} md={4}>
+          <Grid container spacing={2}>
+            <Grid item sm={12} md={6}>
               <Image
                 src={petsData?.image}
                 alt="Pet Image"
@@ -43,7 +43,7 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                 height={400}
               />
             </Grid>
-            <Grid item sm={12} md={4}>
+            <Grid item sm={12} md={6}>
               <Box
                 sx={{
                   display: "flex",
@@ -55,8 +55,8 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                   sx={{
                     color: "primary.main",
                   }}
-                  fontWeight={600}
-                  fontSize="20px"
+                  fontWeight={500}
+                  fontSize="18px"
                 >
                   Name:
                 </Typography>
@@ -65,7 +65,7 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                     color: "secondary.main",
                   }}
                   fontWeight={400}
-                  fontSize="20px"
+                  fontSize="18px"
                 >
                   {" "}
                   {petsData?.name}
@@ -76,15 +76,15 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
-                  my: "10px",
+                  // my: "10px",
                 }}
               >
                 <Typography
                   sx={{
                     color: "primary.main",
                   }}
-                  fontWeight={600}
-                  fontSize="20px"
+                  fontWeight={500}
+                  fontSize="18px"
                 >
                   Age:
                 </Typography>
@@ -93,7 +93,7 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                     color: "secondary.main",
                   }}
                   fontWeight={400}
-                  fontSize="20px"
+                  fontSize="18px"
                 >
                   {petsData?.age} Months
                 </Typography>
@@ -103,15 +103,15 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
-                  my: "10px",
+                  // my: "10px",
                 }}
               >
                 <Typography
                   sx={{
                     color: "primary.main",
                   }}
-                  fontWeight={600}
-                  fontSize="20px"
+                  fontWeight={500}
+                  fontSize="18px"
                 >
                   Size:
                 </Typography>
@@ -120,7 +120,7 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                     color: "secondary.main",
                   }}
                   fontWeight={400}
-                  fontSize="20px"
+                  fontSize="18px"
                 >
                   {petsData?.size}
                 </Typography>
@@ -137,8 +137,8 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                   sx={{
                     color: "primary.main",
                   }}
-                  fontWeight={600}
-                  fontSize="20px"
+                  fontWeight={500}
+                  fontSize="18px"
                 >
                   Species:
                 </Typography>
@@ -147,7 +147,7 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                     color: "secondary.main",
                   }}
                   fontWeight={400}
-                  fontSize="20px"
+                  fontSize="18px"
                 >
                   {" "}
                   {petsData.species}
@@ -158,15 +158,15 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
-                  my: "10px",
+                  // my: "10px",
                 }}
               >
                 <Typography
                   sx={{
                     color: "primary.main",
                   }}
-                  fontWeight={600}
-                  fontSize="20px"
+                  fontWeight={500}
+                  fontSize="18px"
                 >
                   Gender:
                 </Typography>
@@ -175,7 +175,7 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                     color: "secondary.main",
                   }}
                   fontWeight={400}
-                  fontSize="20px"
+                  fontSize="18px"
                 >
                   {petsData.gender}
                 </Typography>
@@ -191,8 +191,8 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                   sx={{
                     color: "primary.main",
                   }}
-                  fontWeight={600}
-                  fontSize="20px"
+                  fontWeight={500}
+                  fontSize="18px"
                 >
                   Breed:
                 </Typography>
@@ -201,7 +201,7 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                     color: "secondary.main",
                   }}
                   fontWeight={400}
-                  fontSize="20px"
+                  fontSize="18px"
                 >
                   {" "}
                   {petsData.breed}
@@ -212,15 +212,15 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
-                  my: "10px",
+                  // my: "10px",
                 }}
               >
                 <Typography
                   sx={{
                     color: "primary.main",
                   }}
-                  fontWeight={600}
-                  fontSize="20px"
+                  fontWeight={500}
+                  fontSize="18px"
                 >
                   Special_Needs:
                 </Typography>
@@ -229,7 +229,7 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                     color: "secondary.main",
                   }}
                   fontWeight={400}
-                  fontSize="20px"
+                  fontSize="18px"
                 >
                   {petsData.specialNeeds}
                 </Typography>
@@ -246,8 +246,8 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                   sx={{
                     color: "primary.main",
                   }}
-                  fontWeight={600}
-                  fontSize="20px"
+                  fontWeight={500}
+                  fontSize="18px"
                 >
                   Helth_Status:
                 </Typography>
@@ -256,7 +256,7 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                     color: "secondary.main",
                   }}
                   fontWeight={400}
-                  fontSize="20px"
+                  fontSize="18px"
                 >
                   {" "}
                   {petsData.helthStatus}
@@ -267,15 +267,15 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
-                  my: "10px",
+                  // my: "10px",
                 }}
               >
                 <Typography
                   sx={{
                     color: "primary.main",
                   }}
-                  fontWeight={600}
-                  fontSize="20px"
+                  fontWeight={500}
+                  fontSize="18px"
                 >
                   Gender:
                 </Typography>
@@ -284,7 +284,7 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                     color: "secondary.main",
                   }}
                   fontWeight={400}
-                  fontSize="20px"
+                  fontSize="18px"
                 >
                   {petsData.gender}
                 </Typography>
@@ -294,15 +294,15 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
-                  my: "10px",
+                  // my: "10px",
                 }}
               >
                 <Typography
                   sx={{
                     color: "primary.main",
                   }}
-                  fontWeight={600}
-                  fontSize="20px"
+                  fontWeight={500}
+                  fontSize="18px"
                 >
                   Location:
                 </Typography>
@@ -311,13 +311,15 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
                     color: "secondary.main",
                   }}
                   fontWeight={400}
-                  fontSize="20px"
+                  fontSize="18px"
                 >
                   {petsData.location}
                 </Typography>
               </Box>
             </Grid>
-            <Grid item sm={12} md={4}>
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item sm={12} md={12}>
               <Box>
                 <Typography
                   sx={{
@@ -378,7 +380,7 @@ const PetDetailsModal = ({ open, setOpen, petsData }: TProps) => {
           </Grid>
         </Stack>
       </Container>
-    </PAModal>
+    </PASmallModal>
   );
 };
 

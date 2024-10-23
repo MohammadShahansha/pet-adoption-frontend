@@ -49,7 +49,7 @@ export default function CareTab() {
                 fontWeight={400}
                 sx={{
                   color: "black",
-                  fontSize: { xs: "20px", md: "27px" },
+                  fontSize: { xs: "18px", md: "20px" },
                 }}
               >
                 {item.question}

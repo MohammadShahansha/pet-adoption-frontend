@@ -17,12 +17,13 @@ const BannerSection = () => {
         width: "100%",
         pb: "30px",
         display: "flex",
-        mt: isSmallScreen ? 0 : "60px",
+        mt: isSmallScreen ? "50px" : "60px",
       }}
     >
       <Container
         sx={{
           display: isSmallScreen ? "" : "flex",
+          gap: "50px",
           alignItems: "center",
           mt: isSmallScreen ? "20px" : "30px",
         }}
@@ -34,7 +35,7 @@ const BannerSection = () => {
               component="h1"
               sx={{
                 fontWeight: isSmallScreen ? 500 : 600,
-                fontSize: isSmallScreen ? "30px" : "45px",
+                fontSize: isSmallScreen ? "20px" : "35px",
               }}
             >
               Find your perfect companion and
@@ -44,7 +45,7 @@ const BannerSection = () => {
               component="h3"
               sx={{
                 fontWeight: isSmallScreen ? 500 : 600,
-                fontSize: isSmallScreen ? "30px" : "45px",
+                fontSize: isSmallScreen ? "20px" : "35px",
               }}
             >
               give a loving home to a
@@ -54,7 +55,7 @@ const BannerSection = () => {
               component="h3"
               sx={{
                 fontWeight: isSmallScreen ? 500 : 600,
-                fontSize: isSmallScreen ? "30px" : "45px",
+                fontSize: isSmallScreen ? "20px" : "35px",
               }}
               color="primary.main"
             >
@@ -65,11 +66,11 @@ const BannerSection = () => {
               component="p"
               fontWeight={300}
               lineHeight="20px"
-              color="gray"
+              color="#6c6969"
               my="20px"
               sx={{
-                fontWeight: isSmallScreen ? 200 : 300,
-                fontSize: isSmallScreen ? "18px" : "25",
+                fontWeight: isSmallScreen ? 300 : 400,
+                fontSize: isSmallScreen ? "15px" : "25",
               }}
             >
               make a friend for life! Change a life forever adopt a pet and

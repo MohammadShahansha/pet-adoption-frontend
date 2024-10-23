@@ -58,8 +58,8 @@ const FootePage = () => {
             variant="h4"
             color="white"
             sx={{
-              fontWeight: isSmallScreen ? 500 : 600,
-              fontSize: isSmallScreen ? "35px" : "45px",
+              fontWeight: isSmallScreen ? 500 : 500,
+              fontSize: isSmallScreen ? "25px" : "30px",
             }}
           >
             Service
@@ -98,8 +98,8 @@ const FootePage = () => {
             // fontWeight={600}
             color="white"
             sx={{
-              fontWeight: isSmallScreen ? 500 : 600,
-              fontSize: isSmallScreen ? "35px" : "45px",
+              fontWeight: isSmallScreen ? 500 : 500,
+              fontSize: isSmallScreen ? "25px" : "30px",
             }}
           >
             Contact
@@ -119,8 +119,8 @@ const FootePage = () => {
             variant="h4"
             color="white"
             sx={{
-              fontWeight: isSmallScreen ? 500 : 600,
-              fontSize: isSmallScreen ? "35px" : "45px",
+              fontWeight: isSmallScreen ? 500 : 500,
+              fontSize: isSmallScreen ? "25px" : "30px",
             }}
           >
             Social
