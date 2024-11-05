@@ -16,8 +16,8 @@ const AboutBanner = () => {
       <Box>
         <Typography
           sx={{
-            fontSize: { xs: "30px", md: "40px" },
-            fontWeight: { xs: 600, md: 700 },
+            fontSize: { xs: "30px", md: "35px" },
+            fontWeight: { xs: 500, md: 600 },
           }}
         >
           About Us

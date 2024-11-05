@@ -40,8 +40,8 @@ const AboutSecondBanner = () => {
               variant="h3"
               sx={{
                 color: "black",
-                fontSize: { xs: "35px", md: "45px" },
-                fontWeight: { xs: 500, md: 700 },
+                fontSize: { xs: "30px", md: "35px" },
+                fontWeight: { xs: 500, md: 600 },
               }}
             >
               Experience Beyond
@@ -52,8 +52,8 @@ const AboutSecondBanner = () => {
               sx={{
                 color: "black",
                 mb: "20px",
-                fontSize: { xs: "35px", md: "45px" },
-                fontWeight: { xs: 500, md: 700 },
+                fontSize: { xs: "30px", md: "35px" },
+                fontWeight: { xs: 500, md: 600 },
               }}
             >
               The Decades!

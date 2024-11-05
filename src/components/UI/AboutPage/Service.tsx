@@ -28,8 +28,8 @@ const Service = () => {
                 variant="h3"
                 color="black"
                 sx={{
-                  fontSize: { xs: "35px", md: "45px" },
-                  fontWeight: { xs: 500, md: 700 },
+                  fontSize: { xs: "30px", md: "35px" },
+                  fontWeight: { xs: 500, md: 600 },
                 }}
               >
                 Our Passon is
@@ -39,8 +39,8 @@ const Service = () => {
                 variant="h3"
                 color="black"
                 sx={{
-                  fontSize: { xs: "35px", md: "45px" },
-                  fontWeight: { xs: 500, md: 700 },
+                  fontSize: { xs: "30px", md: "35px" },
+                  fontWeight: { xs: 500, md: 600 },
                 }}
               >
                 Providing Superior
@@ -50,8 +50,8 @@ const Service = () => {
                 variant="h3"
                 color="black"
                 sx={{
-                  fontSize: { xs: "35px", md: "45px" },
-                  fontWeight: { xs: 500, md: 700 },
+                  fontSize: { xs: "30px", md: "35px" },
+                  fontWeight: { xs: 500, md: 600 },
                 }}
               >
                 Pet Care

@@ -10,11 +10,13 @@ import cat2 from "@/assets/slideImg/cat2.png";
 import bird from "@/assets/slideImg/bird.png";
 import dog from "@/assets/slideImg/dog.png";
 import rabbit from "@/assets/slideImg/rabit.png";
+
+import bannerImg from "@/assets/images/about.png";
 import "./styles.css";
 
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 
 const data = [
@@ -121,60 +123,99 @@ const Slider = () => {
   return (
     <Box
       sx={{
+        display: "flex",
+        flexDirection: isSmallScreen ? "column" : "row",
+        justifyContent: "space-between",
+        alignItems: "center",
         width: "100%",
-        pt: "60px",
-        mt: isSmallScreen ? "30px" : "30px",
-        display: isSmallScreen ? "none" : "",
+        // pt: "60px",
+        mt: { md: "50px" },
       }}
     >
-      {/* carousel */}
-      <div className="slideC ">
-        {data?.map((item: any, i: number) => (
-          <React.Fragment key={item.id}>
-            <div
-              className="slide "
-              style={{
-                background: item.bgColor,
-                boxShadow: `0 5px 20px ${item.bgColor}30`,
-                ...getStyles(i),
-              }}
-            >
-              <SliderContent {...item} />
-            </div>
-            <div
-              className="reflection"
-              style={{
-                background: `linear-gradient(to bottom, ${item.bgColor}40, transparent)`,
-                ...getStyles(i),
-              }}
-            />
-          </React.Fragment>
-        ))}
-      </div>
-      {/* carousel */}
-
+      {/* Left side content */}
       <Box
         sx={{
-          mb: { xs: "50px", md: "-60px" },
-          mt: { xs: "-50px", md: "-70px" },
+          width: isSmallScreen ? "100%" : "70%",
+          p: 2,
+          textAlign: "center",
+          ml: { md: "50px", xs: "0px" },
+          mt: { md: "55px", xs: "50px" },
         }}
       >
-        {!isFirstRender && (
-          <div className="btns text-center">
-            <FontAwesomeIcon
-              className="btn"
-              onClick={prev}
-              icon={faChevronLeft}
-              size="2x"
-            />
-            <FontAwesomeIcon
-              className="btn"
-              onClick={next}
-              icon={faChevronRight}
-              size="2x"
-            />
-          </div>
-        )}
+        <Typography variant="h4" fontWeight={500} gutterBottom>
+          Welcome to PatsSmart!
+        </Typography>
+        <Typography pb={2}>
+          Here you can find a variety of pets, each with unique personalities.
+          Discover your perfect companion today!
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Image src={bannerImg} alt="pet image" width={300} height={200} />
+        </Box>
+      </Box>
+
+      {/* right side content */}
+      <Box
+        sx={{
+          width: "100%",
+          mr: { md: "50px", xs: "0px" },
+          display: { xs: "none", md: "block" },
+        }}
+      >
+        {/* carousel */}
+        <div className="slideC ">
+          {data?.map((item: any, i: number) => (
+            <React.Fragment key={item.id}>
+              <div
+                className="slide "
+                style={{
+                  background: item.bgColor,
+                  boxShadow: `0 5px 20px ${item.bgColor}30`,
+                  ...getStyles(i),
+                }}
+              >
+                <SliderContent {...item} />
+              </div>
+              <div
+                className="reflection"
+                style={{
+                  background: `linear-gradient(to bottom, ${item.bgColor}40, transparent)`,
+                  ...getStyles(i),
+                }}
+              />
+            </React.Fragment>
+          ))}
+        </div>
+        {/* carousel */}
+
+        <Box
+          sx={{
+            mb: { xs: "-10px", md: "-60px" },
+            mt: { xs: "-50px", md: "-70px" },
+          }}
+        >
+          {!isFirstRender && (
+            <div className="btns text-center">
+              <FontAwesomeIcon
+                className="btn"
+                onClick={prev}
+                icon={faChevronLeft}
+                size="2x"
+              />
+              <FontAwesomeIcon
+                className="btn"
+                onClick={next}
+                icon={faChevronRight}
+                size="2x"
+              />
+            </div>
+          )}
+        </Box>
       </Box>
     </Box>
   );

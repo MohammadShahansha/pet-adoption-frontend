@@ -1,15 +1,15 @@
 .slideC {
   position: relative;
-  perspective: 1000px;
+  perspective: 500px;
   transform-style: preserve-3d;
-  width: 700px;
-  height: 500px;
+  width: 472px;
+  height: 370px;
   margin: 0 auto;
 }
 
 .slide {
-  width: 700px;
-  height: 500px;
+  width: 472px;
+  height: 370px;
   transition: transform 500ms ease 0s, opacity 500ms ease 0s,
     visibility 500ms ease 0s;
   position: absolute;

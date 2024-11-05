@@ -5,7 +5,11 @@ import TotalSummary from "@/components/Dashboard/DashboardSummary/TotalSummary";
 import RecentPets from "@/components/Dashboard/DashboardSummary/RecentsPets";
 const AdminPage = () => {
   return (
-    <Box>
+    <Box
+    // sx={{
+    //   backgroundColor: "#e7fbf9",
+    // }}
+    >
       <TotalSummary />
       <Box mt={5}>
         <RecentRegistrationTable />

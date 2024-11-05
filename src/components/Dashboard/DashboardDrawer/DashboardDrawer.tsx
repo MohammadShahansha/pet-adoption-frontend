@@ -123,6 +123,7 @@ export default function DashboardDrawer({
                 boxSizing: "border-box",
                 width: drawerWidth,
               },
+              backgroundColor: "black",
             }}
           >
             <SideBar />
@@ -135,6 +136,7 @@ export default function DashboardDrawer({
                 boxSizing: "border-box",
                 width: drawerWidth,
               },
+              backgroundColor: "black",
             }}
             open
           >

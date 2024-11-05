@@ -17,7 +17,7 @@ const BannerSection = () => {
         width: "100%",
         pb: "30px",
         display: "flex",
-        mt: isSmallScreen ? "50px" : "60px",
+        mt: isSmallScreen ? "0px" : "10px",
       }}
     >
       <Container

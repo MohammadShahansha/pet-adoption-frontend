@@ -16,7 +16,7 @@ const SideBar = () => {
   }, []);
   //   console.log(userInfo);
   return (
-    <div>
+    <Box>
       <Stack
         direction="row"
         justifyContent="center"
@@ -45,7 +45,7 @@ const SideBar = () => {
           <SidebarItems key={index} item={item} />
         ))}
       </List>
-    </div>
+    </Box>
   );
 };
 

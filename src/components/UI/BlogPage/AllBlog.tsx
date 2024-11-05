@@ -68,7 +68,11 @@ const AllBlog = () => {
                           src={singlePost?.image}
                           alt="blog_image"
                           width={60}
-                          height={60}
+                          height={50}
+                          style={{
+                            paddingLeft: "10px",
+                            borderRadius: "8px",
+                          }}
                         />
                         <Box>
                           <Typography textAlign="start" fontWeight={600}>
