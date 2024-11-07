@@ -15,17 +15,19 @@ export default function Gallery() {
   return (
     <Box
       sx={{
-        backgroundColor: "#e5e7eb",
+        // backgroundColor: "#e5e7eb",
         width: "100%",
         py: { xs: "30px", md: "50px" },
       }}
     >
       <Typography
+        variant="h4"
+        fontWeight={500}
         sx={{
           display: "flex",
           justifyContent: "center",
           mb: "20px",
-          fontWeight: { xs: 500, md: 600 },
+          // fontWeight: { xs: 500, md: 500 },
           fontSize: { xs: "30px", md: "35px" },
           color: "black",
         }}

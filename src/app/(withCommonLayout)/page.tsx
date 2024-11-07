@@ -8,7 +8,40 @@ import { Box } from "@mui/material";
 
 const HomePage = () => {
   return (
-    <Box>
+    <Box
+      sx={{
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <Box
+        sx={{
+          position: "absolute",
+          width: "25rem",
+          height: "44rem",
+          background:
+            "linear-gradient(to right, rgba(128, 90, 213, 0.5), #dcd6f7)",
+          filter: "blur(3rem)",
+          transform: "rotate(-60deg) translateX(-10rem)",
+          zIndex: -1,
+          top: 0,
+          left: 0,
+        }}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          width: "90rem",
+          height: "50rem",
+          background: "linear-gradient(to top left, #ebf8ff, #dbeafe, #ebf8ff)",
+          filter: "blur(3rem)",
+          borderRadius: "50%",
+          transform: "rotate(-12deg) translateX(-15rem)",
+          zIndex: -1,
+          top: 0,
+          left: 0,
+        }}
+      />
       <Slider />
       <BannerSection />
       <PetsShow />

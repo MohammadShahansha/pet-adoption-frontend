@@ -20,12 +20,12 @@ const SingleBlog = (id: TProp) => {
   return (
     <Box sx={{ backgroundColor: "#e5e7eb", p: { xs: "5px", md: "30px" } }}>
       <Typography
-        component="h2"
         variant="h4"
+        fontWeight={500}
         my="30px"
         textAlign="center"
         sx={{
-          fontWeight: { xs: 500, md: 600 },
+          // fontWeight: { xs: 500, md: 600 },
           fontSize: { xs: "25px", md: "35px" },
         }}
       >

@@ -11,7 +11,12 @@ const AboutSecondBanner = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <Box sx={{ backgroundColor: "#e5e7eb", py: { xs: "30px", md: "40px" } }}>
+    <Box
+      sx={{
+        // backgroundColor: "#e5e7eb",
+        py: { xs: "30px", md: "40px" },
+      }}
+    >
       <Container>
         <Box
           // direction="row"
@@ -36,24 +41,24 @@ const AboutSecondBanner = () => {
             }}
           >
             <Typography
-              component="h1"
-              variant="h3"
+              variant="h4"
+              fontWeight={500}
               sx={{
                 color: "black",
                 fontSize: { xs: "30px", md: "35px" },
-                fontWeight: { xs: 500, md: 600 },
+                // fontWeight: { xs: 500, md: 600 },
               }}
             >
               Experience Beyond
             </Typography>
             <Typography
-              component="h1"
-              variant="h3"
+              variant="h4"
+              fontWeight={500}
               sx={{
                 color: "black",
                 mb: "20px",
                 fontSize: { xs: "30px", md: "35px" },
-                fontWeight: { xs: 500, md: 600 },
+                // fontWeight: { xs: 500, md: 600 },
               }}
             >
               The Decades!

@@ -23,7 +23,7 @@ const ReviewSection = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#e5e7eb",
+        // backgroundColor: "#e5e7eb",
         width: "100%",
         py: isSmallScreen ? "30px" : "50px",
       }}
@@ -31,19 +31,18 @@ const ReviewSection = () => {
       <Container>
         <Box>
           <Typography
-            component="h2"
-            variant="h3"
-            // fontWeight={600}
+            variant="h4"
+            fontWeight={500}
             textAlign="center"
             sx={{
-              fontWeight: isSmallScreen ? 500 : 600,
+              // fontWeight: isSmallScreen ? 500 : 500,
               fontSize: isSmallScreen ? "30px" : "35px",
             }}
           >
             {" "}
             What Customers Say About Us
           </Typography>
-          <Typography component="p" textAlign="center" my="40px">
+          <Typography component="p" textAlign="center" my="30px">
             See Why Thousands of Customer Love Us!
           </Typography>
         </Box>
@@ -58,7 +57,7 @@ const ReviewSection = () => {
                       py: "30px",
                       px: "20px",
                       borderRadius: "30px",
-                      border: "0 solid #e5e7eb",
+                      border: "5px solid #e4eaf0",
                       boxShadow: "#e5e7eb",
                     }}
                   >

@@ -82,15 +82,17 @@ function NavbarPage() {
         top: 0,
         left: 0,
         right: 0,
+        width: "100%",
         zIndex: 100,
-        backgroundColor: "Background.paper",
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+        // backgroundColor: "Background.paper",
+        // boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
       }}
     >
       {!isFirstRender && (
         <AppBar
           sx={{
-            backgroundColor: "#f3f8f4",
+            backgroundColor: "#f4f6f8",
+            boxShadow: "none",
           }}
         >
           <Container>

@@ -9,7 +9,7 @@ const Service = () => {
   return (
     <Stack
       sx={{
-        backgroundColor: "rgba(1,201,214,0.1)",
+        // backgroundColor: "rgba(1,201,214,0.1)",
         py: { xs: "50px", md: "40px" },
       }}
     >
@@ -24,34 +24,34 @@ const Service = () => {
           <Box>
             <Box>
               <Typography
-                component="h1"
-                variant="h3"
+                variant="h4"
+                fontWeight={500}
                 color="black"
                 sx={{
                   fontSize: { xs: "30px", md: "35px" },
-                  fontWeight: { xs: 500, md: 600 },
+                  // fontWeight: { xs: 500, md: 600 },
                 }}
               >
                 Our Passon is
               </Typography>
               <Typography
-                component="h1"
-                variant="h3"
+                variant="h4"
+                fontWeight={500}
                 color="black"
                 sx={{
                   fontSize: { xs: "30px", md: "35px" },
-                  fontWeight: { xs: 500, md: 600 },
+                  // fontWeight: { xs: 500, md: 600 },
                 }}
               >
                 Providing Superior
               </Typography>
               <Typography
-                component="h1"
-                variant="h3"
+                variant="h4"
+                fontWeight={500}
                 color="black"
                 sx={{
                   fontSize: { xs: "30px", md: "35px" },
-                  fontWeight: { xs: 500, md: 600 },
+                  // fontWeight: { xs: 500, md: 600 },
                 }}
               >
                 Pet Care

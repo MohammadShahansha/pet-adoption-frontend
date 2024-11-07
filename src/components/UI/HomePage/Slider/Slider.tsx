@@ -145,7 +145,14 @@ const Slider = () => {
         <Typography variant="h4" fontWeight={500} gutterBottom>
           Welcome to PatsSmart!
         </Typography>
-        <Box pb={2}>
+        <Box
+          pb={2}
+          sx={{
+            width: { xs: "100%", md: "70%" },
+            textAlign: "center",
+            mx: "auto",
+          }}
+        >
           <Typography>
             Here you can find a variety of pets, each with unique personalities.
             Discover your perfect companion today!
