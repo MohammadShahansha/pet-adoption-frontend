@@ -83,7 +83,7 @@ export default function PATextAreaInput({
           {...field}
           aria-label="empty textarea"
           placeholder="Write Your Post"
-          sx={{ ...sx }}
+          // sx={{ ...sx }}
         />
       )}
     />

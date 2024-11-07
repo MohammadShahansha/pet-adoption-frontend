@@ -85,11 +85,11 @@ const PetsShow = () => {
           }}
         >
           <Typography
-            component="h2"
-            variant="h3"
+            variant="h4"
+            fontWeight={500}
             color="black"
             sx={{
-              fontWeight: isSmallScreen ? 500 : 600,
+              // fontWeight: isSmallScreen ? 500 : 500,
               fontSize: isSmallScreen ? "30px" : "35px",
               mb: isSmallScreen ? "70px" : "0px",
             }}

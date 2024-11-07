@@ -13,7 +13,7 @@ const BannerSection = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#e5e7eb",
+        // backgroundColor: "#e5e7eb",
         width: "100%",
         pb: "30px",
         display: "flex",
@@ -31,32 +31,32 @@ const BannerSection = () => {
         <Box>
           <Box>
             <Typography
-              variant="h3"
-              component="h1"
-              sx={{
-                fontWeight: isSmallScreen ? 500 : 600,
-                fontSize: isSmallScreen ? "20px" : "35px",
-              }}
+              variant="h4"
+              fontWeight={500}
+              // sx={{
+              //   fontWeight: isSmallScreen ? 500 : 600,
+              //   fontSize: isSmallScreen ? "20px" : "35px",
+              // }}
             >
               Find your perfect companion and
             </Typography>
             <Typography
-              variant="h3"
-              component="h3"
-              sx={{
-                fontWeight: isSmallScreen ? 500 : 600,
-                fontSize: isSmallScreen ? "20px" : "35px",
-              }}
+              variant="h4"
+              fontWeight={500}
+              // sx={{
+              //   fontWeight: isSmallScreen ? 500 : 600,
+              //   fontSize: isSmallScreen ? "20px" : "35px",
+              // }}
             >
               give a loving home to a
             </Typography>
             <Typography
-              variant="h3"
-              component="h3"
-              sx={{
-                fontWeight: isSmallScreen ? 500 : 600,
-                fontSize: isSmallScreen ? "20px" : "35px",
-              }}
+              variant="h4"
+              fontWeight={500}
+              // sx={{
+              //   fontWeight: isSmallScreen ? 500 : 600,
+              //   fontSize: isSmallScreen ? "20px" : "35px",
+              // }}
               color="primary.main"
             >
               pet in need adopt today and

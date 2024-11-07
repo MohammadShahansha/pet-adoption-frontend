@@ -145,10 +145,12 @@ const Slider = () => {
         <Typography variant="h4" fontWeight={500} gutterBottom>
           Welcome to PatsSmart!
         </Typography>
-        <Typography pb={2}>
-          Here you can find a variety of pets, each with unique personalities.
-          Discover your perfect companion today!
-        </Typography>
+        <Box pb={2}>
+          <Typography>
+            Here you can find a variety of pets, each with unique personalities.
+            Discover your perfect companion today!
+          </Typography>
+        </Box>
         <Box
           sx={{
             display: "flex",
