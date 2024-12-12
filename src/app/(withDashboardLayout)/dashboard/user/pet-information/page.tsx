@@ -11,6 +11,7 @@ import SendRequest from "./components/SendRequest";
 import SeeDetals from "./components/SeeDetails";
 import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
 import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
+import Link from "next/link";
 const PetInformatin = () => {
   const [reqModalOpen, setReqModalOpen] = useState<boolean>(false);
   const [detailsModalOpen, setDetailsModalOpen] = useState<boolean>(false);
@@ -101,6 +102,18 @@ const PetInformatin = () => {
               >
                 See Details
               </Button>
+              {/* <Link href="/petDetails">
+                <Button
+                  onClick={() => handleDetailsRow(row)}
+                  sx={{
+                    ":hover": {
+                      backgroundColor: "secondary.main",
+                    },
+                  }}
+                >
+                  See Details
+                </Button>
+              </Link> */}
             </Box>
           </Box>
         );

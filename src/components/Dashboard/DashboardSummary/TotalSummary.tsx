@@ -78,7 +78,7 @@ const TotalSummary = () => {
     },
   ];
   return (
-    <Box>
+    <Box px={2} pt={2}>
       <Grid container spacing={4}>
         {keyMaterials.map((keyMaterial, index) => (
           <Grid item key={index} xs={12} md={3}>

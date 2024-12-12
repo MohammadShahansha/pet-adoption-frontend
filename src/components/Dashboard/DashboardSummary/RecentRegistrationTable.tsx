@@ -8,72 +8,77 @@ const RecentRegistrationTable = () => {
   const { data: userData, isLoading } = useGetAllUsersQuery({});
   const forLoading = [1, 2, 3, 4];
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Name", flex: 1, minWidth: 150 },
-    { field: "email", headerName: "Email", flex: 1, minWidth: 150 },
-    { field: "status", headerName: "Status", flex: 1, minWidth: 150 },
+    { field: "name", headerName: "Name", flex: 1, minWidth: 100 },
+    { field: "email", headerName: "Email", flex: 1, minWidth: 100 },
+    { field: "status", headerName: "Status", flex: 1, minWidth: 100 },
   ];
+
   return (
     <Box
       sx={{
-        display: { md: "flex" },
-        alignItems: "center",
-
-        gap: "50px",
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        alignItems: { xs: "stretch", md: "center" },
+        px: 2,
+        mx: "auto",
+        gap: 4,
+        width: "100%",
       }}
     >
-      <Box>
+      {/* Registration Table */}
+      <Box
+        flexGrow={1}
+        sx={{
+          width: "100%",
+          maxWidth: { md: "60%" },
+        }}
+      >
         {!isLoading ? (
-          <Typography
-            sx={{
-              color: "black",
-              fontWeight: 500,
-            }}
-          >
+          <Typography sx={{ color: "black", fontWeight: 500, mb: 2 }}>
             Recent User Registration:
           </Typography>
         ) : (
-          <Box>
-            {" "}
-            <Skeleton width="200px" height="25px" />
-          </Box>
+          <Skeleton width="200px" height="25px" />
         )}
         <Box
-          height={250}
           sx={{
-            width: { xs: "300px", md: "600px" },
-            // mx: "auto",
+            width: "100%",
+            height: 250,
+            overflowX: "auto", // Allow horizontal scroll on small screens
           }}
         >
           {!isLoading ? (
             <DataGrid
-              rows={userData?.slice(0, 10)}
+              rows={userData?.slice(0, 10) || []}
               columns={columns}
               hideFooter
+              // autoHeight
+              sx={{
+                "& .MuiDataGrid-columnHeaders": {
+                  display: "flex",
+                },
+                width: "100%",
+              }}
             />
           ) : (
-            <Box>
-              {forLoading.map((item: number) => {
-                return (
-                  <Box key={item}>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "20px",
-                      }}
-                    >
-                      <Skeleton sx={{ width: "200px", height: "70px" }} />
-                      <Skeleton sx={{ width: "200px", height: "70px" }} />
-                      <Skeleton sx={{ width: "200px", height: "70px" }} />
-                    </Box>
-                  </Box>
-                );
-              })}
-            </Box>
+            forLoading.map((item) => (
+              <Box key={item} display="flex" alignItems="center" gap={2}>
+                <Skeleton sx={{ width: "100%", height: "70px" }} />
+              </Box>
+            ))
           )}
         </Box>
       </Box>
-      <Box>
+
+      {/* Status Pie Chart */}
+      <Box
+        flexGrow={1}
+        sx={{
+          width: "100%",
+          maxWidth: { md: "40%" },
+          mt: { xs: 2, md: 0 }, // Adds margin on top for small screens
+        }}
+      >
         <StatusPieChart />
       </Box>
     </Box>

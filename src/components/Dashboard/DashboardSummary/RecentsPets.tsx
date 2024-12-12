@@ -80,8 +80,9 @@ const RecentPets = () => {
     <Box
       sx={{
         display: "flex",
+        justifyContent: "center",
         alignItems: "center",
-        gap: "50px",
+        // gap: "50px",
         my: "40px",
       }}
     >
@@ -97,7 +98,7 @@ const RecentPets = () => {
         <Box
           height={250}
           sx={{
-            width: { xs: "300px", md: "100%" },
+            width: { xs: "320px", md: "100%" },
             // mx: "auto",
           }}
         >

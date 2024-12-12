@@ -65,7 +65,11 @@ export default function DashboardDrawer({
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: "none" }, color: "primary.main" }}
+              sx={{
+                // mr: 2,
+                display: { sm: "none" },
+                color: "primary.main",
+              }}
             >
               <MenuIcon />
             </IconButton>
@@ -96,7 +100,7 @@ export default function DashboardDrawer({
               display: "flex",
               justifyContent: "end",
               alignItems: "center",
-              mr: { xs: "50px", md: "200px" },
+              // mr: { xs: "50px", md: "200px" },
             }}
           >
             <BadgeNotification />
@@ -146,8 +150,8 @@ export default function DashboardDrawer({
         <Box
           component="main"
           sx={{
-            flexGrow: 1,
-            p: 3,
+            // flexGrow: 1,
+            // p: 3,
             width: { sm: `calc(100% - ${drawerWidth}px)` },
           }}
         >

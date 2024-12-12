@@ -12,7 +12,7 @@ const RecentRequestTable = () => {
       field: "pet.name",
       headerName: "Pets_Name",
       flex: 1,
-      minWidth: 150,
+      minWidth: 70,
       renderCell: ({ row }) => {
         return <Box>{row?.pet?.name}</Box>;
       },
@@ -21,7 +21,7 @@ const RecentRequestTable = () => {
       field: "user.name",
       headerName: "User_Name",
       flex: 1,
-      minWidth: 150,
+      minWidth: 70,
       renderCell: ({ row }) => {
         return <Box>{row?.user?.name}</Box>;
       },
@@ -30,47 +30,52 @@ const RecentRequestTable = () => {
       field: "user.email",
       headerName: "User_Email",
       flex: 1,
-      minWidth: 150,
+      minWidth: 80,
       renderCell: ({ row }) => {
         return <Box>{row?.user?.email}</Box>;
       },
     },
-    { field: "status", headerName: "Status", flex: 1, minWidth: 150 },
+    { field: "status", headerName: "Status", flex: 1, minWidth: 80 },
   ];
   return (
     <Box
       sx={{
-        display: { md: "flex" },
-        alignItems: "center",
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        alignItems: { xs: "stretch", md: "center" },
+        px: 2,
         gap: "50px",
         mt: "40px",
+        width: "100%",
       }}
     >
-      <Box>
+      <Box
+        flexGrow={1}
+        sx={{ width: "100%", maxWidth: { md: "40%" }, mt: { xs: 2, md: 0 } }}
+      >
         <RequestStatus />
       </Box>
-      <Box>
+      <Box flexGrow={1} sx={{ width: "100%", maxWidth: { md: "60%" } }}>
         {!isLoading ? (
           <Typography
             sx={{
               color: "black",
               fontWeight: 500,
+              mb: 2,
             }}
           >
             Recent Adoption Request:
           </Typography>
         ) : (
-          <Box>
-            <Box>
-              {" "}
-              <Skeleton width="200px" height="25px" />
-            </Box>
-          </Box>
+          <Skeleton width="200px" height="25px" />
         )}
         <Box
-          height={250}
           sx={{
-            width: { xs: "300px", md: "600px" },
+            width: "100%",
+            height: 250,
+            // maxWidth: { md: "60%" },
+            overflowX: "auto",
+
             // mx: "auto",
           }}
         >
@@ -79,27 +84,22 @@ const RecentRequestTable = () => {
               rows={adoptionReq?.slice(0, 10)}
               columns={columns}
               hideFooter
+              sx={{
+                "& .MuiDataGrid-columnHeaders": {
+                  display: "flex",
+                },
+                // "& .MuiDataGrid-root": {
+                //   width: "100%",
+                // },
+                width: "100%",
+              }}
             />
           ) : (
-            <Box>
-              {forLoading.map((item: number) => {
-                return (
-                  <Box key={item}>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "20px",
-                      }}
-                    >
-                      <Skeleton sx={{ width: "200px", height: "70px" }} />
-                      <Skeleton sx={{ width: "200px", height: "70px" }} />
-                      <Skeleton sx={{ width: "200px", height: "70px" }} />
-                    </Box>
-                  </Box>
-                );
-              })}
-            </Box>
+            forLoading.map((item) => (
+              <Box key={item} display="flex" alignItems="center" gap={2}>
+                <Skeleton sx={{ width: "100%", height: "70px" }} />
+              </Box>
+            ))
           )}
         </Box>
       </Box>

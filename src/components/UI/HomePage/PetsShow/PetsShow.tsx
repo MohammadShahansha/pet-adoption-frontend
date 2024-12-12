@@ -289,7 +289,7 @@ const PetsShow = () => {
                           }}
                         >
                           <Box>
-                            <Button
+                            {/* <Button
                               size="small"
                               onClick={() => handleModalOpen(pet)}
                               sx={{
@@ -306,7 +306,27 @@ const PetsShow = () => {
                                 setOpen={setModalOpen}
                                 petsData={petSelected}
                               />
-                            )}
+                            )} */}
+                            <Link href={`/seeDetails/${pet?.id}`}>
+                              <Button
+                                size="small"
+                                // onClick={() => handleModalOpen(pet)}
+                                sx={{
+                                  ":hover": {
+                                    backgroundColor: "secondary.main",
+                                  },
+                                }}
+                              >
+                                See Details
+                              </Button>
+                              {/* {petSelected && (
+                                <PetDetailsModal
+                                  open={modalOpen}
+                                  setOpen={setModalOpen}
+                                  petsData={petSelected}
+                                />
+                              )} */}
+                            </Link>
                           </Box>
                           {/* {user ? (
                             <Box>
