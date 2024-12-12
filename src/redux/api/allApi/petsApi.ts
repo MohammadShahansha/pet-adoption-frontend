@@ -36,8 +36,8 @@ const petsApi = baseApi.injectEndpoints({
       invalidatesTags: ["pets"],
     }),
     getSinglePets: build.query({
-      query: (arg) => ({
-        url: `/pets/${arg?.id}`,
+      query: (id) => ({
+        url: `/pets/${id}`,
         method: "GET",
       }),
       providesTags: ["pets"],

@@ -13,13 +13,13 @@ type TProps = {
 };
 const SendRequest = ({ open, setOpen, id }: TProps) => {
   const [createAdoptionRequest] = useCreateAdoptionRequestMutation();
-
+  // console.log(id);
   const handleSendRequest = async (values: FieldValues) => {
-    console.log(values);
+    // console.log(values);
     const petId = id;
     try {
       const res = await createAdoptionRequest({ petId, ...values }).unwrap();
-      console.log(res);
+      // console.log(res);
       if (res?.id) {
         toast.success("adoption request created successfully");
         setOpen(false);
