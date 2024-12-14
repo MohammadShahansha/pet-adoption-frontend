@@ -30,7 +30,7 @@ const PetsShow = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const { data, isLoading } = useGetAllpetsQuery({});
-  const { data: user, isLoading: loading } = useGetMeQuery({});
+  // const { data: user, isLoading: loading } = useGetMeQuery({});
   const forLoading = [1, 2, 3];
 
   const [modalOpen, setModalOpen] = useState(false);
