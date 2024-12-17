@@ -33,8 +33,8 @@ const PetsShow = () => {
   // const { data: user, isLoading: loading } = useGetMeQuery({});
   const forLoading = [1, 2, 3];
 
-  const [modalOpen, setModalOpen] = useState(false);
-  const [petSelected, setPetSelected] = useState<any>(null);
+  // const [modalOpen, setModalOpen] = useState(false);
+  // const [petSelected, setPetSelected] = useState<any>(null);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
@@ -42,10 +42,10 @@ const PetsShow = () => {
 
   const petsData = data?.data;
 
-  const handleModalOpen = (pet: any) => {
-    setPetSelected(pet);
-    setModalOpen(true);
-  };
+  // const handleModalOpen = (pet: any) => {
+  //   setPetSelected(pet);
+  //   setModalOpen(true);
+  // };
 
   const handleSearchTerm = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -289,24 +289,6 @@ const PetsShow = () => {
                           }}
                         >
                           <Box>
-                            {/* <Button
-                              size="small"
-                              onClick={() => handleModalOpen(pet)}
-                              sx={{
-                                ":hover": {
-                                  backgroundColor: "secondary.main",
-                                },
-                              }}
-                            >
-                              See Details
-                            </Button>
-                            {petSelected && (
-                              <PetDetailsModal
-                                open={modalOpen}
-                                setOpen={setModalOpen}
-                                petsData={petSelected}
-                              />
-                            )} */}
                             <Link href={`/seeDetails/${pet?.id}`}>
                               <Button
                                 size="small"
@@ -319,49 +301,8 @@ const PetsShow = () => {
                               >
                                 See Details
                               </Button>
-                              {/* {petSelected && (
-                                <PetDetailsModal
-                                  open={modalOpen}
-                                  setOpen={setModalOpen}
-                                  petsData={petSelected}
-                                />
-                              )} */}
                             </Link>
                           </Box>
-                          {/* {user ? (
-                            <Box>
-                              <Button
-                                size="small"
-                                onClick={() => handleModalOpen(pet)}
-                                sx={{
-                                  ":hover": {
-                                    backgroundColor: "secondary.main",
-                                  },
-                                }}
-                              >
-                                See Details
-                              </Button>
-                              {petSelected && (
-                                <PetDetailsModal
-                                  open={modalOpen}
-                                  setOpen={setModalOpen}
-                                  petsData={petSelected}
-                                />
-                              )}
-                            </Box>
-                          ) : (
-                            <Box component={Link} href="/login">
-                              <Button
-                                sx={{
-                                  ":hover": {
-                                    backgroundColor: "secondary.main",
-                                  },
-                                }}
-                              >
-                                See Details
-                              </Button>
-                            </Box>
-                          )} */}
                         </CardActions>
                       </Box>
                     </Card>

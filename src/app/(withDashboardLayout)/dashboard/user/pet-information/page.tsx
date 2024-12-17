@@ -92,7 +92,7 @@ const PetInformatin = () => {
                 Send Request
               </Button>
 
-              <Button
+              {/* <Button
                 onClick={() => handleDetailsRow(row)}
                 sx={{
                   ":hover": {
@@ -101,10 +101,10 @@ const PetInformatin = () => {
                 }}
               >
                 See Details
-              </Button>
-              {/* <Link href="/petDetails">
+              </Button> */}
+              <Link href={`/dashboard/user/seeDetails/${row?.id}`}>
                 <Button
-                  onClick={() => handleDetailsRow(row)}
+                  // onClick={() => handleDetailsRow(row)}
                   sx={{
                     ":hover": {
                       backgroundColor: "secondary.main",
@@ -113,7 +113,7 @@ const PetInformatin = () => {
                 >
                   See Details
                 </Button>
-              </Link> */}
+              </Link>
             </Box>
           </Box>
         );
