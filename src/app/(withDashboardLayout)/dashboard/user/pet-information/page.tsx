@@ -1,12 +1,8 @@
 "use client";
-import { Box, Button, IconButton, Skeleton } from "@mui/material";
+import { Box, Button, Skeleton } from "@mui/material";
 import { useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import {
-  useDeletePetMutation,
-  useGetAllpetsQuery,
-} from "@/redux/api/allApi/petsApi";
-import EditIcon from "@mui/icons-material/Edit";
+import { useGetAllpetsQuery } from "@/redux/api/allApi/petsApi";
 import SendRequest from "./components/SendRequest";
 import SeeDetals from "./components/SeeDetails";
 import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
@@ -92,19 +88,8 @@ const PetInformatin = () => {
                 Send Request
               </Button>
 
-              {/* <Button
-                onClick={() => handleDetailsRow(row)}
-                sx={{
-                  ":hover": {
-                    backgroundColor: "secondary.main",
-                  },
-                }}
-              >
-                See Details
-              </Button> */}
               <Link href={`/dashboard/user/seeDetails/${row?.id}`}>
                 <Button
-                  // onClick={() => handleDetailsRow(row)}
                   sx={{
                     ":hover": {
                       backgroundColor: "secondary.main",

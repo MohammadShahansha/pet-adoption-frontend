@@ -1,7 +1,5 @@
 "use client";
 import SendRequest from "@/app/(withDashboardLayout)/dashboard/user/pet-information/components/SendRequest";
-import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
-import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
 import { useGetSinglePetsQuery } from "@/redux/api/allApi/petsApi";
 import { getUserInfo } from "@/serviece/authService";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
