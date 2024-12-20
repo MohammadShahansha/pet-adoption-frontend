@@ -7,6 +7,7 @@ import UserUpdateModal from "./Components/UserUpdateModal";
 import PasswordChangeModal from "./Components/PasswordChangeModal";
 import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
 import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
+import ApprovedRequest from "@/components/Profile/UserProfile/ApprovedRequest";
 const UserProfile = () => {
   const { data: myData, isLoading } = useGetMeQuery({});
 
@@ -27,7 +28,11 @@ const UserProfile = () => {
     setChangePasswordModalOpen(true);
   };
   return (
-    <Box>
+    <Box
+      sx={{
+        mx: { xs: "5px", md: "10px" },
+      }}
+    >
       <Box>
         {!isLoading ? (
           <DashboardBanner
@@ -152,6 +157,9 @@ const UserProfile = () => {
                 {" "}
                 {myData?.email}
               </Typography>
+            </Box>
+            <Box sx={{}}>
+              <ApprovedRequest />
             </Box>
           </Box>
         </Box>
