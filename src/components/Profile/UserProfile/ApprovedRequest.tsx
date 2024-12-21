@@ -22,14 +22,14 @@ const ApprovedRequest = () => {
   console.log(approvedPets);
 
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Name", flex: 1, maxWidth: 150 },
-    { field: "gender", headerName: "Gender", flex: 1, maxWidth: 150 },
-    { field: "age", headerName: "Age", flex: 1, maxWidth: 100 },
-    { field: "size", headerName: "Size", flex: 1, maxWidth: 100 },
+    { field: "name", headerName: "Name", flex: 1, minWidth: 150 },
+    { field: "gender", headerName: "Gender", flex: 1, minWidth: 150 },
+    { field: "age", headerName: "Age", flex: 1, minWidth: 150 },
+    { field: "size", headerName: "Size", flex: 1, minWidth: 150 },
   ];
 
   return (
-    <Box mt="10px" sx={{ width: "100%", height: "auto" }}>
+    <Box mt="10px">
       <Box
         sx={{
           my: "20px",
@@ -46,11 +46,13 @@ const ApprovedRequest = () => {
           width: "100%",
           height: "100%",
           overflowX: "auto",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
         <Box
           sx={{
-            width: { xs: { maxWidth: 500 }, md: { width: "600px" } },
+            width: { xs: "320px", md: "600px" },
             height: "auto",
           }}
         >

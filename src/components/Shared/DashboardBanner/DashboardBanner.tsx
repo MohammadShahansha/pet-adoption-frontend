@@ -13,7 +13,7 @@ const DashboardBanner = ({ title, routeLink, selfName }: TBanner) => {
     <Box
       sx={{
         width: "100%",
-        height: { xs: "150px", md: "200px" },
+        height: { xs: "100px", md: "120px" },
         backgroundColor: "#f3f8f4",
         mb: "10px",
         display: "flex",
@@ -21,7 +21,11 @@ const DashboardBanner = ({ title, routeLink, selfName }: TBanner) => {
         alignItems: "center",
       }}
     >
-      <Box>
+      <Box
+        sx={{
+          width: "100%",
+        }}
+      >
         <Typography
           component="h1"
           variant="h4"
@@ -30,7 +34,7 @@ const DashboardBanner = ({ title, routeLink, selfName }: TBanner) => {
           mb="15px"
           sx={{
             fontWeight: { xs: 500, md: 600 },
-            fontSize: { xs: "25px", md: "35px" },
+            fontSize: { xs: "20px", md: "25px" },
           }}
         >
           {title}

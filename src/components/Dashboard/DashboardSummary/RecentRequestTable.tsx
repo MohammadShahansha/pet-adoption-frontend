@@ -12,7 +12,7 @@ const RecentRequestTable = () => {
       field: "pet.name",
       headerName: "Pets_Name",
       flex: 1,
-      minWidth: 70,
+      minWidth: 150,
       renderCell: ({ row }) => {
         return <Box>{row?.pet?.name}</Box>;
       },
@@ -21,7 +21,7 @@ const RecentRequestTable = () => {
       field: "user.name",
       headerName: "User_Name",
       flex: 1,
-      minWidth: 70,
+      minWidth: 150,
       renderCell: ({ row }) => {
         return <Box>{row?.user?.name}</Box>;
       },
@@ -30,12 +30,12 @@ const RecentRequestTable = () => {
       field: "user.email",
       headerName: "User_Email",
       flex: 1,
-      minWidth: 80,
+      minWidth: 150,
       renderCell: ({ row }) => {
         return <Box>{row?.user?.email}</Box>;
       },
     },
-    { field: "status", headerName: "Status", flex: 1, minWidth: 80 },
+    { field: "status", headerName: "Status", flex: 1, minWidth: 150 },
   ];
   return (
     <Box
@@ -55,52 +55,66 @@ const RecentRequestTable = () => {
       >
         <RequestStatus />
       </Box>
-      <Box flexGrow={1} sx={{ width: "100%", maxWidth: { md: "60%" } }}>
-        {!isLoading ? (
-          <Typography
-            sx={{
-              color: "black",
-              fontWeight: 500,
-              mb: 2,
-            }}
-          >
-            Recent Adoption Request:
-          </Typography>
-        ) : (
-          <Skeleton width="200px" height="25px" />
-        )}
+      <Box
+        sx={{
+          // width: "100%",
+          // maxWidth: { md: "60%" },
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <Box
-          sx={{
-            width: "100%",
-            height: 250,
-            // maxWidth: { md: "60%" },
-            overflowX: "auto",
-
-            // mx: "auto",
-          }}
+          sx={
+            {
+              // maxWidth: { md: "60%" },
+            }
+          }
         >
           {!isLoading ? (
-            <DataGrid
-              rows={adoptionReq?.slice(0, 10)}
-              columns={columns}
-              hideFooter
+            <Typography
               sx={{
-                "& .MuiDataGrid-columnHeaders": {
-                  display: "flex",
-                },
-                // "& .MuiDataGrid-root": {
-                //   width: "100%",
-                // },
-                width: "100%",
+                color: "black",
+                fontWeight: 500,
+                // mb: 2,
               }}
-            />
+            >
+              Recent Adoption Request:
+            </Typography>
           ) : (
-            forLoading.map((item) => (
-              <Box key={item} display="flex" alignItems="center" gap={2}>
-                <Skeleton sx={{ width: "100%", height: "70px" }} />
-              </Box>
-            ))
+            <Skeleton width="200px" height="25px" />
           )}
+          <Box
+            height={250}
+            sx={{
+              width: { xs: "320px", md: "100%" },
+
+              // maxWidth: { md: "60%" },
+              // overflowX: "auto",
+
+              // mx: "auto",
+            }}
+          >
+            {!isLoading ? (
+              <DataGrid
+                rows={adoptionReq?.slice(0, 10)}
+                columns={columns}
+                hideFooter
+                // sx={{
+                //   "& .MuiDataGrid-columnHeaders": {
+                //     display: "flex",
+                //   },
+
+                //   width: "100%",
+                // }}
+              />
+            ) : (
+              forLoading.map((item) => (
+                <Box key={item} display="flex" alignItems="center" gap={2}>
+                  <Skeleton sx={{ width: "100%", height: "70px" }} />
+                </Box>
+              ))
+            )}
+          </Box>
         </Box>
       </Box>
     </Box>

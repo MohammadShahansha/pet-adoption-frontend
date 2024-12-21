@@ -51,30 +51,6 @@ const RecentPets = () => {
       flex: 1,
       minWidth: 150,
     },
-    {
-      field: "helthStatus",
-      headerName: "Helth_Status",
-      flex: 1,
-      minWidth: 150,
-    },
-    {
-      field: "medicalHistory",
-      headerName: "MedicalHistory",
-      flex: 1,
-      minWidth: 150,
-    },
-    {
-      field: "temperament",
-      headerName: "Temperament",
-      flex: 1,
-      minWidth: 150,
-    },
-    {
-      field: "description",
-      headerName: "Description",
-      flex: 1,
-      minWidth: 150,
-    },
   ];
   return (
     <Box

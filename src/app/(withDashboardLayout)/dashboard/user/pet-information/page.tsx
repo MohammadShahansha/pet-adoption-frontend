@@ -8,6 +8,7 @@ import SeeDetals from "./components/SeeDetails";
 import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
 import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
 import Link from "next/link";
+import Paper from "@mui/material/Paper";
 const PetInformatin = () => {
   const [reqModalOpen, setReqModalOpen] = useState<boolean>(false);
   const [detailsModalOpen, setDetailsModalOpen] = useState<boolean>(false);
@@ -106,9 +107,86 @@ const PetInformatin = () => {
     },
   ];
 
+  // const columns: GridColDef[] = [
+  //   { field: "name", headerName: "Name", width: 120 },
+  //   {
+  //     field: "gender",
+  //     headerName: "Gender",
+  //     width: 120,
+  //   },
+  //   {
+  //     field: "age",
+  //     headerName: "Age",
+  //     width: 120,
+  //   },
+
+  //   {
+  //     field: "size",
+  //     headerName: "Size",
+  //     width: 120,
+  //   },
+  //   {
+  //     field: "location",
+  //     headerName: "Location",
+  //     width: 150,
+  //   },
+  //   {
+  //     field: "action",
+  //     headerName: "Actions",
+  //     width: 350,
+  //     headerAlign: "center",
+  //     align: "center",
+  //     renderCell: ({ row }) => {
+  //       // console.log(row.id);
+  //       return (
+  //         <Box
+  //           sx={{
+  //             display: "flex",
+  //             justifyContent: "center",
+  //             // gap: "8px",
+  //             flexWrap: "wrap",
+  //             width: { xs: "300px", md: "100%" },
+  //           }}
+  //         >
+  //           <Box sx={{ width: "100%" }}>
+  //             <Button
+  //               onClick={() => handleSendRequest(row)}
+  //               sx={{
+  //                 backgroundColor: "secondary.main",
+  //                 ":hover": {
+  //                   backgroundColor: "primary.main",
+  //                 },
+  //                 mr: "20px",
+  //               }}
+  //             >
+  //               Send Request
+  //             </Button>
+
+  //             <Link href={`/dashboard/user/seeDetails/${row?.id}`}>
+  //               <Button
+  //                 sx={{
+  //                   ":hover": {
+  //                     backgroundColor: "secondary.main",
+  //                   },
+  //                 }}
+  //               >
+  //                 See Details
+  //               </Button>
+  //             </Link>
+  //           </Box>
+  //         </Box>
+  //       );
+  //     },
+  //   },
+  // ];
+
   return (
     <Box>
-      <Box>
+      <Box
+        sx={{
+          width: "100%",
+        }}
+      >
         {!isLoading ? (
           <DashboardBanner
             title="Choose a Pet to Send Request"
@@ -119,44 +197,61 @@ const PetInformatin = () => {
           <BannerLoader />
         )}
       </Box>
-      <Box mt={4}>
-        {!isLoading ? (
-          <Box
-            sx={{
-              // width: isMobile ? "300px" : "100%",
-              width: { xs: "300px", sm: "500px", md: "100%" },
-              overflowX: "auto",
-              overflowY: "auto",
-
-              mx: "auto",
-            }}
-          >
-            <DataGrid rows={rowData} columns={columns} hideFooter autoHeight />
-          </Box>
-        ) : (
-          <Box>
-            {forLoading.map((item: number) => {
-              return (
-                <Box key={item}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "20px",
-                    }}
-                  >
-                    <Skeleton sx={{ width: "300px", height: "70px" }} />
-                    <Skeleton sx={{ width: "400px", height: "70px" }} />
-                    <Skeleton sx={{ width: "300px", height: "70px" }} />
-                    <Skeleton sx={{ width: "300px", height: "70px" }} />
-                    <Skeleton sx={{ width: "100%", height: "70px" }} />
-                  </Box>
+      {/* <Box>
+        <Box> */}
+      {!isLoading ? (
+        // <Box
+        //   sx={
+        //     {
+        //       // width: isMobile ? "300px" : "100%",
+        //       // width: { xs: "300px", sm: "500px", md: "100%" },
+        //     }
+        //   }
+        //   style={{ width: "100%" }}
+        // >
+        //   <DataGrid
+        //     rows={rowData}
+        //     columns={columns}
+        //     hideFooter
+        //     autoHeight
+        //   />
+        // </Box>
+        <Box sx={{ height: 400, width: "100%" }}>
+          <DataGrid
+            rows={rowData}
+            columns={columns}
+            // initialState={{ pagination: { paginationModel } }}
+            // pageSizeOptions={[5, 10]}
+            // checkboxSelection
+            hideFooter
+            sx={{ border: 0 }}
+          />
+        </Box>
+      ) : (
+        <Box>
+          {forLoading.map((item: number) => {
+            return (
+              <Box key={item}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "20px",
+                  }}
+                >
+                  <Skeleton sx={{ width: "300px", height: "70px" }} />
+                  <Skeleton sx={{ width: "400px", height: "70px" }} />
+                  <Skeleton sx={{ width: "300px", height: "70px" }} />
+                  <Skeleton sx={{ width: "300px", height: "70px" }} />
+                  <Skeleton sx={{ width: "100%", height: "70px" }} />
                 </Box>
-              );
-            })}
-          </Box>
-        )}
-      </Box>
+              </Box>
+            );
+          })}
+        </Box>
+      )}
+      {/* </Box>
+      </Box> */}
       {selectPet && (
         <SendRequest
           open={reqModalOpen}
