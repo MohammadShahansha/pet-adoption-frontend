@@ -10,70 +10,73 @@ export type TBanner = {
 
 const DashboardBanner = ({ title, routeLink, selfName }: TBanner) => {
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: { xs: "100px", md: "120px" },
-        backgroundColor: "#f3f8f4",
-        mb: "10px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <Box sx={{ width: "100%" }}>
       <Box
         sx={{
           width: "100%",
+          // maxWidth: "100vw",
+          height: { xs: "100px", md: "120px" },
+          backgroundColor: "#f3f8f4",
+          mb: "10px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <Typography
-          component="h1"
-          variant="h4"
-          fontWeight={600}
-          textAlign="center"
-          mb="15px"
-          sx={{
-            fontWeight: { xs: 500, md: 600 },
-            fontSize: { xs: "20px", md: "25px" },
-          }}
-        >
-          {title}
-        </Typography>
         <Box
           sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            width: "100%",
           }}
         >
           <Typography
-            component={Link}
-            href="/"
-            fontWeight={500}
+            component="h1"
+            variant="h4"
+            fontWeight={600}
+            textAlign="center"
+            mb="15px"
             sx={{
-              ":hover": {
-                color: "primary.main",
-              },
+              fontWeight: { xs: 500, md: 600 },
+              fontSize: { xs: "20px", md: "25px" },
             }}
           >
-            Home
+            {title}
           </Typography>
-          <Typography>
-            {" "}
-            <KeyboardArrowRightIcon />
-          </Typography>
-          <Typography
-            component={Link}
-            href={routeLink}
-            fontWeight={500}
+          <Box
             sx={{
-              ":hover": {
-                color: "primary.main",
-              },
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            {selfName}
-          </Typography>
+            <Typography
+              component={Link}
+              href="/"
+              fontWeight={500}
+              sx={{
+                ":hover": {
+                  color: "primary.main",
+                },
+              }}
+            >
+              Home
+            </Typography>
+            <Typography>
+              {" "}
+              <KeyboardArrowRightIcon />
+            </Typography>
+            <Typography
+              component={Link}
+              href={routeLink}
+              fontWeight={500}
+              sx={{
+                ":hover": {
+                  color: "primary.main",
+                },
+              }}
+            >
+              {selfName}
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </Box>

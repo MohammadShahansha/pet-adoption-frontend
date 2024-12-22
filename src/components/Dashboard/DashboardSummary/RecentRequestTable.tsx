@@ -57,19 +57,11 @@ const RecentRequestTable = () => {
       </Box>
       <Box
         sx={{
-          // width: "100%",
-          // maxWidth: { md: "60%" },
           display: "flex",
           justifyContent: "center",
         }}
       >
-        <Box
-          sx={
-            {
-              // maxWidth: { md: "60%" },
-            }
-          }
-        >
+        <Box>
           {!isLoading ? (
             <Typography
               sx={{
@@ -87,11 +79,6 @@ const RecentRequestTable = () => {
             height={250}
             sx={{
               width: { xs: "320px", md: "100%" },
-
-              // maxWidth: { md: "60%" },
-              // overflowX: "auto",
-
-              // mx: "auto",
             }}
           >
             {!isLoading ? (
@@ -99,13 +86,6 @@ const RecentRequestTable = () => {
                 rows={adoptionReq?.slice(0, 10)}
                 columns={columns}
                 hideFooter
-                // sx={{
-                //   "& .MuiDataGrid-columnHeaders": {
-                //     display: "flex",
-                //   },
-
-                //   width: "100%",
-                // }}
               />
             ) : (
               forLoading.map((item) => (

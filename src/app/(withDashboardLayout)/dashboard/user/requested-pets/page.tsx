@@ -38,7 +38,13 @@ const RequestedPage = () => {
         )}
       </Box>
       <Box></Box>
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          mx: "auto",
+        }}
+      >
         {!isLoading ? (
           adoptionReqData?.map((item: any, index: number) => {
             return (

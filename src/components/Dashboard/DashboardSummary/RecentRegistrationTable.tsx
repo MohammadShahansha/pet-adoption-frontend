@@ -8,9 +8,9 @@ const RecentRegistrationTable = () => {
   const { data: userData, isLoading } = useGetAllUsersQuery({});
   const forLoading = [1, 2, 3, 4];
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Name", flex: 1, minWidth: 100 },
-    { field: "email", headerName: "Email", flex: 1, minWidth: 100 },
-    { field: "status", headerName: "Status", flex: 1, minWidth: 100 },
+    { field: "name", headerName: "Name", flex: 1, minWidth: 200 },
+    { field: "email", headerName: "Email", flex: 1, minWidth: 200 },
+    { field: "status", headerName: "Status", flex: 1, minWidth: 200 },
   ];
 
   return (
@@ -21,52 +21,56 @@ const RecentRegistrationTable = () => {
         alignItems: { xs: "stretch", md: "center" },
         px: 2,
         mx: "auto",
+        justifyContent: "space-evenly",
         gap: 4,
         width: "100%",
       }}
     >
       {/* Registration Table */}
+
       <Box
-        flexGrow={1}
         sx={{
-          width: "100%",
-          maxWidth: { md: "60%" },
+          display: "flex",
+          justifyContent: "center",
+          mx: "auto",
         }}
       >
-        {!isLoading ? (
-          <Typography sx={{ color: "black", fontWeight: 500, mb: 2 }}>
-            Recent User Registration:
-          </Typography>
-        ) : (
-          <Skeleton width="200px" height="25px" />
-        )}
         <Box
+          flexGrow={1}
           sx={{
             width: "100%",
-            height: 250,
-            overflowX: "auto", // Allow horizontal scroll on small screens
+
+            mx: "auto",
           }}
         >
           {!isLoading ? (
-            <DataGrid
-              rows={userData?.slice(0, 10) || []}
-              columns={columns}
-              hideFooter
-              // autoHeight
-              sx={{
-                "& .MuiDataGrid-columnHeaders": {
-                  display: "flex",
-                },
-                width: "100%",
-              }}
-            />
+            <Typography sx={{ color: "black", fontWeight: 500 }}>
+              Recent User Registration:
+            </Typography>
           ) : (
-            forLoading.map((item) => (
-              <Box key={item} display="flex" alignItems="center" gap={2}>
-                <Skeleton sx={{ width: "100%", height: "70px" }} />
-              </Box>
-            ))
+            <Skeleton width="200px" height="25px" />
           )}
+
+          <Box
+            sx={{
+              width: { xs: "320px", md: "100%" },
+              height: 250,
+            }}
+          >
+            {!isLoading ? (
+              <DataGrid
+                rows={userData?.slice(0, 10) || []}
+                columns={columns}
+                hideFooter
+              />
+            ) : (
+              forLoading.map((item) => (
+                <Box key={item} display="flex" alignItems="center" gap={2}>
+                  <Skeleton sx={{ width: "100%", height: "70px" }} />
+                </Box>
+              ))
+            )}
+          </Box>
         </Box>
       </Box>
 

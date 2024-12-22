@@ -181,12 +181,8 @@ const PetInformatin = () => {
   // ];
 
   return (
-    <Box>
-      <Box
-        sx={{
-          width: "100%",
-        }}
-      >
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%" }}>
         {!isLoading ? (
           <DashboardBanner
             title="Choose a Pet to Send Request"
@@ -197,35 +193,28 @@ const PetInformatin = () => {
           <BannerLoader />
         )}
       </Box>
-      {/* <Box>
-        <Box> */}
+
       {!isLoading ? (
-        // <Box
-        //   sx={
-        //     {
-        //       // width: isMobile ? "300px" : "100%",
-        //       // width: { xs: "300px", sm: "500px", md: "100%" },
-        //     }
-        //   }
-        //   style={{ width: "100%" }}
-        // >
-        //   <DataGrid
-        //     rows={rowData}
-        //     columns={columns}
-        //     hideFooter
-        //     autoHeight
-        //   />
-        // </Box>
-        <Box sx={{ height: 400, width: "100%" }}>
-          <DataGrid
-            rows={rowData}
-            columns={columns}
-            // initialState={{ pagination: { paginationModel } }}
-            // pageSizeOptions={[5, 10]}
-            // checkboxSelection
-            hideFooter
-            sx={{ border: 0 }}
-          />
+        <Box
+          sx={{
+            width: "100%",
+            height: "100%",
+            overflowX: "auto",
+            display: "flex",
+            justifyContent: "center",
+            mx: "auto",
+          }}
+        >
+          <Box
+            sx={{
+              width: { xs: "320px", md: "100%" },
+              display: "flex",
+              justifyContent: "center",
+              mx: { xs: "auto", md: "10px" },
+            }}
+          >
+            <DataGrid rows={rowData} columns={columns} hideFooter />
+          </Box>
         </Box>
       ) : (
         <Box>
@@ -250,8 +239,7 @@ const PetInformatin = () => {
           })}
         </Box>
       )}
-      {/* </Box>
-      </Box> */}
+
       {selectPet && (
         <SendRequest
           open={reqModalOpen}
