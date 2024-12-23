@@ -29,12 +29,12 @@ const UserManagement = () => {
   const columns: GridColDef[] = [
     { field: "name", headerName: "Name", flex: 1, minWidth: 150 },
     { field: "email", headerName: "Email", flex: 1, minWidth: 150 },
-    { field: "role", headerName: "Role", flex: 1, minWidth: 150 },
+    { field: "role", headerName: "Role", flex: 1, minWidth: 100 },
     {
       field: "status",
       headerName: "Status",
       flex: 1,
-      minWidth: 150,
+      minWidth: 100,
     },
     {
       field: "action",
@@ -70,7 +70,12 @@ const UserManagement = () => {
   ];
   return (
     <Box>
-      <Box>
+      <Box
+        sx={{
+          width: { xs: "100vw", md: "100%" },
+          overflowX: "hidden",
+        }}
+      >
         {!isLoading ? (
           <DashboardBanner
             title="Manage User By Updateing "
@@ -81,56 +86,62 @@ const UserManagement = () => {
           <BannerLoader />
         )}
       </Box>
-      {!isLoading ? (
-        <Box
-          sx={{
-            // width: isMobile ? "300px" : "100%",
-            width: { xs: "330px", sm: "500px", md: "100%" },
-            overflowX: "auto",
-            overflowY: "auto",
-
-            mx: "auto",
-          }}
-        >
-          <DataGrid
-            rows={userData}
-            columns={columns}
-            hideFooter
-            autoHeight
+      <Box
+        sx={{
+          mx: { xs: "auto", md: "10px" },
+        }}
+      >
+        {!isLoading ? (
+          <Box
             sx={{
-              "& .MuiDataGrid-root": {
-                borderRadius: "8px",
-                overflow: "hidden",
-              },
-              "& .MuiDataGrid-columnHeaders": {
-                backgroundColor: theme.palette.primary.light,
-              },
+              // width: isMobile ? "300px" : "100%",
+              width: { xs: "330px", sm: "500px", md: "100%" },
+              overflowX: "auto",
+              overflowY: "auto",
+
+              mx: "auto",
             }}
-          />
-        </Box>
-      ) : (
-        <Box>
-          {forLoading.map((item: number) => {
-            return (
-              <Box key={item}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "20px",
-                  }}
-                >
-                  <Skeleton sx={{ width: "300px", height: "70px" }} />
-                  <Skeleton sx={{ width: "400px", height: "70px" }} />
-                  <Skeleton sx={{ width: "300px", height: "70px" }} />
-                  <Skeleton sx={{ width: "300px", height: "70px" }} />
-                  <Skeleton sx={{ width: "100%", height: "70px" }} />
+          >
+            <DataGrid
+              rows={userData}
+              columns={columns}
+              hideFooter
+              autoHeight
+              sx={{
+                "& .MuiDataGrid-root": {
+                  borderRadius: "8px",
+                  overflow: "hidden",
+                },
+                "& .MuiDataGrid-columnHeaders": {
+                  backgroundColor: theme.palette.primary.light,
+                },
+              }}
+            />
+          </Box>
+        ) : (
+          <Box>
+            {forLoading.map((item: number) => {
+              return (
+                <Box key={item}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "20px",
+                    }}
+                  >
+                    <Skeleton sx={{ width: "300px", height: "70px" }} />
+                    <Skeleton sx={{ width: "400px", height: "70px" }} />
+                    <Skeleton sx={{ width: "300px", height: "70px" }} />
+                    <Skeleton sx={{ width: "300px", height: "70px" }} />
+                    <Skeleton sx={{ width: "100%", height: "70px" }} />
+                  </Box>
                 </Box>
-              </Box>
-            );
-          })}
-        </Box>
-      )}
+              );
+            })}
+          </Box>
+        )}
+      </Box>
       {selectUserRow && (
         <UpdateUser
           open={userModalOpen}

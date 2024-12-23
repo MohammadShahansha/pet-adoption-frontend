@@ -30,59 +30,70 @@ const CreatePost = () => {
   };
   return (
     <Box>
-      <Box>
+      <Box
+        sx={{
+          width: { xs: "100vw", md: "100%" },
+          overflowX: "hidden",
+        }}
+      >
         <DashboardBanner
           title="Create a Blog To Post "
           routeLink="/dashboard/admin/post"
           selfName="Create_Post"
         />
       </Box>
-      <PAForm onSubmit={handleLoggin}>
-        <Grid
-          container
-          spacing={1}
-          sx={{ width: { xs: "100%", md: "500px" }, mx: "auto" }}
-        >
-          <Grid item xs={12} md={12}>
-            <PAInput name="title" label="Title" fullWidth={true} />
-          </Grid>
-          <Grid item xs={12} md={12}>
-            <PAInput
-              name="image"
-              label="Image"
-              fullWidth={true}
-              sx={{ color: "black" }}
-            />
-          </Grid>
-          <Grid item xs={12} md={12}>
-            <PATextAreaInput
-              name="description"
-              aria-label="maximum height"
-              sx={{ width: "100%", color: "black" }}
-            />
-          </Grid>
-        </Grid>
-
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Button
-            sx={{
-              marginTop: "20px",
-              ":hover": {
-                backgroundColor: "#111e42",
-              },
-
-              ml: "10px",
-              width: { xs: "100%", md: "500px" },
-              display: "flex",
-              justifyContent: "center",
-            }}
-            type="submit"
+      <Box
+        sx={{
+          mx: { xs: "5px", md: "10px" },
+        }}
+      >
+        <PAForm onSubmit={handleLoggin}>
+          <Grid
+            container
+            spacing={1}
+            sx={{ width: { xs: "100%", md: "500px" }, mx: "auto" }}
           >
-            {" "}
-            Submit
-          </Button>
-        </Box>
-      </PAForm>
+            <Grid item xs={12} md={12}>
+              <PAInput name="title" label="Title" fullWidth={true} />
+            </Grid>
+            <Grid item xs={12} md={12}>
+              <PAInput
+                name="image"
+                label="Image"
+                fullWidth={true}
+                sx={{ color: "black" }}
+              />
+            </Grid>
+            <Grid item xs={12} md={12}>
+              <PATextAreaInput
+                name="description"
+                aria-label="maximum height"
+                sx={{ width: "100%", color: "black" }}
+              />
+            </Grid>
+          </Grid>
+
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Button
+              sx={{
+                marginTop: "20px",
+                ":hover": {
+                  backgroundColor: "#111e42",
+                },
+
+                ml: "10px",
+                width: { xs: "100%", md: "500px" },
+                display: "flex",
+                justifyContent: "center",
+              }}
+              type="submit"
+            >
+              {" "}
+              Submit
+            </Button>
+          </Box>
+        </PAForm>
+      </Box>
     </Box>
   );
 };

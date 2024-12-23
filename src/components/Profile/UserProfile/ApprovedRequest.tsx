@@ -29,39 +29,47 @@ const ApprovedRequest = () => {
   ];
 
   return (
-    <Box mt="10px">
-      <Box
-        sx={{
-          my: "20px",
-          fontSize: "20px",
-          fontWeight: 600,
-          color: "secondary.main",
-          textAlign: "center",
-        }}
-      >
-        My Pets:
-      </Box>
-      <Box
-        sx={{
-          width: "100%",
-          height: "100%",
-          overflowX: "auto",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
+    <Box
+      mt="10px"
+      sx={{
+        display: "flex",
+        justifyContent: { xs: "center", md: "start" },
+      }}
+    >
+      <Box>
         <Box
           sx={{
-            width: { xs: "320px", md: "600px" },
-            height: "auto",
+            mb: "10px",
+            fontSize: "20px",
+            fontWeight: 600,
+            color: "primary.main",
+            // textAlign: "center",
           }}
         >
-          <DataGrid
-            rows={approvedPets}
-            columns={columns}
-            hideFooter
-            autoHeight // Adjusts height automatically
-          />
+          My Pets:
+        </Box>
+        <Box
+          sx={{
+            width: "100%",
+            height: "100%",
+            overflowX: "auto",
+            display: "flex",
+            // justifyContent: "center",
+          }}
+        >
+          <Box
+            sx={{
+              width: { xs: "320px", md: "100%" },
+              height: "auto",
+            }}
+          >
+            <DataGrid
+              rows={approvedPets}
+              columns={columns}
+              hideFooter
+              autoHeight // Adjusts height automatically
+            />
+          </Box>
         </Box>
       </Box>
     </Box>

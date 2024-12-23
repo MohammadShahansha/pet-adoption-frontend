@@ -31,8 +31,12 @@ const SendRequest = ({ open, setOpen, id }: TProps) => {
   return (
     <PASmallModal open={open} setOpen={setOpen} title="Send a Request">
       <PAForm onSubmit={handleSendRequest}>
-        <Grid container spacing={3}>
-          <Grid item sm={12} md={12}>
+        <Grid
+          container
+          spacing={4}
+          sx={{ width: { xs: "300px", md: "500px" } }}
+        >
+          <Grid item sm={12} md={12} sx={{ width: "100%" }}>
             <PAInput
               name="petOwnershipExperience"
               label="Pet Ownership Experience"

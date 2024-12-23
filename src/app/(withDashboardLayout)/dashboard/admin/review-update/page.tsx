@@ -31,7 +31,12 @@ const UpdateReview = () => {
   return (
     <Box>
       <Box>
-        <Box>
+        <Box
+          sx={{
+            width: { xs: "100vw", md: "100%" },
+            overflowX: "hidden",
+          }}
+        >
           {!isLoading ? (
             <DashboardBanner
               title="Update User Review To Display Home"
@@ -42,143 +47,153 @@ const UpdateReview = () => {
             <BannerLoader />
           )}
         </Box>
-        <Grid container spacing={2}>
-          {!isLoading ? (
-            reviewData?.map((review: any, index: number) => {
-              return (
-                <Grid item sm={12} md={6} key={index}>
-                  <Box
-                    sx={{
-                      backgroundColor: "#e5e7eb",
-                      py: "30px",
-                      px: "20px",
-                      borderRadius: "30px",
-                      border: "0 solid #e5e7eb",
-                      boxShadow: " 0px, 4px, 6px, rgba(0, 0, 0, 0.1)",
-                      mb: "2px",
-                    }}
-                  >
+        <Box
+          sx={{
+            mx: { xs: "5px", md: "10px" },
+          }}
+        >
+          <Grid container spacing={2}>
+            {!isLoading ? (
+              reviewData?.map((review: any, index: number) => {
+                return (
+                  <Grid item sm={12} md={6} key={index}>
                     <Box
                       sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        mb: "10px",
-                      }}
-                    >
-                      <Image src={iconImg} alt="icons" />
-                    </Box>
-                    <Typography>{review?.reviewDescription}</Typography>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
+                        backgroundColor: "#e5e7eb",
+                        py: "30px",
+                        px: "20px",
+                        borderRadius: "30px",
+                        border: "0 solid #e5e7eb",
+                        boxShadow: " 0px, 4px, 6px, rgba(0, 0, 0, 0.1)",
+                        mb: "2px",
                       }}
                     >
                       <Box
                         sx={{
                           display: "flex",
-                          gap: "20px",
-                          alignItems: "center",
-                          mt: "20px",
+                          justifyContent: "center",
+                          mb: "10px",
                         }}
                       >
-                        <Avatar
-                          alt="Customar"
-                          src={review?.user?.photo}
-                          sx={{ width: 40, height: 40 }}
-                        />
-                        <Box>
-                          <Typography component="h6" fontWeight={500}>
-                            {review?.user?.name}
-                          </Typography>
-                          <Typography component="h6" fontWeight={500}>
-                            {review?.user?.email}
-                          </Typography>
-                        </Box>
+                        <Image src={iconImg} alt="icons" />
                       </Box>
+                      <Typography>{review?.reviewDescription}</Typography>
                       <Box
                         sx={{
                           display: "flex",
-                          justifyContent: "end",
-                          mt: "30px",
+                          justifyContent: "space-between",
+                          alignItems: "center",
                         }}
                       >
-                        <Button
-                          onClick={() => handleUpdateStatus(review)}
+                        <Box
                           sx={{
-                            ":hover": {
-                              backgroundColor: "secondary.main",
-                            },
+                            display: "flex",
+                            gap: "20px",
+                            alignItems: "center",
+                            mt: "20px",
                           }}
                         >
-                          Update Status
-                        </Button>
-                        {selectReviewdata && (
-                          <UpdateReviewStatus
-                            open={reviewUpdatModalOpen}
-                            setOpen={setReviewUpdatModalOpen}
-                            defaultValue={selectReviewdata}
-                            id={review?.id}
-                          />
-                        )}
-                      </Box>
-                    </Box>
-                  </Box>
-                </Grid>
-              );
-            })
-          ) : (
-            <Grid container spacing={2} mt={4}>
-              {forLoading.map((item: number) => {
-                return (
-                  <Grid item key={item} sm={12} md={6}>
-                    <Box
-                      sx={{
-                        backgroundColor: "#FBF8F8",
-                        padding: "30px",
-                        borderRadius: "30px",
-                      }}
-                    >
-                      <Skeleton
-                        animation="wave"
-                        sx={{ width: "100%", height: "35px" }}
-                      />
-                      <Skeleton
-                        animation="wave"
-                        sx={{ width: "100%", height: "35px" }}
-                      />
-                      <Skeleton
-                        animation="wave"
-                        sx={{ width: "100%", height: "35px" }}
-                      />
-                      <Skeleton
-                        animation="wave"
-                        sx={{ width: "50%", height: "35px" }}
-                      />
-                      <Box sx={{ display: "flex", gap: "30px", mt: "40px" }}>
-                        <Box sx={{ display: "flex", gap: "30px" }}>
-                          <Skeleton
-                            sx={{
-                              width: "50px",
-                              height: "70px",
-                              borderRadius: "50%",
-                            }}
+                          <Avatar
+                            alt="Customar"
+                            src={review?.user?.photo}
+                            sx={{ width: 40, height: 40 }}
                           />
                           <Box>
-                            <Skeleton sx={{ width: "200px", height: "30px" }} />
-                            <Skeleton sx={{ width: "200px", height: "30px" }} />
+                            <Typography component="h6" fontWeight={500}>
+                              {review?.user?.name}
+                            </Typography>
+                            <Typography component="h6" fontWeight={500}>
+                              {review?.user?.email}
+                            </Typography>
                           </Box>
                         </Box>
-                        <Skeleton sx={{ width: "180px", height: "60px" }} />
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "end",
+                            mt: "30px",
+                          }}
+                        >
+                          <Button
+                            onClick={() => handleUpdateStatus(review)}
+                            sx={{
+                              ":hover": {
+                                backgroundColor: "secondary.main",
+                              },
+                            }}
+                          >
+                            Update Status
+                          </Button>
+                          {selectReviewdata && (
+                            <UpdateReviewStatus
+                              open={reviewUpdatModalOpen}
+                              setOpen={setReviewUpdatModalOpen}
+                              defaultValue={selectReviewdata}
+                              id={review?.id}
+                            />
+                          )}
+                        </Box>
                       </Box>
                     </Box>
                   </Grid>
                 );
-              })}
-            </Grid>
-          )}
-        </Grid>
+              })
+            ) : (
+              <Grid container spacing={2} mt={4}>
+                {forLoading.map((item: number) => {
+                  return (
+                    <Grid item key={item} sm={12} md={6}>
+                      <Box
+                        sx={{
+                          backgroundColor: "#FBF8F8",
+                          padding: "30px",
+                          borderRadius: "30px",
+                        }}
+                      >
+                        <Skeleton
+                          animation="wave"
+                          sx={{ width: "100%", height: "35px" }}
+                        />
+                        <Skeleton
+                          animation="wave"
+                          sx={{ width: "100%", height: "35px" }}
+                        />
+                        <Skeleton
+                          animation="wave"
+                          sx={{ width: "100%", height: "35px" }}
+                        />
+                        <Skeleton
+                          animation="wave"
+                          sx={{ width: "50%", height: "35px" }}
+                        />
+                        <Box sx={{ display: "flex", gap: "30px", mt: "40px" }}>
+                          <Box sx={{ display: "flex", gap: "30px" }}>
+                            <Skeleton
+                              sx={{
+                                width: "50px",
+                                height: "70px",
+                                borderRadius: "50%",
+                              }}
+                            />
+                            <Box>
+                              <Skeleton
+                                sx={{ width: "200px", height: "30px" }}
+                              />
+                              <Skeleton
+                                sx={{ width: "200px", height: "30px" }}
+                              />
+                            </Box>
+                          </Box>
+                          <Skeleton sx={{ width: "180px", height: "60px" }} />
+                        </Box>
+                      </Box>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            )}
+          </Grid>
+        </Box>
       </Box>
     </Box>
   );

@@ -75,6 +75,9 @@ function NavbarPage() {
       setIsFirstRender(false);
     }
   }, [isFirstRender]);
+
+  // const currentPath =
+  //   typeof window !== "undefined" ? window.location.pathname : "";
   return (
     <Box
       sx={{
@@ -121,13 +124,7 @@ function NavbarPage() {
                   <Typography variant="h5" fontWeight={600} color="black">
                     Petsmart
                   </Typography>
-                  <Box
-                  // width={40}
-                  // height={40}
-                  // sx={{
-                  //   borderRadius: "50%",
-                  // }}
-                  >
+                  <Box>
                     <Image src={logo} alt="logo" width={50} height={50} />
                   </Box>
                 </Stack>
@@ -190,6 +187,10 @@ function NavbarPage() {
                             ":hover": {
                               color: "primary.main",
                             },
+                            // color:
+                            //   currentPath === item.href
+                            //     ? "primary.main"
+                            //     : "",
                           }}
                         >
                           {item.label}
@@ -274,6 +275,8 @@ function NavbarPage() {
                           ":hover": {
                             color: "primary.main",
                           },
+                          // color:
+                          //   currentPath === item.href ? "primary.main" : "",
                         }}
                       >
                         {item.label}
@@ -301,40 +304,6 @@ function NavbarPage() {
                   </Box>
                 </Box>
               </Stack>
-              {/* {userInfo && (
-              <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/2.jpg"
-                    />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: "45px" }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </Box>
-            )} */}
             </Toolbar>
           </Container>
         </AppBar>

@@ -60,7 +60,7 @@ const SeeDetails = ({ params }: any) => {
               fontSize: { xs: "25px", md: "30px" },
             }}
           >
-            See Details and Adopt Pet
+            See Details to Update if Need
           </Typography>
           <Box
             sx={{
@@ -71,7 +71,7 @@ const SeeDetails = ({ params }: any) => {
           >
             <Typography
               component={Link}
-              href="/dashboard/user/pet-information"
+              href="/dashboard/admin/pet-management"
               fontWeight={500}
               sx={{
                 ":hover": {
@@ -86,6 +86,8 @@ const SeeDetails = ({ params }: any) => {
               <KeyboardArrowRightIcon />
             </Typography>
             <Typography
+              // component={Link}
+              // href="#"
               fontWeight={500}
               sx={{
                 ":hover": {
@@ -395,34 +397,6 @@ const SeeDetails = ({ params }: any) => {
                         </Typography>
                       </Box>
                     </Box>
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      mt: "40px",
-                    }}
-                  >
-                    <Button
-                      onClick={() => handleSendRequest(data?.id)}
-                      sx={{
-                        backgroundColor: "primary.main",
-                        ":hover": {
-                          backgroundColor: "secondary.main",
-                        },
-                        mr: "20px",
-                      }}
-                    >
-                      Adopt Pet
-                    </Button>
-
-                    {selectPetId && (
-                      <SendRequest
-                        open={reqModalOpen}
-                        setOpen={setReqModalOpen}
-                        id={selectPetId}
-                      />
-                    )}
                   </Box>
                 </Box>
               </Grid>

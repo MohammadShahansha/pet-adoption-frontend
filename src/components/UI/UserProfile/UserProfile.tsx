@@ -1,6 +1,15 @@
 "use client";
+
 import { useGetMeQuery } from "@/redux/api/allApi/usersApi";
-import { Box, Button, Skeleton, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Skeleton,
+  Stack,
+  Typography,
+  Card,
+  CardContent,
+} from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 import UserUpdateModal from "./Components/UserUpdateModal";
@@ -8,15 +17,16 @@ import PasswordChangeModal from "./Components/PasswordChangeModal";
 import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
 import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
 import ApprovedRequest from "@/components/Profile/UserProfile/ApprovedRequest";
+
 const UserProfile = () => {
   const { data: myData, isLoading } = useGetMeQuery({});
+  console.log(myData);
 
   const [userModalOpen, setUserModalOpen] = useState(false);
-  const [selectedUser, setSelectedUser] = useState<any>(null);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   const [changePasswordModalOpen, setChangePasswordModalOpen] = useState(false);
-  const [selectForPass, setSellectForPass] = useState<any>(null);
-  console.log("myData:", myData);
+  const [selectForPass, setSellectForPass] = useState(null);
 
   const handleUpdateProfile = (userData: any) => {
     setSelectedUser(userData);
@@ -27,12 +37,10 @@ const UserProfile = () => {
     setSellectForPass(userData);
     setChangePasswordModalOpen(true);
   };
+
   return (
-    <Box
-      sx={{
-        mx: { xs: "5px", md: "10px" },
-      }}
-    >
+    <Box sx={{ mx: { xs: "5px", md: "10px" } }}>
+      {/* Banner Section */}
       <Box>
         {!isLoading ? (
           <DashboardBanner
@@ -44,52 +52,67 @@ const UserProfile = () => {
           <BannerLoader />
         )}
       </Box>
+
+      {/* Main Profile Section */}
       {!isLoading ? (
-        <Box
-          sx={{
-            display: { xs: "col", md: "flex" },
-            gap: "100px",
-          }}
-        >
-          <Box>
-            <Image src={myData?.photo} alt="profile" width={400} height={400} />
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "30px" }}>
+          {/* Profile Card */}
+
+          <Card
+            sx={{
+              display: { xs: "col", md: "flex" },
+              flexDirection: "row",
+              alignItems: "center",
+              p: "20px",
+              boxShadow: 3,
+            }}
+          >
             <Box
               sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "start",
-                alignItems: "center",
-                gap: "20px",
-                mt: "20px",
+                position: "relative",
+                backgroundColor: "#e0f7fa", // Soft teal background
+                borderRadius: "50%",
+                overflow: "hidden",
+                width: "150px",
+                height: "150px",
               }}
             >
-              <Box>
+              <Image
+                src={myData?.photo}
+                alt="profile"
+                width={500}
+                height={500}
+                style={{ objectFit: "cover" }}
+              />
+            </Box>
+
+            <CardContent sx={{ ml: "20px", flex: 1 }}>
+              <Typography variant="h5" fontWeight={600} color="primary.main">
+                {myData?.name || "User Name"}
+              </Typography>
+              <Typography variant="body1" color="text.secondary" sx={{ mt: 1 }}>
+                Email: {myData?.email || "user@example.com"}
+              </Typography>
+
+              <Box sx={{ display: "flex", gap: "10px", mt: "20px" }}>
                 <Button
+                  variant="contained"
+                  color="primary"
                   onClick={() => handleChangePassword(myData)}
-                  sx={{
-                    ":hover": {
-                      backgroundColor: "secondary.main",
-                    },
-                  }}
                 >
                   Change Password
                 </Button>
-
                 {selectForPass && (
                   <PasswordChangeModal
                     open={changePasswordModalOpen}
                     setOpen={setChangePasswordModalOpen}
                   />
                 )}
-              </Box>
-              <Box>
+
                 <Button
+                  variant="contained"
+                  color="secondary"
                   onClick={() => handleUpdateProfile(myData)}
-                  sx={{
-                    ":hover": {
-                      backgroundColor: "secondary.main",
-                    },
-                  }}
                 >
                   Update Profile
                 </Button>
@@ -101,101 +124,39 @@ const UserProfile = () => {
                   />
                 )}
               </Box>
-            </Box>
-          </Box>
-          <Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-              }}
-            >
-              <Typography
-                sx={{
-                  color: "primary.main",
-                }}
-                fontWeight={600}
-                fontSize="25px"
-              >
-                Name:
-              </Typography>
-              <Typography
-                sx={{
-                  color: "secondary.main",
-                }}
-                fontWeight={400}
-                fontSize="25px"
-              >
-                {" "}
-                {myData?.name}
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-              }}
-            >
-              <Typography
-                sx={{
-                  color: "primary.main",
-                }}
-                fontWeight={600}
-                fontSize="25px"
-              >
-                Email:
-              </Typography>
-              <Typography
-                sx={{
-                  color: "secondary.main",
-                }}
-                fontWeight={400}
-                fontSize="25px"
-              >
-                {" "}
-                {myData?.email}
-              </Typography>
-            </Box>
-            <Box sx={{}}>
+            </CardContent>
+          </Card>
+
+          {/* Approved Requests Section */}
+          {myData?.role === "USER" ? (
+            <Box>
               <ApprovedRequest />
             </Box>
-          </Box>
+          ) : (
+            ""
+          )}
         </Box>
       ) : (
+        /* Skeleton Loader */
         <Box>
-          <Box sx={{ display: "flex", gap: "100px" }}>
-            <Skeleton width={400} height={400} sx={{ mt: "-80px" }} />
+          <Box sx={{ display: "flex", gap: "20px", alignItems: "center" }}>
+            <Skeleton variant="circular" width={150} height={150} />
             <Box>
-              <Skeleton width="250px" height="40px" />
-              <Skeleton width="250px" height="40px" />
+              <Skeleton width="200px" height="40px" />
+              <Skeleton width="300px" height="20px" sx={{ mt: "10px" }} />
             </Box>
           </Box>
+
           <Box
             sx={{
               display: "flex",
-              gap: "30px",
+              gap: "20px",
+              mt: "20px",
               alignItems: "center",
-              mt: "-80px",
             }}
           >
-            <Skeleton
-              sx={{
-                width: "180px",
-                height: "70px",
-                borderRadius: "5px",
-                my: "10px",
-              }}
-            />
-            <Skeleton
-              sx={{
-                width: "180px",
-                height: "70px",
-                borderRadius: "5px",
-                my: "10px",
-              }}
-            />
+            <Skeleton width="120px" height="50px" />
+            <Skeleton width="120px" height="50px" />
           </Box>
         </Box>
       )}

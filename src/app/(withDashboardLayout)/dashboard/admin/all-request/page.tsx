@@ -138,7 +138,12 @@ const AllRequest = () => {
 
   return (
     <Box>
-      <Box>
+      <Box
+        sx={{
+          width: { xs: "100vw", md: "100%" },
+          overflowX: "hidden",
+        }}
+      >
         {!isLoading ? (
           <DashboardBanner
             title="Manage Adoption Request By Updateing & Deleting"
@@ -149,7 +154,11 @@ const AllRequest = () => {
           <BannerLoader />
         )}
       </Box>
-      <Box mt={2}>
+      <Box
+        sx={{
+          mx: { xs: "auto", md: "10px" },
+        }}
+      >
         {!isLoading ? (
           <Box
             sx={{

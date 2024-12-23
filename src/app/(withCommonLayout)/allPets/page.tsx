@@ -24,6 +24,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import FilterBySize from "@/components/UI/HomePage/PetsShow/FilterBySize";
 import FilterByGender from "@/components/UI/HomePage/PetsShow/FilterByGender";
 import PetDetailsModal from "@/components/UI/HomePage/PetsShow/PetDetailsModal";
+import Link from "next/link";
 
 const PetsShow = () => {
   const theme = useTheme();
@@ -269,7 +270,7 @@ const PetsShow = () => {
                           }}
                         >
                           <Box>
-                            <Button
+                            {/* <Button
                               size="small"
                               onClick={() => handleModalOpen(pet)}
                               sx={{
@@ -279,7 +280,20 @@ const PetsShow = () => {
                               }}
                             >
                               See Details
-                            </Button>
+                            </Button> */}
+                            <Link href={`/seeDetails/${pet?.id}`}>
+                              <Button
+                                size="small"
+                                // onClick={() => handleModalOpen(pet)}
+                                sx={{
+                                  ":hover": {
+                                    backgroundColor: "secondary.main",
+                                  },
+                                }}
+                              >
+                                See Details
+                              </Button>
+                            </Link>
                             {petSelected && (
                               <PetDetailsModal
                                 open={modalOpen}

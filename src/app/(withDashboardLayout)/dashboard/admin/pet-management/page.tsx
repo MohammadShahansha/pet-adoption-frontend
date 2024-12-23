@@ -22,6 +22,7 @@ import UpdatePets from "./components/UpdatePets";
 import DetailsPet from "./components/DetailsPet";
 import DashboardBanner from "@/components/Shared/DashboardBanner/DashboardBanner";
 import BannerLoader from "@/components/Shared/DashboardBanner/BannerLoader";
+import Link from "next/link";
 
 const PetManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -143,7 +144,7 @@ const PetManagement = () => {
                 />
               </IconButton>
 
-              <Button
+              {/* <Button
                 onClick={() => handleDetailsRow(row)}
                 sx={{
                   ":hover": {
@@ -152,7 +153,18 @@ const PetManagement = () => {
                 }}
               >
                 See Detail
-              </Button>
+              </Button> */}
+              <Link href={`/dashboard/admin/seeDetails/${row?.id}`}>
+                <Button
+                  sx={{
+                    ":hover": {
+                      backgroundColor: "secondary.main",
+                    },
+                  }}
+                >
+                  See Details
+                </Button>
+              </Link>
             </Box>
           </Box>
         );
@@ -162,7 +174,12 @@ const PetManagement = () => {
 
   return (
     <Box>
-      <Box>
+      <Box
+        sx={{
+          width: { xs: "100vw", md: "100%" },
+          overflowX: "hidden",
+        }}
+      >
         {!isLoading ? (
           <Box>
             <DashboardBanner
@@ -174,6 +191,9 @@ const PetManagement = () => {
               direction="row"
               justifyContent="space-between"
               alignItems="center"
+              sx={{
+                mx: { xs: "5px", md: "10px" },
+              }}
             >
               <Button
                 onClick={() => setIsModalOpen(true)}
@@ -199,7 +219,12 @@ const PetManagement = () => {
         )}
       </Box>
 
-      <Box mt={2}>
+      <Box
+        sx={{
+          mx: { xs: "auto", md: "10px" },
+          mt: "20px",
+        }}
+      >
         {!isLoading ? (
           <Box
             sx={{
