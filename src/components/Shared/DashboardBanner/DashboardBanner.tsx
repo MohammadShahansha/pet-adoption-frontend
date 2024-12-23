@@ -10,7 +10,14 @@ export type TBanner = {
 
 const DashboardBanner = ({ title, routeLink, selfName }: TBanner) => {
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box
+      sx={{
+        // maxWidth: "100vw",
+        // backgroundColor: "#f3f8f4",
+        // overflowX: "hidden",
+        width: "100%",
+      }}
+    >
       <Box
         sx={{
           width: "100%",

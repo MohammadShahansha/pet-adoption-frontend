@@ -12,14 +12,24 @@ const ReviewPage = () => {
   };
   return (
     <Box>
-      <Box>
+      <Box
+        sx={{
+          width: { xs: "100vw", md: "100%" },
+          overflowX: "hidden",
+        }}
+      >
         <DashboardBanner
           title="Please!! Send a Review About Us"
           routeLink="/dashboard/user/send-review"
           selfName="Send_Review"
         />
       </Box>
-      <Stack direction="row" justifyContent="space-between" alignItems="center">
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        sx={{ mx: { xs: "5px", md: "10px" } }}
+      >
         <Button
           onClick={() => setReviewModalOpen(true)}
           sx={{ ":hover": { backgroundColor: "secondary.main" } }}

@@ -10,10 +10,10 @@
   box-sizing: border-box;
   font-family: "Roboto Condensed", sans-serif;
 }
-
-/* body {
-  width: 100vw;
-  min-height: 100vh;
+/* 
+html body {
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
-  background: #111;
+  width: 100%;
 } */

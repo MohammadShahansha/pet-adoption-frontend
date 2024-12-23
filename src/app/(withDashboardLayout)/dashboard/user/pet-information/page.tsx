@@ -182,7 +182,12 @@ const PetInformatin = () => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Box sx={{ width: "100%" }}>
+      <Box
+        sx={{
+          width: { xs: "100vw", md: "100%" },
+          overflowX: "hidden",
+        }}
+      >
         {!isLoading ? (
           <DashboardBanner
             title="Choose a Pet to Send Request"
