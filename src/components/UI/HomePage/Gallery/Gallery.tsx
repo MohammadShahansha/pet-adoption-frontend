@@ -17,7 +17,7 @@ export default function Gallery() {
       sx={{
         // backgroundColor: "#e5e7eb",
         width: "100%",
-        py: { xs: "30px", md: "50px" },
+        py: { xs: "5px", md: "10px" },
       }}
     >
       <Typography
@@ -36,7 +36,7 @@ export default function Gallery() {
       </Typography>
       <Box
         sx={{
-          width: { xs: "100%", md: "60%" },
+          width: { xs: "100%", md: "50%" },
           height: 450,
           overflowY: "scroll",
           mx: "auto",
