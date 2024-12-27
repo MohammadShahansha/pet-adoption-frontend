@@ -11,6 +11,7 @@ import { userRegister } from "@/serviece/Actions/UserRegister";
 import { toast } from "sonner";
 import { userLogin } from "@/serviece/Actions/UserLogin";
 import { storeUserInfo } from "@/serviece/authService";
+import bgImage from "@/assets/images/loginImg.png";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -37,7 +38,29 @@ const RegisterPage = () => {
     }
   };
   return (
-    <Container>
+    <Box
+      sx={{
+        position: "relative",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        overflow: "hidden",
+        "::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage: `url(${bgImage.src})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          zIndex: -1,
+          filter: "blur(10px)",
+        },
+      }}
+    >
       <Stack
         sx={{
           height: "100vh",
@@ -79,10 +102,10 @@ const RegisterPage = () => {
           <Box mt={3}>
             <PAForm onSubmit={handleRegister}>
               <Grid container spacing={3}>
-                <Grid item md={12}>
+                <Grid item md={12} sx={{ width: "100%" }}>
                   <PAInput label="Name" fullWidth={true} name="name" />
                 </Grid>
-                <Grid item md={6}>
+                <Grid item md={12} sx={{ width: "100%" }}>
                   <PAInput
                     label="Email"
                     type="email"
@@ -90,7 +113,7 @@ const RegisterPage = () => {
                     name="email"
                   />
                 </Grid>
-                <Grid item md={6}>
+                <Grid item md={12} sx={{ width: "100%" }}>
                   <PAInput
                     label="Password"
                     type="password"
@@ -99,9 +122,9 @@ const RegisterPage = () => {
                   />
                 </Grid>
 
-                <Grid item md={12}>
+                {/* <Grid item md={12}>
                   <PAInput label="Photo_URL" fullWidth={true} name="photo" />
-                </Grid>
+                </Grid> */}
                 {/* <Grid item md={6}>
                   <PAInput
                     label="role"
@@ -140,7 +163,7 @@ const RegisterPage = () => {
           </Box>
         </Box>
       </Stack>
-    </Container>
+    </Box>
   );
 };
 

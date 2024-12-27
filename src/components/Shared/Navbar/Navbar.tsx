@@ -257,9 +257,10 @@ function NavbarPage() {
                 <Box
                   sx={{
                     display: { xs: "none", md: "flex" },
-                    justifyContent: "center",
+                    justifyContent: "space-between",
                     alignItems: "center",
                     gap: "20px",
+                    width: "100%",
                   }}
                 >
                   <Stack direction="row" justifyContent="space-between" gap={4}>
