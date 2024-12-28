@@ -99,83 +99,187 @@ function NavbarPage() {
           }}
         >
           <Container>
-            <Toolbar disableGutters>
-              <Typography
-                variant="h6"
-                noWrap
-                component={Link}
-                href="/"
+            <Toolbar
+              disableGutters
+              // sx={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <Box
                 sx={{
-                  mr: 2,
-                  display: { xs: "none", md: "flex" },
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  letterSpacing: ".3rem",
-                  color: "inherit",
-                  textDecoration: "none",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  width: "100%",
                 }}
               >
-                <Stack
-                  direction="row"
-                  alignItems="center"
+                <Box
+                  // variant="h6"
+                  // noWrap
                   component={Link}
                   href="/"
+                  sx={{
+                    mr: 2,
+                    display: { xs: "none", md: "flex" },
+                    fontFamily: "monospace",
+                    fontWeight: 700,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none",
+                    width: "100%",
+                  }}
                 >
-                  <Typography variant="h5" fontWeight={600} color="black">
-                    Petsmart
-                  </Typography>
-                  <Box>
-                    <Image src={logo} alt="logo" width={50} height={50} />
-                  </Box>
-                </Stack>
-              </Typography>
-              <Stack
-                py={1}
-                direction="row"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                width="100%"
-              >
-                <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-                  <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    onClick={handleOpenNavMenu}
-                    color="inherit"
+                  <Box
+                    // direction="row"
+                    // alignItems="center"
+                    display="flex"
+                    alignItems="center"
+                    component={Link}
+                    href="/"
                   >
-                    <MenuIcon
-                      sx={{
-                        color: "black",
+                    <Typography variant="h5" fontWeight={600} color="black">
+                      Petsmart
+                    </Typography>
+                    <Box>
+                      <Image src={logo} alt="logo" width={50} height={50} />
+                    </Box>
+                  </Box>
+                </Box>
+                <Box
+                  py={1}
+                  // direction="row"
+                  display="flex"
+                  // justifyContent="center"
+                  alignItems="center"
+                  width="100%"
+                >
+                  <Box
+                    sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+                  >
+                    <IconButton
+                      size="large"
+                      aria-label="account of current user"
+                      aria-controls="menu-appbar"
+                      aria-haspopup="true"
+                      onClick={handleOpenNavMenu}
+                      color="inherit"
+                    >
+                      <MenuIcon
+                        sx={{
+                          color: "black",
+                        }}
+                      />
+                    </IconButton>
+                    <Menu
+                      id="menu-appbar"
+                      anchorEl={anchorElNav}
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "left",
                       }}
-                    />
-                  </IconButton>
-                  <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorElNav}
-                    anchorOrigin={{
-                      vertical: "bottom",
-                      horizontal: "left",
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: "top",
-                      horizontal: "left",
-                    }}
-                    open={Boolean(anchorElNav)}
-                    onClose={handleCloseNavMenu}
+                      keepMounted
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "left",
+                      }}
+                      open={Boolean(anchorElNav)}
+                      onClose={handleCloseNavMenu}
+                      sx={{
+                        display: { xs: "block", md: "none" },
+                      }}
+                    >
+                      <Stack
+                        direction="column"
+                        // justifyContent="space-between"
+                        gap={2}
+                        px={5}
+                      >
+                        {navBarRoute.map((item) => (
+                          <Typography
+                            key={item.href}
+                            component={Link}
+                            href={item.href}
+                            sx={{
+                              fontWeight: "500",
+                              fontSize: "18px",
+                              ":hover": {
+                                color: "primary.main",
+                              },
+                              // color:
+                              //   currentPath === item.href
+                              //     ? "primary.main"
+                              //     : "",
+                            }}
+                          >
+                            {item.label}
+                          </Typography>
+                        ))}
+                        {userInfo && (
+                          <Typography
+                            component={Link}
+                            href={`/dashboard/${userInfo?.role}`}
+                            sx={{
+                              fontWeight: "500",
+                              fontSize: "18px",
+
+                              ":hover": {
+                                color: "primary.main",
+                              },
+                            }}
+                          >
+                            Dashboard
+                          </Typography>
+                        )}
+                      </Stack>
+                      <Box px={5} mt={3}>
+                        <AuthButton />
+                      </Box>
+                    </Menu>
+                  </Box>
+                  <Typography
+                    variant="h5"
+                    noWrap
+                    component={Link}
+                    href="/"
                     sx={{
-                      display: { xs: "block", md: "none" },
+                      mr: 2,
+                      display: { xs: "flex", md: "none" },
+                      flexGrow: 1,
+                      fontFamily: "monospace",
+                      fontWeight: 700,
+                      letterSpacing: ".3rem",
+                      color: "inherit",
+                      textDecoration: "none",
                     }}
                   >
                     <Stack
-                      direction="column"
-                      // justifyContent="space-between"
-                      gap={2}
-                      px={5}
+                      direction="row"
+                      alignItems="center"
+                      component={Link}
+                      href="/"
                     >
+                      <Typography variant="h5" fontWeight={600} color="black">
+                        Petsmart
+                      </Typography>
+                      <Box
+                        width={40}
+                        height={40}
+                        sx={{
+                          borderRadius: "50%",
+                        }}
+                      >
+                        <Image src={logo} alt="logo" width={40} height={40} />
+                      </Box>
+                    </Stack>
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: { xs: "none", md: "flex" },
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      gap: "20px",
+                      width: "100%",
+                    }}
+                  >
+                    <Box>
                       {navBarRoute.map((item) => (
                         <Typography
                           key={item.href}
@@ -184,13 +288,12 @@ function NavbarPage() {
                           sx={{
                             fontWeight: "500",
                             fontSize: "18px",
+
                             ":hover": {
                               color: "primary.main",
                             },
                             // color:
-                            //   currentPath === item.href
-                            //     ? "primary.main"
-                            //     : "",
+                            //   currentPath === item.href ? "primary.main" : "",
                           }}
                         >
                           {item.label}
@@ -212,99 +315,16 @@ function NavbarPage() {
                           Dashboard
                         </Typography>
                       )}
-                    </Stack>
-                    <Box px={5} mt={3}>
-                      <AuthButton />
                     </Box>
-                  </Menu>
-                </Box>
-                <Typography
-                  variant="h5"
-                  noWrap
-                  component={Link}
-                  href="/"
-                  sx={{
-                    mr: 2,
-                    display: { xs: "flex", md: "none" },
-                    flexGrow: 1,
-                    fontFamily: "monospace",
-                    fontWeight: 700,
-                    letterSpacing: ".3rem",
-                    color: "inherit",
-                    textDecoration: "none",
-                  }}
-                >
-                  <Stack
-                    direction="row"
-                    alignItems="center"
-                    component={Link}
-                    href="/"
-                  >
-                    <Typography variant="h5" fontWeight={600} color="black">
-                      Petsmart
-                    </Typography>
-                    <Box
-                      width={40}
-                      height={40}
-                      sx={{
-                        borderRadius: "50%",
-                      }}
-                    >
-                      <Image src={logo} alt="logo" width={40} height={40} />
-                    </Box>
-                  </Stack>
-                </Typography>
-                <Box
-                  sx={{
-                    display: { xs: "none", md: "flex" },
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    gap: "20px",
-                    width: "100%",
-                  }}
-                >
-                  <Stack direction="row" justifyContent="space-between" gap={4}>
-                    {navBarRoute.map((item) => (
-                      <Typography
-                        key={item.href}
-                        component={Link}
-                        href={item.href}
-                        sx={{
-                          fontWeight: "500",
-                          fontSize: "18px",
-
-                          ":hover": {
-                            color: "primary.main",
-                          },
-                          // color:
-                          //   currentPath === item.href ? "primary.main" : "",
-                        }}
-                      >
-                        {item.label}
-                      </Typography>
-                    ))}
-                    {userInfo && (
-                      <Typography
-                        component={Link}
-                        href={`/dashboard/${userInfo?.role}`}
-                        sx={{
-                          fontWeight: "500",
-                          fontSize: "18px",
-
-                          ":hover": {
-                            color: "primary.main",
-                          },
-                        }}
-                      >
-                        Dashboard
-                      </Typography>
-                    )}
-                  </Stack>
-                  <Box>
+                    {/* <Box>
                     <AuthButton />
+                  </Box> */}
                   </Box>
                 </Box>
-              </Stack>
+                <Box>
+                  <AuthButton />
+                </Box>
+              </Box>
             </Toolbar>
           </Container>
         </AppBar>

@@ -1,14 +1,5 @@
 "use client";
-import {
-  Avatar,
-  Box,
-  Button,
-  CircularProgress,
-  Container,
-  Grid,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import logo from "@/assets/logo/logo.png";
 import Image from "next/image";
 import { useState } from "react";
@@ -20,6 +11,7 @@ import { userLogin } from "@/serviece/Actions/UserLogin";
 import { toast } from "sonner";
 import { storeUserInfo } from "@/serviece/authService";
 import { useRouter } from "next/navigation";
+import bgImage from "@/assets/images/loginImg.png";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -43,7 +35,29 @@ const LoginPage = () => {
     }
   };
   return (
-    <Container>
+    <Box
+      sx={{
+        position: "relative",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        overflow: "hidden",
+        "::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage: `url(${bgImage.src})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          zIndex: -1,
+          filter: "blur(10px)",
+        },
+      }}
+    >
       <Stack
         sx={{
           height: "100vh",
@@ -78,18 +92,18 @@ const LoginPage = () => {
           <Stack sx={{ mx: "auto" }}>
             <Box sx={{ mx: "auto" }}>
               <Typography component="p" fontWeight={500} color="black">
-                Admin gmial: yeasin@gmail.com
+                Admin Gmail: yeasin@gmail.com
               </Typography>
               <Typography component="p" fontWeight={500} color="black">
-                Admin password: 12345
+                Admin Password: 12345
               </Typography>
             </Box>
             <Box mt={4} sx={{ mx: "auto" }}>
               <Typography component="p" fontWeight={500} color="black">
-                user gmial: jihad@gmail.com
+                User Gmail: jihad@gmail.com
               </Typography>
               <Typography component="p" fontWeight={500} color="black">
-                user password: 12345
+                User Password: 12345
               </Typography>
             </Box>
           </Stack>
@@ -162,7 +176,7 @@ const LoginPage = () => {
           </Box>
         </Box>
       </Stack>
-    </Container>
+    </Box>
   );
 };
 
