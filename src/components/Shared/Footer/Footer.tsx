@@ -184,12 +184,13 @@ import { BiSolidPhoneCall } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { IoLogoTwitter } from "react-icons/io";
 import { Box, Typography, Grid, IconButton, Button } from "@mui/material";
+import Link from "next/link";
 
 const Footer = () => {
   return (
     <Box>
       {/* Background Section */}
-      <Box sx={{ bgcolor: "white", borderRadius: 2, m: 2 }}>
+      <Box sx={{ bgcolor: "white", borderRadius: 2, m: 2, mb: "20px" }}>
         <Grid
           container
           spacing={4}
@@ -217,27 +218,50 @@ const Footer = () => {
             <Typography variant="body2" sx={{ my: 2, color: "text.secondary" }}>
               We have Petsmart Shop, an innovative team of pet suppliers.
             </Typography>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                mb: "10px",
+                color: "text.secondary",
+              }}
+            >
               <FaLocationDot />
               <Typography variant="body2">
                 789 Inner Lane, Biyes Park, California, USA
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                mb: "10px",
+                color: "text.secondary",
+              }}
+            >
               <BiSolidPhoneCall />
               <Typography variant="body2">
                 +00 123 456 789 <span style={{ color: "#4caf50" }}>or</span> +00
                 987 654 012
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                color: "text.secondary",
+              }}
+            >
               <MdEmail />
               <Typography variant="body2">support24@petsmart.com</Typography>
             </Box>
           </Grid>
 
           {/* Information Section */}
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={2}>
             <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold" }}>
               Information
             </Typography>
@@ -248,25 +272,25 @@ const Footer = () => {
               "Extended Plan",
               "Community",
             ].map((item, index) => (
-              <Button
-                key={index}
-                href="#"
-                sx={{
-                  display: "block",
-                  textAlign: "left",
-                  color: "text.secondary",
-                  textTransform: "none",
-                  mb: 1,
-                  "&:hover": { color: "white" },
-                }}
-              >
-                {item}
-              </Button>
+              <Link key={index} href="#">
+                <Box
+                  sx={{
+                    display: "block",
+                    textAlign: "left",
+                    color: "text.secondary",
+                    textTransform: "none",
+                    mb: "10px",
+                  }}
+                >
+                  {" "}
+                  {item}
+                </Box>
+              </Link>
             ))}
           </Grid>
 
           {/* Customer Support Section */}
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={2}>
             <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold" }}>
               Customer Support
             </Typography>
@@ -277,25 +301,25 @@ const Footer = () => {
               "Submit and Dispute",
               "Policies & Rules",
             ].map((item, index) => (
-              <Button
-                key={index}
-                href="#"
-                sx={{
-                  display: "block",
-                  textAlign: "left",
-                  color: "text.secondary",
-                  textTransform: "none",
-                  mb: 1,
-                  "&:hover": { color: "white" },
-                }}
-              >
-                {item}
-              </Button>
+              <Link key={index} href="#">
+                <Box
+                  sx={{
+                    display: "block",
+                    textAlign: "left",
+                    color: "text.secondary",
+                    textTransform: "none",
+                    mb: "10px",
+                  }}
+                >
+                  {" "}
+                  {item}
+                </Box>
+              </Link>
             ))}
           </Grid>
 
           {/* My Account Section */}
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={2}>
             <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold" }}>
               My Account
             </Typography>
@@ -307,26 +331,57 @@ const Footer = () => {
               "Help Ticket",
               "Wishlist",
             ].map((item, index) => (
-              <Button
-                key={index}
-                href="#"
-                sx={{
-                  display: "block",
-                  textAlign: "left",
-                  color: "text.secondary",
-                  textTransform: "none",
-                  mb: 1,
-                  "&:hover": { color: "white" },
-                }}
-              >
-                {item}
-              </Button>
+              <Link key={index} href="#">
+                <Box
+                  sx={{
+                    display: "block",
+                    textAlign: "left",
+                    color: "text.secondary",
+                    textTransform: "none",
+                    mb: "10px",
+                  }}
+                >
+                  {" "}
+                  {item}
+                </Box>
+              </Link>
             ))}
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                Shop on The Go
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ my: 1, color: "text.secondary" }}
+              >
+                PetSmart App is available. Get it now
+              </Typography>
+              <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
+                {[FaFacebook, IoLogoTwitter, FaInstagramSquare, FaLinkedin].map(
+                  (Icon, index) => (
+                    <IconButton
+                      key={index}
+                      sx={{
+                        bgcolor: "#1586fd",
+                        href: "#",
+                        // borderRadius: "100%",
+                        color: "white",
+                        "&:hover": { bgcolor: "#0859ae", color: "white" },
+                      }}
+                    >
+                      <Icon />
+                    </IconButton>
+                  )
+                )}
+              </Box>
+            </Box>
           </Grid>
         </Grid>
 
         {/* Social and App Section */}
-        <Box sx={{ mt: 5, px: { xs: 2, md: 5 } }}>
+        {/* <Box sx={{ mt: 5, px: { xs: 2, md: 5 } }}>
           <Typography variant="h6" sx={{ fontWeight: "bold" }}>
             Shop on The Go
           </Typography>
@@ -351,7 +406,7 @@ const Footer = () => {
               )
             )}
           </Box>
-        </Box>
+        </Box> */}
       </Box>
 
       {/* Bottom Section */}
@@ -365,7 +420,7 @@ const Footer = () => {
               PetSmart Shop © 2024. All Rights Reserved
             </Typography>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              <Typography variant="body2" sx={{ color: "text.primary" }}>
+              <Typography variant="body2" sx={{ color: "text.secondary" }}>
                 We Are Accepting
               </Typography>
             </Box>
