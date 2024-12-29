@@ -229,9 +229,9 @@ function NavbarPage() {
                           </Typography>
                         )}
                       </Stack>
-                      <Box px={5} mt={3}>
+                      {/* <Box px={5} mt={3}>
                         <AuthButton />
-                      </Box>
+                      </Box> */}
                     </Menu>
                   </Box>
                   <Typography
@@ -288,7 +288,7 @@ function NavbarPage() {
                           sx={{
                             fontWeight: "500",
                             fontSize: "18px",
-
+                            mx: "8px",
                             ":hover": {
                               color: "primary.main",
                             },
@@ -306,6 +306,7 @@ function NavbarPage() {
                           sx={{
                             fontWeight: "500",
                             fontSize: "18px",
+                            ml: "8px",
 
                             ":hover": {
                               color: "primary.main",
