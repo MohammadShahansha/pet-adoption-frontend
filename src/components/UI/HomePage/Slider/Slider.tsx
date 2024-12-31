@@ -12,12 +12,16 @@ import dog from "@/assets/slideImg/dog.png";
 import rabbit from "@/assets/slideImg/rabit.png";
 
 import bannerImg from "@/assets/images/about.png";
-import "./styles.css";
+// import "./styles.css";
 
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import Slider from "react-slick";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const data = [
   {
@@ -57,69 +61,80 @@ const data = [
   },
 ];
 
-const Slider = () => {
+const SliderPage = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const [activeSlide, setactiveSlide] = useState(2);
+  // const [activeSlide, setactiveSlide] = useState(2);
 
-  const next = () =>
-    activeSlide < data.length - 1 && setactiveSlide(activeSlide + 1);
+  // const next = () =>
+  //   activeSlide < data.length - 1 && setactiveSlide(activeSlide + 1);
 
-  const prev = () => activeSlide > 0 && setactiveSlide(activeSlide - 1);
+  // const prev = () => activeSlide > 0 && setactiveSlide(activeSlide - 1);
 
-  const getStyles = (index: number) => {
-    if (activeSlide === index)
-      return {
-        opacity: 1,
-        transform: "translateX(0px) translateZ(0px) rotateY(0deg)",
-        zIndex: 10,
-      };
-    else if (activeSlide - 1 === index)
-      return {
-        opacity: 1,
-        transform: "translateX(-240px) translateZ(-400px) rotateY(35deg)",
-        zIndex: 9,
-      };
-    else if (activeSlide + 1 === index)
-      return {
-        opacity: 1,
-        transform: "translateX(240px) translateZ(-400px) rotateY(-35deg)",
-        zIndex: 9,
-      };
-    else if (activeSlide - 2 === index)
-      return {
-        opacity: 1,
-        transform: "translateX(-480px) translateZ(-500px) rotateY(35deg)",
-        zIndex: 8,
-      };
-    else if (activeSlide + 2 === index)
-      return {
-        opacity: 1,
-        transform: "translateX(480px) translateZ(-500px) rotateY(-35deg)",
-        zIndex: 8,
-      };
-    else if (index < activeSlide - 2)
-      return {
-        opacity: 0,
-        transform: "translateX(-480px) translateZ(-500px) rotateY(35deg)",
-        zIndex: 7,
-      };
-    else if (index > activeSlide + 2)
-      return {
-        opacity: 0,
-        transform: "translateX(480px) translateZ(-500px) rotateY(-35deg)",
-        zIndex: 7,
-      };
+  // const getStyles = (index: number) => {
+  //   if (activeSlide === index)
+  //     return {
+  //       opacity: 1,
+  //       transform: "translateX(0px) translateZ(0px) rotateY(0deg)",
+  //       zIndex: 10,
+  //     };
+  //   else if (activeSlide - 1 === index)
+  //     return {
+  //       opacity: 1,
+  //       transform: "translateX(-240px) translateZ(-400px) rotateY(35deg)",
+  //       zIndex: 9,
+  //     };
+  //   else if (activeSlide + 1 === index)
+  //     return {
+  //       opacity: 1,
+  //       transform: "translateX(240px) translateZ(-400px) rotateY(-35deg)",
+  //       zIndex: 9,
+  //     };
+  //   else if (activeSlide - 2 === index)
+  //     return {
+  //       opacity: 1,
+  //       transform: "translateX(-480px) translateZ(-500px) rotateY(35deg)",
+  //       zIndex: 8,
+  //     };
+  //   else if (activeSlide + 2 === index)
+  //     return {
+  //       opacity: 1,
+  //       transform: "translateX(480px) translateZ(-500px) rotateY(-35deg)",
+  //       zIndex: 8,
+  //     };
+  //   else if (index < activeSlide - 2)
+  //     return {
+  //       opacity: 0,
+  //       transform: "translateX(-480px) translateZ(-500px) rotateY(35deg)",
+  //       zIndex: 7,
+  //     };
+  //   else if (index > activeSlide + 2)
+  //     return {
+  //       opacity: 0,
+  //       transform: "translateX(480px) translateZ(-500px) rotateY(-35deg)",
+  //       zIndex: 7,
+  //     };
+  // };
+
+  // const [isFirstRender, setIsFirstRender] = React.useState(true);
+
+  // React.useEffect(() => {
+  //   if (isFirstRender) {
+  //     setIsFirstRender(false);
+  //   }
+  // }, [isFirstRender]);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 3000,
+    cssEase: "linear",
+    arrows: false,
   };
-
-  const [isFirstRender, setIsFirstRender] = React.useState(true);
-
-  React.useEffect(() => {
-    if (isFirstRender) {
-      setIsFirstRender(false);
-    }
-  }, [isFirstRender]);
-
   return (
     <Box
       sx={{
@@ -130,6 +145,7 @@ const Slider = () => {
         width: "100%",
         // pt: "60px",
         mt: { md: "50px" },
+        // mx: { xs: "5px", md: "200px" },
       }}
     >
       {/* Left side content */}
@@ -170,14 +186,18 @@ const Slider = () => {
 
       {/* right side content */}
       <Box
+        // sx={{
+        //   width: "100%",
+        //   mr: { md: "50px", xs: "0px" },
+        //   display: { xs: "none", md: "block" },
+        // }}
         sx={{
-          width: "100%",
+          width: isSmallScreen ? "100%" : "50%",
           mr: { md: "50px", xs: "0px" },
-          display: { xs: "none", md: "block" },
         }}
       >
         {/* carousel */}
-        <div className="slideC ">
+        {/* <div className="slideC ">
           {data?.map((item: any, i: number) => (
             <React.Fragment key={item.id}>
               <div
@@ -199,10 +219,10 @@ const Slider = () => {
               />
             </React.Fragment>
           ))}
-        </div>
+        </div> */}
         {/* carousel */}
 
-        <Box
+        {/* <Box
           sx={{
             mb: { xs: "-10px", md: "-60px" },
             mt: { xs: "-50px", md: "-70px" },
@@ -224,19 +244,102 @@ const Slider = () => {
               />
             </div>
           )}
-        </Box>
+        </Box> */}
+
+        <div className="slider-container">
+          <Slider {...settings}>
+            <Box
+              sx={{
+                width: "300px",
+                height: "300px",
+              }}
+            >
+              <Image
+                src={cat2}
+                alt="cats"
+                style={{ width: "100%", height: "100%" }}
+              />
+            </Box>
+            <Box
+              sx={{
+                width: "300px",
+                height: "300px",
+              }}
+            >
+              <Image
+                src={dog}
+                alt="cats"
+                style={{ width: "100%", height: "100%" }}
+              />
+            </Box>
+            <Box
+              sx={{
+                width: "300px",
+                height: "300px",
+              }}
+            >
+              <Image
+                src={bird}
+                alt="cats"
+                style={{ width: "100%", height: "100%" }}
+              />
+            </Box>
+            {/* <div>
+              <Image src={dog} alt="cats" width={300} height={300} />
+            </div> */}
+          </Slider>
+        </div>
       </Box>
     </Box>
   );
 };
 
-const SliderContent = (props: any) => {
-  return (
-    <div className="sliderContent">
-      <Image src={props.image} alt="pussy image"></Image>
-      <h2>{props.title}</h2>
-    </div>
-  );
-};
+// const SliderContent = (props: any) => {
+//   return (
+//     <div className="sliderContent">
+//       <Image src={props.image} alt="pussy image"></Image>
+//       <h2>{props.title}</h2>
+//     </div>
+//   );
+// };
 
-export default Slider;
+export default SliderPage;
+
+// const SliderPage = () => {
+//   const settings = {
+//     dots: true,
+//     infinite: true,
+//     slidesToShow: 3,
+//     slidesToScroll: 1,
+//     autoplay: true,
+//     speed: 2000,
+//     autoplaySpeed: 2000,
+//     cssEase: "linear",
+//   };
+//   return (
+//     <div className="slider-container">
+//       <Slider {...settings}>
+//         <div>
+//           <h3>1</h3>
+//         </div>
+//         <div>
+//           <h3>2</h3>
+//         </div>
+//         <div>
+//           <h3>3</h3>
+//         </div>
+//         <div>
+//           <h3>4</h3>
+//         </div>
+//         <div>
+//           <h3>5</h3>
+//         </div>
+//         <div>
+//           <h3>6</h3>
+//         </div>
+//       </Slider>
+//     </div>
+//   );
+// };
+
+// export default SliderPage;
