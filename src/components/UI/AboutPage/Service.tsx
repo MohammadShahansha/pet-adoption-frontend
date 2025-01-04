@@ -10,7 +10,7 @@ const Service = () => {
     <Stack
       sx={{
         // backgroundColor: "rgba(1,201,214,0.1)",
-        py: { xs: "50px", md: "40px" },
+        py: { xs: "50px", md: "5px" },
       }}
     >
       <Container>
@@ -56,9 +56,7 @@ const Service = () => {
               >
                 Pet Care
               </Typography>
-              {/* <Typography fontWeight={700} fontSize="40px" color="black">
-                Why We Are?
-              </Typography> */}
+
               <Typography
                 my={5}
                 sx={{
@@ -87,18 +85,18 @@ const Service = () => {
                     mb: { xs: "17px", md: 0 },
                   }}
                 >
-                  <Typography fontSize="22px" fontWeight={600} color="black">
+                  <Typography fontSize="18px" fontWeight={600} color="black">
                     <PetsIcon />
                   </Typography>
-                  <Typography fontSize="22px" fontWeight={600} color="black">
+                  <Typography fontSize="18px" fontWeight={600} color="black">
                     24/7 Support
                   </Typography>
                 </Box>
                 <Box display="flex" alignItems="center" gap="10px" width="100%">
-                  <Typography fontSize="22px" fontWeight={600} color="black">
+                  <Typography fontSize="18px" fontWeight={600} color="black">
                     <PetsIcon />
                   </Typography>
-                  <Typography fontSize="22px" fontWeight={600} color="black">
+                  <Typography fontSize="18px" fontWeight={600} color="black">
                     Personalized Care
                   </Typography>
                 </Box>
@@ -119,18 +117,18 @@ const Service = () => {
                     mb: { xs: "17px", md: 0 },
                   }}
                 >
-                  <Typography fontSize="22px" fontWeight={600} color="black">
+                  <Typography fontSize="18px" fontWeight={600} color="black">
                     <PetsIcon />
                   </Typography>
-                  <Typography fontSize="22px" fontWeight={600} color="black">
+                  <Typography fontSize="18px" fontWeight={600} color="black">
                     Pet Texi Facility
                   </Typography>
                 </Box>
                 <Box display="flex" alignItems="center" gap="10px" width="100%">
-                  <Typography fontSize="22px" fontWeight={600} color="black">
+                  <Typography fontSize="18px" fontWeight={600} color="black">
                     <PetsIcon />
                   </Typography>
-                  <Typography fontSize="22px" fontWeight={600} color="black">
+                  <Typography fontSize="18px" fontWeight={600} color="black">
                     Quick Delivery
                   </Typography>
                 </Box>
@@ -151,18 +149,18 @@ const Service = () => {
                     mb: { xs: "17px", md: 0 },
                   }}
                 >
-                  <Typography fontSize="22px" fontWeight={600} color="black">
+                  <Typography fontSize="18px" fontWeight={600} color="black">
                     <PetsIcon />
                   </Typography>
-                  <Typography fontSize="22px" fontWeight={600} color="black">
+                  <Typography fontSize="18px" fontWeight={600} color="black">
                     Money Back Guaranty
                   </Typography>
                 </Box>
                 <Box display="flex" alignItems="center" gap="10px" width="100%">
-                  <Typography fontSize="22px" fontWeight={600} color="black">
+                  <Typography fontSize="18px" fontWeight={600} color="black">
                     <PetsIcon />
                   </Typography>
-                  <Typography fontSize="22px" fontWeight={600} color="black">
+                  <Typography fontSize="18px" fontWeight={600} color="black">
                     Lowest Price
                   </Typography>
                 </Box>

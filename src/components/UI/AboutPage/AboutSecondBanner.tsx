@@ -14,6 +14,7 @@ const AboutSecondBanner = () => {
     <Box
       sx={{
         // backgroundColor: "#e5e7eb",
+        mt: { xs: "10px", md: "40px" },
         py: { xs: "30px", md: "40px" },
       }}
     >
