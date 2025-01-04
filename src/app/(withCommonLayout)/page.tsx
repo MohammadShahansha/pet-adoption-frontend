@@ -1,3 +1,4 @@
+import AutoSlider from "@/components/UI/HomePage/AutoSlider/AutoSlider";
 import BannerSection from "@/components/UI/HomePage/BannerSection/BannerSection";
 import Gallery from "@/components/UI/HomePage/Gallery/Gallery";
 import PetsShow from "@/components/UI/HomePage/PetsShow/PetsShow";
@@ -45,6 +46,7 @@ const HomePage = () => {
       />
       {/* <Slider /> */}
       <SliderPage />
+      <AutoSlider />
       <BannerSection />
       <PetsShow />
       <ReviewSection />
