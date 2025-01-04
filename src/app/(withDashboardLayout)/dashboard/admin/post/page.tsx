@@ -14,7 +14,6 @@ import {
   useForm,
 } from "react-hook-form";
 import { toast } from "sonner";
-// import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
 
@@ -116,17 +115,6 @@ const CreatePost = () => {
               />
             </Grid>
             <Grid item xs={12} md={12}>
-              {/* <PATextAreaInput
-                name="description"
-                aria-label="maximum height"
-                sx={{ width: "100%", color: "black" }}
-              /> */}
-              {/* <ReactQuill
-                value={content}
-                onChange={(newContent) => setContent(newContent)}
-                modules={modules}
-                formats={formats}
-              /> */}
               <Controller
                 name="description"
                 defaultValue=""
