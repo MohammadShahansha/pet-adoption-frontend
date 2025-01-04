@@ -7,14 +7,26 @@ import { useCreatePostMutation } from "@/redux/api/allApi/postApi";
 import { Box, Button, Grid, TextareaAutosize, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { FieldValues, SubmitHandler } from "react-hook-form";
+import {
+  Controller,
+  FieldValues,
+  SubmitHandler,
+  useForm,
+} from "react-hook-form";
 import { toast } from "sonner";
+// import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
 
+const ReactQuillNoSSR = dynamic(() => import("react-quill"), { ssr: false });
 const CreatePost = () => {
   const router = useRouter();
   const [error, setError] = useState("");
+  const [content, setContent] = useState("");
   const [createPost] = useCreatePostMutation();
-  const handleLoggin: SubmitHandler<FieldValues> = async (values) => {
+  const { control, handleSubmit, reset } = useForm();
+
+  const submit: SubmitHandler<FieldValues> = async (values) => {
     console.log(values);
     try {
       const res = await createPost(values).unwrap();
@@ -28,6 +40,45 @@ const CreatePost = () => {
       toast.error("here are some problem");
     }
   };
+
+  const modules = {
+    toolbar: {
+      container: [
+        [{ header: [1, 2, false] }],
+        ["bold", "italic", "underline", "strike", "blockquote"],
+        [
+          { list: "ordered" },
+          { list: "bullet" },
+          { indent: "-1" },
+          { indent: "+1" },
+        ],
+        ["link", "image"],
+        ["clean"],
+      ],
+    },
+  };
+  const formats = [
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "color",
+    "background",
+    "script",
+    "header",
+    "blockquote",
+    "code-block",
+    "indent",
+    "list",
+    "direction",
+    "align",
+    "link",
+    "image",
+    "video",
+    "formula",
+  ];
   return (
     <Box>
       <Box
@@ -47,7 +98,7 @@ const CreatePost = () => {
           mx: { xs: "5px", md: "10px" },
         }}
       >
-        <PAForm onSubmit={handleLoggin}>
+        <PAForm onSubmit={submit}>
           <Grid
             container
             spacing={1}
@@ -65,10 +116,28 @@ const CreatePost = () => {
               />
             </Grid>
             <Grid item xs={12} md={12}>
-              <PATextAreaInput
+              {/* <PATextAreaInput
                 name="description"
                 aria-label="maximum height"
                 sx={{ width: "100%", color: "black" }}
+              /> */}
+              {/* <ReactQuill
+                value={content}
+                onChange={(newContent) => setContent(newContent)}
+                modules={modules}
+                formats={formats}
+              /> */}
+              <Controller
+                name="description"
+                defaultValue=""
+                render={({ field }) => (
+                  <ReactQuillNoSSR
+                    {...field}
+                    modules={modules}
+                    formats={formats}
+                    onChange={(newContent) => field.onChange(newContent)}
+                  />
+                )}
               />
             </Grid>
           </Grid>

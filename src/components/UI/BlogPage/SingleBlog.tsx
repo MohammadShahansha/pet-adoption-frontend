@@ -18,7 +18,7 @@ const SingleBlog = (id: TProp) => {
   }
 
   return (
-    <Box sx={{ backgroundColor: "#e5e7eb", p: { xs: "5px", md: "30px" } }}>
+    <Box sx={{ p: { xs: "5px", md: "30px" } }}>
       <Typography
         variant="h4"
         fontWeight={500}
@@ -44,8 +44,12 @@ const SingleBlog = (id: TProp) => {
       <Typography component="p" fontSize="10px">
         Posted At: {singleData?.createdAt.slice(0, 10)}
       </Typography>
-      <Typography component="p" fontSize="18px">
-        {singleData?.description}
+      <Typography
+        component="p"
+        fontSize="18px"
+        dangerouslySetInnerHTML={{ __html: singleData?.description }}
+      >
+        {/* {singleData?.description} */}
       </Typography>
     </Box>
   );
