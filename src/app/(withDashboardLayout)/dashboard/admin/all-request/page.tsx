@@ -19,6 +19,7 @@ const AllRequest = () => {
   const { data: requestedData, isLoading } = useGetAllAdoptionRequestQuery({});
   const [deleteRequest] = useDeleteRequestMutation();
   const forLoading = [1, 2, 3, 4, 5, 6, 7, 8];
+  const paginationModel = { page: 0, pageSize: 10 };
 
   const [selectedReq, setSelectedReq] = useState<any>(null);
 
@@ -170,7 +171,12 @@ const AllRequest = () => {
               mx: "auto",
             }}
           >
-            <DataGrid rows={requestedData} columns={columns} hideFooter />
+            <DataGrid
+              rows={requestedData}
+              columns={columns}
+              initialState={{ pagination: { paginationModel } }}
+              pageSizeOptions={[10, 20]}
+            />
           </Box>
         ) : (
           <Box>

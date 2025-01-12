@@ -179,7 +179,7 @@ const PetInformatin = () => {
   //     },
   //   },
   // ];
-
+  const paginationModel = { page: 0, pageSize: 10 };
   return (
     <Box sx={{ width: "100%" }}>
       <Box
@@ -218,7 +218,12 @@ const PetInformatin = () => {
               mx: { xs: "auto", md: "10px" },
             }}
           >
-            <DataGrid rows={rowData} columns={columns} hideFooter />
+            <DataGrid
+              rows={rowData}
+              columns={columns}
+              initialState={{ pagination: { paginationModel } }}
+              pageSizeOptions={[10, 20]}
+            />
           </Box>
         </Box>
       ) : (

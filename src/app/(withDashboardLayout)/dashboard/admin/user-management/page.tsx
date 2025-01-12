@@ -15,6 +15,7 @@ const UserManagement = () => {
   const [userModalOpen, setUserModalOpen] = useState(false);
   const [selectUserRow, setSelectUserRow] = useState<any>(null);
   const forLoading = [1, 2, 3, 4, 5, 6, 7, 8];
+  const paginationModel = { page: 0, pageSize: 10 };
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -105,8 +106,8 @@ const UserManagement = () => {
             <DataGrid
               rows={userData}
               columns={columns}
-              hideFooter
-              autoHeight
+              initialState={{ pagination: { paginationModel } }}
+              pageSizeOptions={[10, 20]}
               sx={{
                 "& .MuiDataGrid-root": {
                   borderRadius: "8px",

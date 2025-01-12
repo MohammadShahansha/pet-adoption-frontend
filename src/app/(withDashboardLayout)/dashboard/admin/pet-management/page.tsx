@@ -27,7 +27,7 @@ import Link from "next/link";
 const PetManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   // const [scroll, setScroll] = useState<DialogProps["scroll"]>("paper");
-
+  const paginationModel = { page: 0, pageSize: 10 };
   const [updateModalOpen, setUpdateModalOpen] = useState<boolean>(false);
   const [detailModalOpen, setDetailModalOpen] = useState<boolean>(false);
 
@@ -236,7 +236,12 @@ const PetManagement = () => {
               mx: "auto",
             }}
           >
-            <DataGrid rows={rowData} columns={columns} hideFooter autoHeight />
+            <DataGrid
+              rows={rowData}
+              columns={columns}
+              initialState={{ pagination: { paginationModel } }}
+              pageSizeOptions={[10, 20]}
+            />
           </Box>
         ) : (
           <Box>
