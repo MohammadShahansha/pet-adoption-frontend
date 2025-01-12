@@ -18,7 +18,7 @@ const AllBlog = () => {
   const [selectId, setSelectId] = useState<string | null>(null);
   const singleBlogRef = useRef<HTMLDivElement>(null);
   const forLoading = [1, 2, 3, 4, 5];
-
+  console.log(postData);
   const handlePost = async (id: string) => {
     setSelectId(id);
     if (singleBlogRef.current) {

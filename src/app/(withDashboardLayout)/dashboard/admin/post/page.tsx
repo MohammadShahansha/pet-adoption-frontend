@@ -7,6 +7,8 @@ import { useCreatePostMutation } from "@/redux/api/allApi/postApi";
 import { Box, Button, Grid, TextareaAutosize, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { styled } from "@mui/material/styles";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import {
   Controller,
   FieldValues,
@@ -16,19 +18,52 @@ import {
 import { toast } from "sonner";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
+import uploadImageToImgbb from "@/components/ImageUploader/ImageUploader";
 
 const ReactQuillNoSSR = dynamic(() => import("react-quill"), { ssr: false });
 const CreatePost = () => {
   const router = useRouter();
-  const [error, setError] = useState("");
-  const [content, setContent] = useState("");
+  // const [error, setError] = useState("");
+  // const [content, setContent] = useState("");
   const [createPost] = useCreatePostMutation();
-  const { control, handleSubmit, reset } = useForm();
+  // const { control, handleSubmit, reset } = useForm();
+  const [photo, setPhoto] = useState("");
+
+  const VisuallyHiddenInput = styled("input")({
+    clip: "rect(0 0 0 0)",
+    clipPath: "inset(50%)",
+    height: 1,
+    overflow: "hidden",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    whiteSpace: "nowrap",
+    width: 1,
+  });
+
+  const handleFileUpload = async (file: File) => {
+    try {
+      const image = await uploadImageToImgbb(file);
+
+      if (image) {
+        toast.success("image Upload successfully");
+      }
+      setPhoto(image);
+    } catch (error) {
+      console.error("Failed to upload image:", error);
+    }
+  };
 
   const submit: SubmitHandler<FieldValues> = async (values) => {
     console.log(values);
+    const postData = {
+      title: values?.title || "",
+      image: photo || "",
+      description: values?.description || "",
+    };
+    console.log(postData);
     try {
-      const res = await createPost(values).unwrap();
+      const res = await createPost(postData).unwrap();
 
       if (res?.id) {
         toast.success("create post successfully");
@@ -78,6 +113,7 @@ const CreatePost = () => {
     "video",
     "formula",
   ];
+
   return (
     <Box>
       <Box
@@ -107,12 +143,40 @@ const CreatePost = () => {
               <PAInput name="title" label="Title" fullWidth={true} />
             </Grid>
             <Grid item xs={12} md={12}>
-              <PAInput
+              {/* <PAInput
                 name="image"
                 label="Image"
                 fullWidth={true}
                 sx={{ color: "black" }}
-              />
+              /> */}
+              {/* <div className="h-10 w-full"> */}
+              {/* <p
+                  className="block text-sm font-medium text-gray-700"
+                  style={{ marginBottom: "5px" }}
+                >
+                  Profile URL
+                </p> */}
+              <Button
+                component="label"
+                role={undefined}
+                variant="contained"
+                tabIndex={-1}
+                startIcon={<CloudUploadIcon />}
+                sx={{ width: "100%" }}
+              >
+                Upload Image
+                <VisuallyHiddenInput
+                  type="file"
+                  onChange={(event) => {
+                    const file = event.target.files?.[0];
+                    if (file) {
+                      handleFileUpload(file); // Pass the selected file to handleFileUpload
+                    }
+                  }}
+                  multiple
+                />
+              </Button>
+              {/* </div> */}
             </Grid>
             <Grid item xs={12} md={12}>
               <Controller
