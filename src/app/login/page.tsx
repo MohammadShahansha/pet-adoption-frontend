@@ -13,9 +13,22 @@ import { storeUserInfo } from "@/serviece/authService";
 import { useRouter } from "next/navigation";
 import bgImage from "@/assets/images/loginImg.png";
 
+const demoCredentials = [
+  { role: "ADMIN", email: "yeasin@gmail.com", password: "12345" },
+
+  { role: "USER", email: "jihad@gmail.com", password: "12345" },
+];
+
 const LoginPage = () => {
   const router = useRouter();
   const [error, setError] = useState("");
+  const [defaultValues, setDefaultValues] = useState({
+    email: "yeasin@gmail.com",
+    password: "12345",
+  });
+  const setDemoCredentials = (email: string, password: string) => {
+    setDefaultValues({ email, password });
+  };
 
   const handleLoggin: SubmitHandler<FieldValues> = async (values) => {
     console.log(values);
@@ -34,6 +47,8 @@ const LoginPage = () => {
       console.log("here are some problem");
     }
   };
+
+  console.log(defaultValues);
   return (
     <Box
       sx={{
@@ -90,7 +105,7 @@ const LoginPage = () => {
             </Box>
           </Stack>
           <Stack sx={{ mx: "auto" }}>
-            <Box sx={{ mx: "auto" }}>
+            {/* <Box sx={{ mx: "auto" }}>
               <Typography component="p" fontWeight={500} color="black">
                 Admin Gmail: yeasin@gmail.com
               </Typography>
@@ -105,7 +120,41 @@ const LoginPage = () => {
               <Typography component="p" fontWeight={500} color="black">
                 User Password: 12345
               </Typography>
-            </Box>
+            </Box> */}
+
+            {demoCredentials.map(({ role, email, password }) => (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  justifyItems: "center",
+                  mt: "20px",
+                }}
+                // className="flex justify-between items-center mt-4"
+                key={role}
+              >
+                <Box>
+                  <h3 className="text-md text-gray-500">{role}:</h3>
+                  <p className="text-sm text-gray-600">Email - {email}</p>
+                  <p className="text-sm text-gray-600">Pass - {password}</p>
+                </Box>
+                <Box>
+                  <Button
+                    type="button"
+                    sx={{
+                      color: "white",
+                      ":hover": {
+                        backgroundColor: "#111e42",
+                      },
+                    }}
+                    // className="text-white rounded px-2 py-1"
+                    onClick={() => setDemoCredentials(email, password)}
+                  >
+                    {role} Login
+                  </Button>
+                </Box>
+              </Box>
+            ))}
           </Stack>
           {error && (
             <Box
@@ -126,7 +175,7 @@ const LoginPage = () => {
             </Box>
           )}
           <Box mt={3}>
-            <PAForm onSubmit={handleLoggin}>
+            <PAForm onSubmit={handleLoggin} defaultValues={defaultValues}>
               <Grid container spacing={3}>
                 <Grid item md={12}>
                   <PAInput
